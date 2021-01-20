@@ -79,45 +79,161 @@ if(!this.state.id){
 
   render(){
       return(
-     <form onSubmit={this.handleSubmit}>
-         <div>
-             <label>Tutor Id :</label>
-     <input style={{fontSize:16}} name="id" type="number" placeholder="Tutor Id" value={this.state.id} onChange={this.handleChange}/>
-    </div>
-    <div style={{fontSize:12,color:"red"}}>
-        {this.state.idError}
+        <div class="container mt-5 px-3 py-3 border border-dark rounded">
+        <div class="row">
+          <div class="col">
+            <h2>Add Tutor</h2>
+            <br></br>
+            <form method="post">
+              <div class="mb-3 row">
+                <label for="tutorId" class="col-sm-4 col-form-label">
+                  Tutor Id
+                </label>
+                <div class="col-sm-5 ">
+                  <input
+                    type="number"
+                    class="form-control form-control-sm"
+                    name="tutorId"
+                    id="tutorId"
+                    ref={this.tutorId}
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="mb-3 row">
+                <label for="tutorName" class="col-sm-4 col-form-label">
+                  Tutor Name
+                </label>
+                <div class="col-sm-5">
+                  <input
+                    type="text"
+                    class="form-control form-control-sm"
+                    name="tutorName"
+                    id="tutorName"
+                    ref={this.name}
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="mb-3 row">
+                <label for="tutorUsername" class="col-sm-4 col-form-label">
+                  Tutor Username
+                </label>
+                <div class="col-sm-5">
+                  <input
+                    type="text"
+                    class="form-control form-control-sm"
+                    name="tutorUsername"
+                    id="tutorUsername"
+                    ref={this.username}
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="mb-3 row">
+                <label for="tutorPassword" class="col-sm-4 col-form-label">
+                  Tutor Password
+                </label>
+                <div class="col-sm-5">
+                  <input
+                    type="password"
+                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                    class="form-control form-control-sm"
+                    name="tutorPassword"
+                    id="tutorPassword"
+                    ref={this.password}
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="mb-3 row">
+                <label for="tutorSubject" class="col-sm-4 col-form-label">
+                  Tutor Subject
+                </label>
+                <div class="col-sm-5">
+                  <input
+                    type="text"
+                    class="form-control form-control-sm"
+                    name="tutorSubject"
+                    id="tutorSubject"
+                    ref={this.subject}
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="mb-3 row">
+                <label for="tutorPhoneNo" class="col-sm-4 col-form-label">
+                  Tutor Phone No.
+                </label>
+                <div class="col-sm-5">
+                  <input
+                    type="number"
+                    pattern="[6-9]{4}[0-9]{6}"
+                    class="form-control form-control-sm"
+                    name="tutorPhoneNo"
+                    id="tutorPhoneNo"
+                    ref={this.phoneNo}
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="mb-3 row">
+                <label for="tutorAddress" class="col-sm-4 col-form-label">
+                  Tutor Address
+                </label>
+                <div class="col-sm-5">
+                  <input
+                    type="text"
+                    class="form-control form-control-sm"
+                    name="tutorAddress"
+                    id="tutorAddress"
+                    ref={this.address}
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="mb-3 row">
+                <label for="tutorQualification" class="col-sm-4 col-form-label">
+                  Tutor Qualification
+                </label>
+                <div class="col-sm-5">
+                  <input
+                    type="text"
+                    class="form-control form-control-sm"
+                    name="tutorQualification"
+                    id="tutorQualification"
+                    ref={this.qualifications}
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="row mt-3">
+                <div class="col">
+                  <button
+                    class="btn btn-primary btn-sm"
+                    onClick={this.updateTutor}
+                  >
+                    Update
+                  </button>
+                </div>
+                
+              </div>
+            </form>
+          </div>
         </div>
-        <br/>
+
         
-    <div>
-    <label>Tutor Name :</label>
-     <input style={{fontSize:16}} name="name" placeholder="Tutor Name" value={this.state.name} onChange={this.handleChange}/>
-    </div>
-    <div style={{fontSize:12,color:"red"}}>
-        {this.state.nameError}
-        </div>
-        <br/>
-    <div>
-    <label>Subject :</label>
-     <input style={{fontSize:16}}name="subject" type="text" placeholder="Subject" value={this.state.subject} onChange={this.handleChange}/>
-    </div>
-    <div style={{fontSize:12,color:"red"}}>
-        {this.state.subjectError}
-        </div>
-        <div>
-    <label>Address :</label>
-     <input style={{fontSize:16}}name="address" type="text" placeholder="Address" value={this.state.address} onChange={this.handleChange}/>
-    </div>
-
-    <div>
-    <label>Phone Number :</label>
-     <input style={{fontSize:16}}name="phonenumber" type="number" placeholder="Phone Number" value={this.state.phonenumber} onChange={this.handleChange}/>
-    </div>
-      <br/>
-
-    <button type="submit">Submit</button>
-     </form>
-      );
+        
+      </div>
+     );
   }
 
 
