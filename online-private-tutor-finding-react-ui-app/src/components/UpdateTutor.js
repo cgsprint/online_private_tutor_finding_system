@@ -13,7 +13,8 @@ const initialState={
    
 }
 
-export default class UpdateTutor extends React.Component{   
+ class UpdateTutor extends React.Component{ 
+
   state= initialState;
 
   handleChange=event=>{
@@ -108,17 +109,23 @@ if(!this.state.id){
     <label>Address :</label>
      <input style={{fontSize:16}}name="address" type="text" placeholder="Address" value={this.state.address} onChange={this.handleChange}/>
     </div>
-
+    <div style={{fontSize:12,color:"red"}}>
+        {this.state.addressError}
+        </div>
     <div>
     <label>Phone Number :</label>
      <input style={{fontSize:16}}name="phonenumber" type="number" placeholder="Phone Number" value={this.state.phonenumber} onChange={this.handleChange}/>
     </div>
+
+    <div style={{fontSize:12,color:"red"}}>
+        {this.state.phoneError}
+        </div>
       <br/>
 
-    <button type="submit">Submit</button>
+    <button type="submit">Update Profile</button>
      </form>
       );
   }
-
-
 }
+
+export default UpdateTutor
