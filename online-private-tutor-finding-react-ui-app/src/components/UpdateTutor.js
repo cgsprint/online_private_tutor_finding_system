@@ -5,13 +5,15 @@ const initialState={
     name:"",
     subject:"",
     address:"",
-  
+    phonenumber:"",
     nameError:"",
-    costError:"",
+    subjectError:"",
+    addressError:"",
+    phoneError:""
    
 }
 
-export default class ValidatioFrom extends React.Component{   
+export default class UpdateTutor extends React.Component{   
   state= initialState;
 
   handleChange=event=>{
@@ -26,13 +28,14 @@ export default class ValidatioFrom extends React.Component{
 
   validate=()=>{
  let nameError="";
-  let costError ="";
-
+  let subjectError ="";
+   let addressError="";
+   let phoneError="";
 let idError="";
 let nameIsString="";
 let idIsNumber="";
 
-if(!this.state.name){
+if(!this.state.id){
     idError="id cant be blank";
   }
 
@@ -40,13 +43,21 @@ if(!this.state.name){
       nameError="name cant be blank";
     }
 
-    if(!this.state.cost){
-        costError="Cost cant be blank";
+    if(!this.state.subject){
+        subjectError="Subject cant be blank";
+      }
+
+      if(!this.state.address){
+        addressError="address cant be blank";
+      }
+
+      if(!this.state.phonenumber){
+        phoneError="mobile number cant be blank";
       }
 
       
-    if(idError||nameError || costError){
-        this.setState({idError,nameError,costError});
+    if(idError||nameError || subjectError||addressError||phoneError){
+        this.setState({idError,nameError,subjectError,addressError,phoneError});
         return false;
     }
     return true;
@@ -91,13 +102,19 @@ if(!this.state.name){
      <input style={{fontSize:16}}name="subject" type="text" placeholder="Subject" value={this.state.subject} onChange={this.handleChange}/>
     </div>
     <div style={{fontSize:12,color:"red"}}>
-        {this.state.costError}
+        {this.state.subjectError}
         </div>
         <div>
-    <label>Subject :</label>
+    <label>Address :</label>
      <input style={{fontSize:16}}name="address" type="text" placeholder="Address" value={this.state.address} onChange={this.handleChange}/>
     </div>
+
+    <div>
+    <label>Phone Number :</label>
+     <input style={{fontSize:16}}name="phonenumber" type="number" placeholder="Phone Number" value={this.state.phonenumber} onChange={this.handleChange}/>
+    </div>
       <br/>
+
     <button type="submit">Submit</button>
      </form>
       );
