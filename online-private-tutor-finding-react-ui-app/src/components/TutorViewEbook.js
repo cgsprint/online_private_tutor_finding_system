@@ -12,6 +12,7 @@ class TutorViewEbook extends Component {
     }       
     
     componentDidMount() {
+        
         axios.get('http://localhost:8080/viewEbook',this.state)
         .then((res) => {
             this.setState({ ebooklist: res.data.data})
@@ -20,6 +21,18 @@ class TutorViewEbook extends Component {
 
 
     render() {
+
+        let ebooklist= this.state.ebooklist.map((ebook , index) => {
+            return(
+                <tr key={index}>
+                <th>{ebook.ebookId}</th>
+                <td>{ebook.title}</td>
+                <td>{ebook.author}</td>
+                <td>{ebook.url}</td>
+                
+                </tr>
+                )
+            })
         return (
             <div>
                 <table className="table table-info demo-request-table">
@@ -33,17 +46,7 @@ class TutorViewEbook extends Component {
                     </thead>
                     <tbody>
                         {
-                            this.state.ebooklist.map((b) => (
-                                <tr key={b.ebookId}>
-                                    <td>{b.ebookId}</td>
-                                    <td>{b.title}</td>
-                                    <td>{b.author}</td>
-                                    <td>{b.url}</td>
-                                    <td>
-                                               
-                    </td>
-                                </tr>
-                            ))
+                           ebooklist
                         }
                     </tbody>
                 </table>
@@ -54,5 +57,6 @@ class TutorViewEbook extends Component {
         
     
 }
+
 
 export default TutorViewEbook;

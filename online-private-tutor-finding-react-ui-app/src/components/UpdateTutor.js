@@ -1,62 +1,48 @@
-import React from "react";
 
-const initialState = {
-  id: "",
-  name: "",
-  subject: "",
-  address: "",
-  phonenumber: "",
-  nameError: "",
-  subjectError: "",
-  addressError: "",
-  phoneError: "",
-};
+import React from  'react';
 
-export default class UpdateTutor extends React.Component {
-  state = initialState;
 
-  handleChange = (event) => {
-    const isCheckbox = event.target.type === "checkbox";
-    this.setState({
-      [event.target.id]: isCheckbox ? event.target.checked : event.target.value,
-    });
-  };
 
-  validate = () => {
-    let nameError = "";
-    let subjectError = "";
-    let addressError = "";
-    let phoneError = "";
-    let idError = "";
-    let nameIsString = "";
-    let idIsNumber = "";
+ class UpdateTutor extends React.Component{  
+  
+  constructor(props){
+    super(props)
 
-    if (!this.state.id) {
-      idError = "id cant be blank";
+    this.tutorId = React.createRef();
+    this.name = React.createRef();
+    this.username = React.createRef();
+    this.password = React.createRef();
+    this.subject = React.createRef();
+    this.address= React.createRef();
+    this.phonenumber = React.createRef();
+    this.qualification = React.createRef();
+
+  
+  }
+
+  
+  validate=()=>{
+ let usernameError="";
+ 
+ let phoneError="";
+
+
+    if (this.state.username.length > 5) {
+      usernameError = "username  should be more than 5 characters";
     }
 
-    if (this.state.name.length > 5) {
-      nameError = "name cant be small";
-    }
+  
 
-    if (!this.state.subject) {
-      subjectError = "Subject cant be blank";
-    }
+      if(!this.state.phonenumber.length==10){
+        phoneError="mobile number should  be 10";
+      }
 
-    if (!this.state.address) {
-      addressError = "address cant be blank";
-    }
+    
 
-    if (!this.state.phonenumber) {
-      phoneError = "mobile number cant be blank";
-    }
-
-    if (idError || nameError || subjectError || addressError || phoneError) {
+    if ( usernameError || phoneError) {
       this.setState({
-        idError,
-        nameError,
-        subjectError,
-        addressError,
+        
+        usernameError,      
         phoneError,
       });
       return false;
@@ -70,14 +56,40 @@ export default class UpdateTutor extends React.Component {
     if (isValid) {
       console.log(this.state);
 
-      //Clear state
-      this.setState(initialState);
+       //Clear state
+      //  this.setState(initialState);
     }
   };
 
-  render() {
-    return (
-      <div className="container mt-5 px-3 py-3 border border-dark rounded">
+
+  componentDidMount() {
+    this.props.clearState()
+}
+componentDidUpdate() {
+    let check = this.props.returnedMessage.split(' ')
+    if (check[0] === 'Successfully') {
+        setTimeout(() => {
+            this.props.history.push('/listOfTutors')
+        }, 2000)
+    }
+  }
+
+update() {
+    let tutor = {
+        tutorId: this.tutorId.current.value,
+        name: this.name.current.value,
+        subject: this.subject.current.value,
+        address: this.address.current.value,
+        phonenumber: this.phonenumber.current.value,
+        qualification:this.qualification.current.value
+    }
+    this.props.onUpdateTutor(tutor)
+
+}
+
+  render(){
+      return(
+        <div className="container mt-5 px-3 py-3 border border-dark rounded">
         <div className="row">
           <div className="col">
             <h2>Update Tutor Profile</h2>
@@ -93,7 +105,7 @@ export default class UpdateTutor extends React.Component {
                     className="form-control form-control-sm"
                     name="tutorId"
                     id="tutorId"
-                    ref={this.id}
+                    ref={this.tutorId}
                     required
                   />
                 </div>
@@ -121,6 +133,8 @@ export default class UpdateTutor extends React.Component {
                 <div style={{fontSize:12,color:"red"}}>
         {this.state.nameError}
         </div>
+
+
 
               </div>
 
@@ -188,6 +202,9 @@ export default class UpdateTutor extends React.Component {
                     required
                   />
                 </div>
+                <div style={{fontSize:12,color:"red"}}>
+        {this.state.phoneError}
+        </div>
               </div>
 
               <div className="mb-3 row">
@@ -236,6 +253,10 @@ export default class UpdateTutor extends React.Component {
             </div>
           </div>
         </div>
+        
+      )
+      }
+
 
 
       //         <div>
@@ -282,8 +303,32 @@ export default class UpdateTutor extends React.Component {
       //     </div>
       //   </div>
       // </div>
-    );
+    
 
+
+
+}
+
+const mapStateToProps = (state) => {
+  return {
+      returnedMessage: state.returnedMessage
 
   }
 }
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+      onUpdateTutor: (tutorId, newTutorObject) => {
+          // dispatch(actionCreators.updateTutotr(tutorId, newTutorObject))
+      },
+      clearState: () => {
+          // dispatch(actionCreators.clearState())
+
+      }
+
+  }
+
+}
+export default UpdateTutor
+
+// export default connect(mapStateToProps, mapDispatchToProps)(withRouter(UpdateTutor))
