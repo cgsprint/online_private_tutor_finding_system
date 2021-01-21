@@ -1,7 +1,18 @@
 import React, { Component } from 'react'
-import AddParent from './AddParent'
+import AddParent from './AddParent';
+    
 
 export class ParentLogin extends Component {
+    constructor(props) {
+        
+        super(props)
+            this.parentUsername = React.createRef();
+            this.parentPassword = React.createRef(); 
+    }
+    parentLogin =() => 
+    {
+        alert(this.parentUsername.current.value+this.parentPassword.current.value)
+    }
     render() {
         return (
             <div class="container mt-5 px-3 py-3 border border-dark rounded">
@@ -19,8 +30,9 @@ export class ParentLogin extends Component {
                       <input
                         type="text"
                         class="form-control form-control-sm"
-                        name="username"
-                        ref={this.username}
+                        name="parentUsername"
+                        id="parentUsername"
+                        ref={this.parentUsername}
                         placeholder = "Eg: John"
                         required
                       />
@@ -37,8 +49,9 @@ export class ParentLogin extends Component {
                         // pattern="(?=.\d)(?=.[a-z])(?=.*[A-Z]).{8,}"
                         
                         class="form-control form-control-sm"
-                        name="password"
-                        ref={this.password}
+                        name="parentPassword"
+                        id="parentPassword"
+                        ref={this.parentPassword}
                         placeholder="Eg: john@123"
                         required
                       />
@@ -48,7 +61,7 @@ export class ParentLogin extends Component {
                     <div class="row mt-3">
                 <div class="col">
                   <button
-                    class="btn btn-primary btn-sm ">
+                    class="btn btn-primary btn-sm " onClick={this.parentLogin} >
                     Login
                   </button>
                 </div>
