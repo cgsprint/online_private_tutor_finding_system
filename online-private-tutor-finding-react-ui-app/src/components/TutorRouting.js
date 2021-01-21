@@ -1,11 +1,11 @@
-
 import React from 'react'
 import { BrowserRouter as Router, Switch, Link, Route } from "react-router-dom";
-import AddUpdateTutor from './AddUpdateTutor';
-import ParentTable from './ParentTable';
-import TutorTable from './TutorTable';
+import TutorLogin from './TutorLogin'
+import TutorViewEbook from './TutorViewEbook'
+import UpdateTutor from './UpdateTutor'
 
-function AdminRouting() {
+
+function TutorRouting() {
     return (
         <Router>
             <div>
@@ -15,25 +15,22 @@ function AdminRouting() {
                             <ul className="navbar-nav">
                                 <li className="nav-item">
                                     <Link className="nav-link" to="/viewparents">
-                                        View Parents
+                                        View Bookings
                                     </Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link className="nav-link" to="/addupdatetutor">
-                                        Add/Update Tutor
+                                    <Link className="nav-link" to="/updatetutor">
+                                        Update  Profile
                                     </Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link className="nav-link" to="/addupdateebook">
-                                        Add/Update Ebook
+                                    <Link className="nav-link" to="/tutorLogin">
+                                        Log In
                                     </Link>
                                 </li>
+                                
                                 <li className="nav-item">
-                                    <Link className="nav-link" to="/viewtutors">
-                                        View Tutor
-                                    </Link>
-                                </li><li className="nav-item">
-                                    <Link className="nav-link" to="/viewebook">
+                                    <Link className="nav-link" to="/viewbook">
                                         View Ebook
                                     </Link>
                                 </li>
@@ -43,29 +40,21 @@ function AdminRouting() {
                 </nav>
 
                 <Switch>
-                    <Route  exact path="/viewparents">
-                        <ParentTable/>
+                    
+                    <Route path="/updatetutor">
+                        <UpdateTutor></UpdateTutor>
                     </Route>
 
-                    <Route path="/addupdatetutor">
-                        <AddUpdateTutor/>
+                    <Route path="/tutorLogin">
+                        <TutorLogin></TutorLogin>
                     </Route>
-
-                    <Route path="/addupdateebook">
-                        
-                    </Route>
-
-                    <Route path="/viewtutors">
-                        <TutorTable/>
-                    </Route>
-
-                    <Route path="/viewebooks">
-                        
+                    <Route path="/viewbook">
+                        <TutorViewEbook></TutorViewEbook>
                     </Route>
                 </Switch>
             </div>
         </Router>
     )
 }
+ export default TutorRouting
 
-export default AdminRouting

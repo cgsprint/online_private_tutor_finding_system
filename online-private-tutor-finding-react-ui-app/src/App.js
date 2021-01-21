@@ -5,19 +5,22 @@ import ParentTable from './components/ParentTable';
 import TutorTable from './components/TutorTable';
 import AdminRouting from './components/AdminRouting';
 import AdminLogin from './components/AdminLogin';
+import UpdateTutor from './components/UpdateTutor';
+import TutorLogin from './components/TutorLogin';
+import TutorRouting from './components/TutorRouting';
 
 function App() {
   return (
     <div className="App">
-<<<<<<< HEAD
       {/* <AddUpdateTutor/> */}
       {/* <ParentTable/> */}
       {/* <TutorTable/> */}
-      {/* <AdminRouting/> */}
-      <AdminLogin/>
-=======
-     <h2>Hello World</h2>
->>>>>>> 7a0521b10ec0cba819417d2d721523c3dcbcce99
+      {/* <AdminRouting/>/*} 
+     {/* <AdminLogin/>*/}
+     {/*<UpdateTutor></UpdateTutor>*/}
+    {/* <TutorLogin></TutorLogin>*/}
+     <TutorRouting></TutorRouting>
+     
     </div>
   );
 }
