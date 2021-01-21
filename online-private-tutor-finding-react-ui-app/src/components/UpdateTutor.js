@@ -1,7 +1,7 @@
 import React from  'react';
 
 const initialState={
-    id:"",
+    tutorId:"",
     name:"",
     subject:"",
     address:"",
@@ -13,24 +13,30 @@ const initialState={
    
 }
 
-export default class UpdateTutor extends React.Component{   
-  state= initialState;
+export default class UpdateTutor extends React.Component{  
+  
+  constructor(props){
+    super(props)
 
-  handleChange=event=>{
-      const isCheckbox=event.target.type==="checkbox";
-      this.setState({
-          [event.target.id]:isCheckbox
-          ? event.target.checked
-          :event.target.value
-      });
+    this.tutorId = React.createRef();
+    this.name = React.createRef();
+    this.username = React.createRef();
+    this.password = React.createRef();
+    this.subject = React.createRef();
+    this.address= React.createRef();
+    this.phonenumber = React.createRef();
+    this.qualification = React.createRef();
 
-  };
+  this.state= {initialState}
 
+  }
+
+  
   validate=()=>{
  let nameError="";
-  let subjectError ="";
-   let addressError="";
-   let phoneError="";
+ let subjectError ="";
+ let addressError="";
+ let phoneError="";
 let idError="";
 let nameIsString="";
 let idIsNumber="";
@@ -51,8 +57,8 @@ if(!this.state.id){
         addressError="address cant be blank";
       }
 
-      if(!this.state.phonenumber){
-        phoneError="mobile number cant be blank";
+      if(!this.state.phonenumber.length==10){
+        phoneError="mobile number should  be 10";
       }
 
       
@@ -77,6 +83,31 @@ if(!this.state.id){
      
   };
 
+  componentDidMount() {
+    this.props.clearState()
+}
+componentDidUpdate() {
+    let check = this.props.returnedMessage.split(' ')
+    if (check[0] === 'Successfully') {
+        setTimeout(() => {
+            this.props.history.push('/listOfTutors')
+        }, 2000)
+    }
+}
+
+update() {
+    let tutor = {
+        tutorId: this.tutorId.current.value,
+        name: this.name.current.value,
+        subject: this.subject.current.value,
+        address: this.address.current.value,
+        phonenumber: this.phonenumber.current.value,
+        qualification:this.qualification.current.value
+    }
+    this.props.onUpdateTutor(tutor)
+
+}
+
   render(){
       return(
         <div className="container mt-5 px-3 py-3 border border-dark rounded">
@@ -95,7 +126,7 @@ if(!this.state.id){
                     className="form-control form-control-sm"
                     name="tutorId"
                     id="tutorId"
-                    ref={this.id}
+                    ref={this.tutorId}
                     required
                   />
                 </div>
@@ -185,6 +216,9 @@ if(!this.state.id){
                     required
                   />
                 </div>
+                <div style={{fontSize:12,color:"red"}}>
+        {this.state.phoneError}
+        </div>
               </div>
 
               <div className="mb-3 row">
@@ -242,3 +276,27 @@ if(!this.state.id){
 
 
 }
+
+const mapStateToProps = (state) => {
+  return {
+      returnedMessage: state.returnedMessage
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+      onUpdateTutor: (tutorId, newTutorObject) => {
+          dispatch(actionCreators.updateTutotr(tutorId, newTutorObject))
+      },
+      clearState: () => {
+          dispatch(actionCreators.clearState())
+
+      }
+
+  }
+
+}
+
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(UpdateTutor))

@@ -18,8 +18,8 @@ function App() {
   return (
     <div className="App">
 
-      <ParentRouting />
-     <ParentLogin />
+      {/*<ParentRouting />*/}
+    {/* <ParentLogin />*/}
      
 
       {/* <AddUpdateTutor/> */}
@@ -32,7 +32,7 @@ function App() {
     {/* <TutorLogin></TutorLogin>*/}
      <TutorRouting></TutorRouting>
      
-      <AdminRouting/>
+     {/* <AdminRouting/>*/}
       {/* <AdminLogin/> */}
       {/* <TutorViewEbook/> */}
       {/* <UpdateTutor/> */}
