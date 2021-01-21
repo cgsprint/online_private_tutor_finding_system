@@ -9,12 +9,12 @@ export class TutorTable extends Component {
                 <table className="table table-stripped">
                     <thead>
                         <tr>
-                            <td>Id</td>
-                            <td>Name</td>
-                            <td>Subject</td>
-                            <td>Phone No.</td>
-                            <td>Address</td>
-                            <td>Qualification</td>
+                            <th scope="col">Id</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Subject</th>
+                            <th scope="col">Phone No.</th>
+                            <th scope="col">Address</th>
+                            <th scope="col">Qualification</th>
                         </tr>
                     </thead>
 
