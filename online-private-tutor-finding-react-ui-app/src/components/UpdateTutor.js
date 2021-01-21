@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 import React from  'react';
 
 const initialState={
@@ -14,7 +14,7 @@ const initialState={
    
 }
 
-export default class UpdateTutor extends React.Component{  
+ class UpdateTutor extends React.Component{  
   
   constructor(props){
     super(props)
@@ -45,44 +45,6 @@ let idIsNumber="";
 if(!this.state.id){
     idError="id cant be blank";
   }
-=======
-import React from "react";
-
-const initialState = {
-  id: "",
-  name: "",
-  subject: "",
-  address: "",
-  phonenumber: "",
-  nameError: "",
-  subjectError: "",
-  addressError: "",
-  phoneError: "",
-};
-
-export default class UpdateTutor extends React.Component {
-  state = initialState;
-
-  handleChange = (event) => {
-    const isCheckbox = event.target.type === "checkbox";
-    this.setState({
-      [event.target.id]: isCheckbox ? event.target.checked : event.target.value,
-    });
-  };
-
-  validate = () => {
-    let nameError = "";
-    let subjectError = "";
-    let addressError = "";
-    let phoneError = "";
-    let idError = "";
-    let nameIsString = "";
-    let idIsNumber = "";
-
-    if (!this.state.id) {
-      idError = "id cant be blank";
-    }
->>>>>>> 84ae8b896f9fdb8dba9e31636d3cede654d9d20d
 
     if (this.state.name.length > 5) {
       nameError = "name cant be small";
@@ -96,15 +58,14 @@ export default class UpdateTutor extends React.Component {
       addressError = "address cant be blank";
     }
 
-<<<<<<< HEAD
       if(!this.state.phonenumber.length==10){
         phoneError="mobile number should  be 10";
       }
-=======
+
     if (!this.state.phonenumber) {
       phoneError = "mobile number cant be blank";
     }
->>>>>>> 84ae8b896f9fdb8dba9e31636d3cede654d9d20d
+
 
     if (idError || nameError || subjectError || addressError || phoneError) {
       this.setState({
@@ -130,7 +91,7 @@ export default class UpdateTutor extends React.Component {
     }
   };
 
-<<<<<<< HEAD
+
   componentDidMount() {
     this.props.clearState()
 }
@@ -141,7 +102,7 @@ componentDidUpdate() {
             this.props.history.push('/listOfTutors')
         }, 2000)
     }
-}
+  }
 
 update() {
     let tutor = {
@@ -159,11 +120,6 @@ update() {
   render(){
       return(
         <div className="container mt-5 px-3 py-3 border border-dark rounded">
-=======
-  render() {
-    return (
-      <div className="container mt-5 px-3 py-3 border border-dark rounded">
->>>>>>> 84ae8b896f9fdb8dba9e31636d3cede654d9d20d
         <div className="row">
           <div className="col">
             <h2>Update Tutor Profile</h2>
@@ -199,16 +155,16 @@ update() {
                     required
                   />
                 </div>
-<<<<<<< HEAD
+
                 <div style={{ fontSize: 12, color: "red" }}>
                   {this.state.nameError}
                 </div>
-=======
+
                 <div style={{fontSize:12,color:"red"}}>
         {this.state.nameError}
         </div>
 
->>>>>>> 8e0ab9adc18907a05189e12b738982a5f32f8478
+
               </div>
 
               <div className="mb-3 row">
@@ -326,56 +282,10 @@ update() {
             </div>
           </div>
         </div>
+        
+      )
+      }
 
-<<<<<<< HEAD
-      //         <div>
-      //           <label>Subject :</label>
-      //           <input
-      //             style={{ fontSize: 16 }}
-      //             name="subject"
-      //             type="text"
-      //             placeholder="Subject"
-      //             value={this.state.subject}
-      //             onChange={this.handleChange}
-      //           />
-      //         </div>
-      //         <div style={{ fontSize: 12, color: "red" }}>
-      //           {this.state.subjectError}
-      //         </div>
-      //         <div>
-      //           <label>Address :</label>
-      //           <input
-      //             style={{ fontSize: 16 }}
-      //             name="address"
-      //             type="text"
-      //             placeholder="Address"
-      //             value={this.state.address}
-      //             onChange={this.handleChange}
-      //           />
-      //         </div>
-
-      //         <div>
-      //           <label>Phone Number :</label>
-      //           <input
-      //             style={{ fontSize: 16 }}
-      //             name="phonenumber"
-      //             type="number"
-      //             placeholder="Phone Number"
-      //             value={this.state.phonenumber}
-      //             onChange={this.handleChange}
-      //           />
-      //         </div>
-      //         <br />
-
-      //         <button type="submit">Submit</button>
-      //       </form>
-      //     </div>
-      //   </div>
-      // </div>
-    );
-=======
-
-<<<<<<< HEAD
 }
 
 const mapStateToProps = (state) => {
@@ -398,12 +308,4 @@ const mapDispatchToProps = (dispatch) => {
 
 }
 
-
-
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(UpdateTutor))
-=======
-      );
->>>>>>> 8e0ab9adc18907a05189e12b738982a5f32f8478
-  }
-}
->>>>>>> 84ae8b896f9fdb8dba9e31636d3cede654d9d20d

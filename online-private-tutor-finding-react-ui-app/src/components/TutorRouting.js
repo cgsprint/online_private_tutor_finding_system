@@ -23,10 +23,8 @@ function TutorRouting() {
                                         Update  Profile
                                     </Link>
                                 </li>
-<<<<<<< HEAD
-=======
-                                
->>>>>>> 8e0ab9adc18907a05189e12b738982a5f32f8478
+
+            
                                 <li className="nav-item">
                                     <Link className="nav-link" to="/viewbook">
                                         View Ebook

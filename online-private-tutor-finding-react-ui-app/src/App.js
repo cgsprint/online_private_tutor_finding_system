@@ -1,7 +1,7 @@
 import './App.css';
-<<<<<<< HEAD
+
 import MainLogin from './components/MainLogin';
-=======
+
 
 import ParentLogin from './components/ParentLogin';
 import ParentRouting from './components/ParentRouting';
@@ -18,15 +18,15 @@ import TutorViewEbook from './components/TutorViewEbook';
 import UpdateTutor from './components/UpdateTutor';
 
 
->>>>>>> 8e0ab9adc18907a05189e12b738982a5f32f8478
+
 
 function App() {
   return (
     <div className="App">
-<<<<<<< HEAD
+
       
     <MainLogin/>
-=======
+
 
       {/*<ParentRouting />*/}
     {/* <ParentLogin />*/}
@@ -39,13 +39,13 @@ function App() {
      {/* <AdminLogin/>*/}
      {/*<UpdateTutor></UpdateTutor>*/}
     {/* <TutorLogin></TutorLogin>*/}
-     <TutorRouting></TutorRouting>
+    {/* <TutorRouting></TutorRouting>*/}
      
      {/* <AdminRouting/>*/}
       {/* <AdminLogin/> */}
       {/* <TutorViewEbook/> */}
       {/* <UpdateTutor/> */}
->>>>>>> 8e0ab9adc18907a05189e12b738982a5f32f8478
+
 
     </div>
   );
