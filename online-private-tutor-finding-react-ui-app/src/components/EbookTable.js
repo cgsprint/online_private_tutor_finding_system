@@ -11,10 +11,10 @@ class ViewEbook extends Component {
                 <table className="table table-stripped">
                     <thead>
                         <tr>
-                            <td>Ebook Id</td>
-                            <td>Ebook Title</td>
-                            <td>Ebook Authorname</td>
-                            <td>Ebook Url</td>
+                            <th scope="col">Id</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">Authorname</th>
+                            <th scope="col">Url</th>
                         </tr>
                     </thead>
 

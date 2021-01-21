@@ -7,7 +7,11 @@ import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import 'bootstrap/dist/css/bootstrap.min.css'
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8e0ab9adc18907a05189e12b738982a5f32f8478
+>>>>>>> 84ae8b896f9fdb8dba9e31636d3cede654d9d20d
 
 ReactDOM.render(
   <React.StrictMode>

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from  'react';
 
 const initialState={
@@ -44,45 +45,92 @@ let idIsNumber="";
 if(!this.state.id){
     idError="id cant be blank";
   }
+=======
+import React from "react";
 
- if(this.state.name.length>5){
-      nameError="name cant be small";
+const initialState = {
+  id: "",
+  name: "",
+  subject: "",
+  address: "",
+  phonenumber: "",
+  nameError: "",
+  subjectError: "",
+  addressError: "",
+  phoneError: "",
+};
+
+export default class UpdateTutor extends React.Component {
+  state = initialState;
+
+  handleChange = (event) => {
+    const isCheckbox = event.target.type === "checkbox";
+    this.setState({
+      [event.target.id]: isCheckbox ? event.target.checked : event.target.value,
+    });
+  };
+
+  validate = () => {
+    let nameError = "";
+    let subjectError = "";
+    let addressError = "";
+    let phoneError = "";
+    let idError = "";
+    let nameIsString = "";
+    let idIsNumber = "";
+
+    if (!this.state.id) {
+      idError = "id cant be blank";
+    }
+>>>>>>> 84ae8b896f9fdb8dba9e31636d3cede654d9d20d
+
+    if (this.state.name.length > 5) {
+      nameError = "name cant be small";
     }
 
-    if(!this.state.subject){
-        subjectError="Subject cant be blank";
-      }
+    if (!this.state.subject) {
+      subjectError = "Subject cant be blank";
+    }
 
-      if(!this.state.address){
-        addressError="address cant be blank";
-      }
+    if (!this.state.address) {
+      addressError = "address cant be blank";
+    }
 
+<<<<<<< HEAD
       if(!this.state.phonenumber.length==10){
         phoneError="mobile number should  be 10";
       }
+=======
+    if (!this.state.phonenumber) {
+      phoneError = "mobile number cant be blank";
+    }
+>>>>>>> 84ae8b896f9fdb8dba9e31636d3cede654d9d20d
 
-      
-    if(idError||nameError || subjectError||addressError||phoneError){
-        this.setState({idError,nameError,subjectError,addressError,phoneError});
-        return false;
+    if (idError || nameError || subjectError || addressError || phoneError) {
+      this.setState({
+        idError,
+        nameError,
+        subjectError,
+        addressError,
+        phoneError,
+      });
+      return false;
     }
     return true;
   };
 
- 
+  handleSubmit = (event) => {
+    event.preventDefault();
+    const isValid = this.validate();
+    if (isValid) {
+      console.log(this.state);
 
-  handleSubmit=event=>{
-      event.preventDefault();
-      const isValid= this.validate();
-      if(isValid){
-          console.log(this.state)
-
-          //Clear state
-          this.setState(initialState);
-      }
-     
+      //Clear state
+      this.setState(initialState);
+    }
   };
 
+<<<<<<< HEAD
   componentDidMount() {
     this.props.clearState()
 }
@@ -111,12 +159,17 @@ update() {
   render(){
       return(
         <div className="container mt-5 px-3 py-3 border border-dark rounded">
+=======
+  render() {
+    return (
+      <div className="container mt-5 px-3 py-3 border border-dark rounded">
+>>>>>>> 84ae8b896f9fdb8dba9e31636d3cede654d9d20d
         <div className="row">
           <div className="col">
             <h2>Update Tutor Profile</h2>
             <br></br>
             <form method="post" onSubmit={this.handleSubmit}>
-            <div className="mb-3 row">
+              <div className="mb-3 row">
                 <label for="tutorId" className="col-sm-4 col-form-label">
                   Tutor Id
                 </label>
@@ -146,10 +199,16 @@ update() {
                     required
                   />
                 </div>
+<<<<<<< HEAD
+                <div style={{ fontSize: 12, color: "red" }}>
+                  {this.state.nameError}
+                </div>
+=======
                 <div style={{fontSize:12,color:"red"}}>
         {this.state.nameError}
         </div>
 
+>>>>>>> 8e0ab9adc18907a05189e12b738982a5f32f8478
               </div>
 
               <div className="mb-3 row">
@@ -238,7 +297,10 @@ update() {
               </div>
 
               <div className="mb-3 row">
-                <label for="tutorQualification" className="col-sm-4 col-form-label">
+                <label
+                  for="tutorQualification"
+                  className="col-sm-4 col-form-label"
+                >
                   Tutor Qualification
                 </label>
                 <div className="col-sm-5">
@@ -255,26 +317,65 @@ update() {
 
               <div className="row mt-3">
                 <div className="col">
-                  <button  type="submit"
-                    className="btn btn-primary btn-sm"
-                    
-                  >
+                  <button type="submit" className="btn btn-primary btn-sm">
                     Update Profile
                   </button>
                 </div>
-                
               </div>
-            </form>
+              </form> 
+            </div>
           </div>
         </div>
- 
-      </div>
 
+<<<<<<< HEAD
+      //         <div>
+      //           <label>Subject :</label>
+      //           <input
+      //             style={{ fontSize: 16 }}
+      //             name="subject"
+      //             type="text"
+      //             placeholder="Subject"
+      //             value={this.state.subject}
+      //             onChange={this.handleChange}
+      //           />
+      //         </div>
+      //         <div style={{ fontSize: 12, color: "red" }}>
+      //           {this.state.subjectError}
+      //         </div>
+      //         <div>
+      //           <label>Address :</label>
+      //           <input
+      //             style={{ fontSize: 16 }}
+      //             name="address"
+      //             type="text"
+      //             placeholder="Address"
+      //             value={this.state.address}
+      //             onChange={this.handleChange}
+      //           />
+      //         </div>
 
-      );
-  }
+      //         <div>
+      //           <label>Phone Number :</label>
+      //           <input
+      //             style={{ fontSize: 16 }}
+      //             name="phonenumber"
+      //             type="number"
+      //             placeholder="Phone Number"
+      //             value={this.state.phonenumber}
+      //             onChange={this.handleChange}
+      //           />
+      //         </div>
+      //         <br />
 
+      //         <button type="submit">Submit</button>
+      //       </form>
+      //     </div>
+      //   </div>
+      // </div>
+    );
+=======
 
+<<<<<<< HEAD
 }
 
 const mapStateToProps = (state) => {
@@ -300,3 +401,9 @@ const mapDispatchToProps = (dispatch) => {
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(UpdateTutor))
+=======
+      );
+>>>>>>> 8e0ab9adc18907a05189e12b738982a5f32f8478
+  }
+}
+>>>>>>> 84ae8b896f9fdb8dba9e31636d3cede654d9d20d
