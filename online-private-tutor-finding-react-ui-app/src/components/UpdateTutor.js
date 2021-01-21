@@ -13,8 +13,7 @@ const initialState={
    
 }
 
- class UpdateTutor extends React.Component{ 
-
+export default class UpdateTutor extends React.Component{   
   state= initialState;
 
   handleChange=event=>{
@@ -119,6 +118,7 @@ if(!this.state.id){
                 <div style={{fontSize:12,color:"red"}}>
         {this.state.nameError}
         </div>
+<<<<<<< HEAD
               </div>
 
               <div className="mb-3 row">
@@ -236,8 +236,31 @@ if(!this.state.id){
  
       </div>
 
+=======
+        <br/>
+    <div>
+    <label>Subject :</label>
+     <input style={{fontSize:16}}name="subject" type="text" placeholder="Subject" value={this.state.subject} onChange={this.handleChange}/>
+    </div>
+    <div style={{fontSize:12,color:"red"}}>
+        {this.state.subjectError}
+        </div>
+        <div>
+    <label>Address :</label>
+     <input style={{fontSize:16}}name="address" type="text" placeholder="Address" value={this.state.address} onChange={this.handleChange}/>
+    </div>
+
+    <div>
+    <label>Phone Number :</label>
+     <input style={{fontSize:16}}name="phonenumber" type="number" placeholder="Phone Number" value={this.state.phonenumber} onChange={this.handleChange}/>
+    </div>
+      <br/>
+
+    <button type="submit">Submit</button>
+     </form>
+>>>>>>> 8547e19496bde41c650eb91e90079132f0a99c1e
       );
   }
-}
 
-export default UpdateTutor
+
+}

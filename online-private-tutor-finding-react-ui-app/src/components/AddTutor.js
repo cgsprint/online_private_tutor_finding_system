@@ -16,36 +16,19 @@ export class AddUpdateTutor extends Component {
   }
 
   addTutor = () =>{
-      alert(this.tutorId.current.value+this.name.current.value+this.username.current.value+this.password.current.value+this.subject.current.value+this.phoneNumber.current.value)
+      alert(this.name.current.value)
   }
 
-  updateTutor = () => {
-        alert(this.tutorId.current.value)
-  }
-
+ 
   render() {
     return (
       <div class="container mt-5 px-3 py-3 border border-dark rounded">
         <div class="row">
           <div class="col">
-            <h2>Add/Update Tutor</h2>
+            <h2>Add Tutor</h2>
             <br></br>
-            <form method="post">
-              <div class="mb-3 row">
-                <label for="tutorId" class="col-sm-4 col-form-label">
-                  Tutor Id
-                </label>
-                <div class="col-sm-5 ">
-                  <input
-                    type="number"
-                    class="form-control form-control-sm"
-                    name="tutorId"
-                    id="tutorId"
-                    ref={this.tutorId}
-                    required
-                  />
-                </div>
-              </div>
+            <form>
+              
 
               <div class="mb-3 row">
                 <label for="tutorName" class="col-sm-4 col-form-label">
@@ -170,14 +153,7 @@ export class AddUpdateTutor extends Component {
                     Add
                   </button>
                 </div>
-                <div class="col">
-                  <button
-                    class="btn btn-primary btn-sm"
-                    onClick={this.updateTutor}
-                  >
-                    Update
-                  </button>
-                </div>
+                
               </div>
             </form>
           </div>

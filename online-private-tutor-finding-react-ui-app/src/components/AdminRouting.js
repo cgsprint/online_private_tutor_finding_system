@@ -1,9 +1,13 @@
 
 import React from 'react'
 import { BrowserRouter as Router, Switch, Link, Route } from "react-router-dom";
-import AddUpdateTutor from './AddUpdateTutor';
+import AddTutor from './AddTutor';
+import UpdateTutor from './UpdateTutor';
+import AddEbook from './AddEbook';
+import UpdateEbook from './UpdateEbook';
 import ParentTable from './ParentTable';
 import TutorTable from './TutorTable';
+import EbookTable from './EbookTable';
 
 function AdminRouting() {
     return (
@@ -19,13 +23,23 @@ function AdminRouting() {
                                     </Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link className="nav-link" to="/addupdatetutor">
-                                        Add/Update Tutor
+                                    <Link className="nav-link" to="/addtutor">
+                                        Add Tutor
                                     </Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link className="nav-link" to="/addupdateebook">
-                                        Add/Update Ebook
+                                    <Link className="nav-link" to="/updatetutor">
+                                        Update Tutor
+                                    </Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link className="nav-link" to="/addebook">
+                                        Add Ebook
+                                    </Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link className="nav-link" to="/updateebook">
+                                        Update Ebook
                                     </Link>
                                 </li>
                                 <li className="nav-item">
@@ -33,7 +47,7 @@ function AdminRouting() {
                                         View Tutor
                                     </Link>
                                 </li><li className="nav-item">
-                                    <Link className="nav-link" to="/viewebook">
+                                    <Link className="nav-link" to="/viewebooks">
                                         View Ebook
                                     </Link>
                                 </li>
@@ -47,12 +61,20 @@ function AdminRouting() {
                         <ParentTable/>
                     </Route>
 
-                    <Route path="/addupdatetutor">
-                        <AddUpdateTutor/>
+                    <Route path="/addtutor">
+                        <AddTutor/>
                     </Route>
 
-                    <Route path="/addupdateebook">
-                        
+                    <Route path="/updatetutor">
+                        <UpdateTutor/>
+                    </Route>
+
+                    <Route path="/addebook">
+                        <AddEbook/>
+                    </Route>
+
+                    <Route path="/updateebook">
+                        <UpdateEbook/>
                     </Route>
 
                     <Route path="/viewtutors">
@@ -60,7 +82,7 @@ function AdminRouting() {
                     </Route>
 
                     <Route path="/viewebooks">
-                        
+                        <EbookTable/>
                     </Route>
                 </Switch>
             </div>
