@@ -8,15 +8,17 @@ import ParentTable from './components/ParentTable';
 import TutorTable from './components/TutorTable';
 import AdminRouting from './components/AdminRouting';
 import AdminLogin from './components/AdminLogin';
-<<<<<<< HEAD
-import UpdateTutor from './components/UpdateTutor';
 import TutorLogin from './components/TutorLogin';
 import TutorRouting from './components/TutorRouting';
-=======
+
 import TutorViewEbook from './components/TutorViewEbook';
 import UpdateTutor from './components/UpdateTutor';
+<<<<<<< HEAD
+
+=======
 >>>>>>> 8547e19496bde41c650eb91e90079132f0a99c1e
 >>>>>>> cb95a86a91af41e4c45ddb915ffe635cd892ac7e
+>>>>>>> c5767759943b1cf7f4136c377f137d90e8c35195
 
 function App() {
   return (
@@ -29,20 +31,22 @@ function App() {
       {/* <AddUpdateTutor/> */}
       {/* <ParentTable/> */}
       {/* <TutorTable/> */}
-<<<<<<< HEAD
+
       {/* <AdminRouting/>/*} 
      {/* <AdminLogin/>*/}
      {/*<UpdateTutor></UpdateTutor>*/}
     {/* <TutorLogin></TutorLogin>*/}
      <TutorRouting></TutorRouting>
      
-=======
       <AdminRouting/>
       {/* <AdminLogin/> */}
       {/* <TutorViewEbook/> */}
       {/* <UpdateTutor/> */}
+<<<<<<< HEAD
+=======
 >>>>>>> 8547e19496bde41c650eb91e90079132f0a99c1e
 >>>>>>> cb95a86a91af41e4c45ddb915ffe635cd892ac7e
+>>>>>>> c5767759943b1cf7f4136c377f137d90e8c35195
     </div>
   );
 }
