@@ -57,7 +57,7 @@ import React from  'react';
       console.log(this.state);
 
        //Clear state
-       this.setState(initialState);
+      //  this.setState(initialState);
     }
   };
 
@@ -267,15 +267,16 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
       onUpdateTutor: (tutorId, newTutorObject) => {
-          dispatch(actionCreators.updateTutotr(tutorId, newTutorObject))
+          // dispatch(actionCreators.updateTutotr(tutorId, newTutorObject))
       },
       clearState: () => {
-          dispatch(actionCreators.clearState())
+          // dispatch(actionCreators.clearState())
 
       }
 
   }
 
 }
+export default UpdateTutor
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(UpdateTutor))
+// export default connect(mapStateToProps, mapDispatchToProps)(withRouter(UpdateTutor))
