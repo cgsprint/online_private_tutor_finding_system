@@ -1,6 +1,18 @@
 import React, { Component } from 'react'
 
 export class AddParent extends Component {
+  constructor(props) {
+    super(props)
+    this.parentId = React.createRef();
+    this.firstName = React.createRef();
+    this.lastName = React.createRef();
+    this.username =React.createRef();
+    this.password = React.createRef();
+    this.mobileNo = React.createRef();
+    this.email = React.createRef();
+    this.address = React.createRef();
+  }
+  
     render() {
         return (
             <div class="container mt-5 px-3 py-3 border border-dark rounded">
