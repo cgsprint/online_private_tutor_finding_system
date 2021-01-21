@@ -56,8 +56,6 @@ import React from  'react';
     if (isValid) {
       console.log(this.state);
 
-      //Clear state
-      this.setState(initialState);
     }
   };
 
@@ -258,24 +256,5 @@ update() {
 
 }
 
-const mapStateToProps = (state) => {
-  return {
-      returnedMessage: state.returnedMessage
-  }
-}
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-      onUpdateTutor: (tutorId, newTutorObject) => {
-          dispatch(actionCreators.updateTutotr(tutorId, newTutorObject))
-      },
-      clearState: () => {
-          dispatch(actionCreators.clearState())
-
-      }
-
-  }
-
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(UpdateTutor))
+export default UpdateTutor
