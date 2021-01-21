@@ -12,10 +12,8 @@ class TutorViewEbook extends Component {
     }       
     
     componentDidMount() {
-        axios.get('http://localhost:8080/viewEbook',this.state)
-        .then((res) => {
-            this.setState({ ebooklist: res.data.data})
-         })
+        
+            this.props.onViewEbooks() 
     }
 
 
@@ -57,4 +55,27 @@ class TutorViewEbook extends Component {
     
 }
 
-export default TutorViewEbook;
+
+const mapStateToProps = (state) => {
+    return {
+        returnedMessage: state.returnedMessage
+    }
+  }
+  
+  const mapDispatchToProps = (dispatch) => {
+    return {
+        onViewEbooks: () => {
+            return  dispatch(actionCreated.getAllEbooks())
+          },
+        clearState: () => {
+            dispatch(actionCreators.clearState())
+  
+        }
+  
+    }
+  
+  }
+  
+
+
+  export default connect(mapStateToProps, mapDispatchToProps)(withRouter(TutorViewEbook))
