@@ -1,11 +1,11 @@
+
 import React from 'react'
 import { BrowserRouter as Router, Switch, Link, Route } from "react-router-dom";
-import TutorLogin from './TutorLogin'
-import TutorViewEbook from './TutorViewEbook'
-import UpdateTutor from './UpdateTutor'
+import AdminLogin from './AdminLogin';
+import ParentLogin from './ParentLogin';
+import TutorLogin from './TutorLogin';
 
-
-function TutorRouting() {
+function MainRouting() {
     return (
         <Router>
             <div>
@@ -14,18 +14,18 @@ function TutorRouting() {
                         <div className="collapse navbar-collapse" id="navbarNav">
                             <ul className="navbar-nav">
                                 <li className="nav-item">
-                                    <Link className="nav-link" to="/viewparents">
-                                        View Bookings
+                                    <Link className="nav-link" to="/adminlogin">
+                                        Admin
                                     </Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link className="nav-link" to="/updatetutor">
-                                        Update  Profile
+                                    <Link className="nav-link" to="/tutorlogin">
+                                        Tutor
                                     </Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link className="nav-link" to="/viewbook">
-                                        View Ebook
+                                    <Link className="nav-link" to="/parentlogin">
+                                        Parent
                                     </Link>
                                 </li>
                             </ul>
@@ -34,18 +34,23 @@ function TutorRouting() {
                 </nav>
 
                 <Switch>
-                    
-                    <Route path="/updatetutor">
-                        <UpdateTutor></UpdateTutor>
+                    <Route  exact path="/adminlogin">
+                        <AdminLogin/>
                     </Route>
 
-                    <Route path="/viewbook">
-                        <TutorViewEbook></TutorViewEbook>
+                    <Route path="/tutorlogin">
+                        <TutorLogin/>
                     </Route>
+
+                    <Route path="/parentlogin">
+                        <ParentLogin/>
+                    </Route>
+
+                    
                 </Switch>
             </div>
         </Router>
     )
 }
- export default TutorRouting
 
+export default MainRouting
