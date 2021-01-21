@@ -6,7 +6,7 @@ class ViewEbook extends Component {
         return (
             <div>
 
-                <h1 className="text-center">EBook List</h1>
+                <h2 className="text-center">Ebook List</h2>
 
                 <table className="table table-stripped">
                     <thead>

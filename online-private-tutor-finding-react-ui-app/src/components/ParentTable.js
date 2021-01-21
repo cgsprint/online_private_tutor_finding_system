@@ -8,15 +8,24 @@ export class ParentTable extends Component {
                 <h2 className="text-center">Parent List</h2>
                 <table className="table table-stripped">
                     <thead>
-                        <tr>
-                            <td>Parent Id</td>
-                            <td>First Name</td>
-                            <td>Last Name</td>
-                            <td>Email Address</td>
-                            <td>Address</td>
+                       <tr>
+                            <th scope="col">Parent Id</th>
+                            <th scope="col">First Name</th>
+                            <th scope="col">Last Name</th>
+                            <th scope="col">Email Address</th>
+                            <th scope="col">Address</th>
                         </tr>
                     </thead>
-
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                            <td>Santacruz</td>
+                        </tr>
+                        
+                    </tbody>
                     
                 </table>
 

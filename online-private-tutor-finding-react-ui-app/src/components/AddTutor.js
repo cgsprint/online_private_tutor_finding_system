@@ -16,13 +16,10 @@ export class AddUpdateTutor extends Component {
   }
 
   addTutor = () =>{
-      alert(this.tutorId.current.value+this.name.current.value+this.username.current.value+this.password.current.value+this.subject.current.value+this.phoneNumber.current.value)
+      alert(this.name.current.value)
   }
 
-  updateTutor = () => {
-        alert(this.tutorId.current.value)
-  }
-
+ 
   render() {
     return (
       <div class="container mt-5 px-3 py-3 border border-dark rounded">
@@ -30,7 +27,7 @@ export class AddUpdateTutor extends Component {
           <div class="col">
             <h2>Add Tutor</h2>
             <br></br>
-            <form method="post">
+            <form>
               
 
               <div class="mb-3 row">

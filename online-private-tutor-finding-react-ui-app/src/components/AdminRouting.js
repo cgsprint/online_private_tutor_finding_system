@@ -6,7 +6,7 @@ import AddEbook from './AddEbook';
 import UpdateEbook from './UpdateEbook';
 import ParentTable from './ParentTable';
 import TutorTable from './TutorTable';
-import ViewEbook from './ViewEbook';
+import EbookTable from './EbookTable';
 
 function AdminRouting() {
     return (
@@ -81,7 +81,7 @@ function AdminRouting() {
                     </Route>
 
                     <Route path="/viewebooks">
-                        <ViewEbook/>
+                        <EbookTable/>
                     </Route>
                 </Switch>
             </div>
