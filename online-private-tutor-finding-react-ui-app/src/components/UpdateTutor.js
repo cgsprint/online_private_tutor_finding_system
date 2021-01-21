@@ -1,18 +1,7 @@
 
 import React from  'react';
 
-const initialState={
-    tutorId:"",
-    name:"",
-    subject:"",
-    address:"",
-    phonenumber:"",
-    nameError:"",
-    subjectError:"",
-    addressError:"",
-    phoneError:""
-   
-}
+
 
  class UpdateTutor extends React.Component{  
   
@@ -28,20 +17,18 @@ const initialState={
     this.phonenumber = React.createRef();
     this.qualification = React.createRef();
 
-  this.state= {initialState}
-
+  
   }
 
   
   validate=()=>{
  let usernameError="";
- let subjectError ="";
- let addressError="";
+ 
  let phoneError="";
 
 
     if (this.state.username.length > 5) {
-      nameError = "username  should be more than 5 characters";
+      usernameError = "username  should be more than 5 characters";
     }
 
   
