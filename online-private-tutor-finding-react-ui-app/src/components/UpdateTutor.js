@@ -113,9 +113,16 @@ export default class UpdateTutor extends React.Component {
                     required
                   />
                 </div>
+<<<<<<< HEAD
                 <div style={{ fontSize: 12, color: "red" }}>
                   {this.state.nameError}
                 </div>
+=======
+                <div style={{fontSize:12,color:"red"}}>
+        {this.state.nameError}
+        </div>
+
+>>>>>>> 8e0ab9adc18907a05189e12b738982a5f32f8478
               </div>
 
               <div className="mb-3 row">
@@ -231,6 +238,7 @@ export default class UpdateTutor extends React.Component {
           </div>
         </div>
 
+<<<<<<< HEAD
       //         <div>
       //           <label>Subject :</label>
       //           <input
@@ -276,5 +284,9 @@ export default class UpdateTutor extends React.Component {
       //   </div>
       // </div>
     );
+=======
+
+      );
+>>>>>>> 8e0ab9adc18907a05189e12b738982a5f32f8478
   }
 }
