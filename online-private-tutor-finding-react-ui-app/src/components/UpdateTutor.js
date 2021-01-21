@@ -34,45 +34,28 @@ const initialState={
 
   
   validate=()=>{
- let nameError="";
+ let usernameError="";
  let subjectError ="";
  let addressError="";
  let phoneError="";
-let idError="";
-let nameIsString="";
-let idIsNumber="";
 
-if(!this.state.id){
-    idError="id cant be blank";
-  }
 
-    if (this.state.name.length > 5) {
-      nameError = "name cant be small";
+    if (this.state.username.length > 5) {
+      nameError = "username  should be more than 5 characters";
     }
 
-    if (!this.state.subject) {
-      subjectError = "Subject cant be blank";
-    }
-
-    if (!this.state.address) {
-      addressError = "address cant be blank";
-    }
+  
 
       if(!this.state.phonenumber.length==10){
         phoneError="mobile number should  be 10";
       }
 
-    if (!this.state.phonenumber) {
-      phoneError = "mobile number cant be blank";
-    }
+    
 
-
-    if (idError || nameError || subjectError || addressError || phoneError) {
+    if ( usernameError || phoneError) {
       this.setState({
-        idError,
-        nameError,
-        subjectError,
-        addressError,
+        
+        usernameError,      
         phoneError,
       });
       return false;
