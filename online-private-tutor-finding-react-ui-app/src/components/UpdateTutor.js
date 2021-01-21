@@ -56,8 +56,8 @@ import React from  'react';
     if (isValid) {
       console.log(this.state);
 
-      //Clear state
-      this.setState(initialState);
+       //Clear state
+       this.setState(initialState);
     }
   };
 

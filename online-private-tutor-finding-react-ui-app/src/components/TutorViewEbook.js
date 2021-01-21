@@ -12,6 +12,7 @@ class TutorViewEbook extends Component {
     }       
     
     componentDidMount() {
+        
         axios.get('http://localhost:8080/viewEbook',this.state)
         .then((res) => {
             this.setState({ ebooklist: res.data.data})
@@ -56,5 +57,6 @@ class TutorViewEbook extends Component {
         
     
 }
+
 
 export default TutorViewEbook;
