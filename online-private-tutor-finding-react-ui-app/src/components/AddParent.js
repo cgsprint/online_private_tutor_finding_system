@@ -18,7 +18,7 @@ export class AddParent extends Component {
             <div class="container mt-5 px-3 py-3 border border-dark rounded">
         <div class="row">
           <div class="col">
-            <h2>Registration</h2>
+            <h2>Parent Registration</h2>
             <br></br>
             <form method="post">
               <div>
@@ -142,7 +142,7 @@ export class AddParent extends Component {
                 <div class="col">
                   <button
                     class="btn btn-primary btn-sm ">
-                    Add
+                    Register
                   </button>
                 </div>
                 
