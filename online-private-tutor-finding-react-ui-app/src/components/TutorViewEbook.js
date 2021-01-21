@@ -56,26 +56,4 @@ class TutorViewEbook extends Component {
 }
 
 
-const mapStateToProps = (state) => {
-    return {
-        returnedMessage: state.returnedMessage
-    }
-  }
-  
-  const mapDispatchToProps = (dispatch) => {
-    return {
-        onViewEbooks: () => {
-            return  dispatch(actionCreated.getAllEbooks())
-          },
-        clearState: () => {
-            dispatch(actionCreators.clearState())
-  
-        }
-  
-    }
-  
-  }
-  
-
-
-  export default connect(mapStateToProps, mapDispatchToProps)(withRouter(TutorViewEbook))
+export default TutorViewEbook
