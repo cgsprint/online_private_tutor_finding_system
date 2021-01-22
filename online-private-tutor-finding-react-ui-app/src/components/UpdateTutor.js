@@ -135,6 +135,7 @@ update() {
         </div>
 
 
+
               </div>
 
               <div className="mb-3 row">
@@ -256,11 +257,62 @@ update() {
       )
       }
 
+
+
+      //         <div>
+      //           <label>Subject :</label>
+      //           <input
+      //             style={{ fontSize: 16 }}
+      //             name="subject"
+      //             type="text"
+      //             placeholder="Subject"
+      //             value={this.state.subject}
+      //             onChange={this.handleChange}
+      //           />
+      //         </div>
+      //         <div style={{ fontSize: 12, color: "red" }}>
+      //           {this.state.subjectError}
+      //         </div>
+      //         <div>
+      //           <label>Address :</label>
+      //           <input
+      //             style={{ fontSize: 16 }}
+      //             name="address"
+      //             type="text"
+      //             placeholder="Address"
+      //             value={this.state.address}
+      //             onChange={this.handleChange}
+      //           />
+      //         </div>
+
+      //         <div>
+      //           <label>Phone Number :</label>
+      //           <input
+      //             style={{ fontSize: 16 }}
+      //             name="phonenumber"
+      //             type="number"
+      //             placeholder="Phone Number"
+      //             value={this.state.phonenumber}
+      //             onChange={this.handleChange}
+      //           />
+      //         </div>
+      //         <br />
+
+      //         <button type="submit">Submit</button>
+      //       </form>
+      //     </div>
+      //   </div>
+      // </div>
+    
+
+
+
 }
 
 const mapStateToProps = (state) => {
   return {
       returnedMessage: state.returnedMessage
+
   }
 }
 
