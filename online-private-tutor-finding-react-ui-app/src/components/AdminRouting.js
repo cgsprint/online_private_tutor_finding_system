@@ -1,6 +1,8 @@
 
 import React from 'react'
 import { BrowserRouter as Router, Switch, Link, Route } from "react-router-dom";
+
+import AdminHome from './AdminHome';
 import AddTutor from './AddTutor';
 import UpdateTutor from './UpdateTutor';
 import AddEbook from './AddEbook';
@@ -17,6 +19,11 @@ function AdminRouting() {
                     <div className="container-fluid">
                         <div className="collapse navbar-collapse" id="navbarNav">
                             <ul className="navbar-nav">
+                                <li className="nav-item">
+                                    <Link className="nav-link" to="/">
+                                        
+                                    </Link>
+                                </li>
                                 <li className="nav-item">
                                     <Link className="nav-link" to="/viewparents">
                                         View Parents
@@ -57,6 +64,9 @@ function AdminRouting() {
                 </nav>
 
                 <Switch>
+                    <Route  exact path="/">
+                        <AdminHome/>
+                    </Route>
                     <Route  exact path="/viewparents">
                         <ParentTable/>
                     </Route>

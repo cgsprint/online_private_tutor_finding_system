@@ -1,6 +1,9 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Link, Route } from "react-router-dom";
+import ParentHome from './ParentHome';
 import ViewTutor from './ViewTutor';
+import RateTutor from './RateTutor';
+import EbookTable from './EbookTable';
 
 export default function ParentRouting() {
     return (
@@ -10,6 +13,11 @@ export default function ParentRouting() {
                 <div className="container-fluid">
                     <div className="collapse navbar-collapse" id="navbarNav">
                         <ul className="navbar-nav">
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/">
+                                    
+                                </Link>
+                            </li>
                             <li className="nav-item">
                                 <Link className="nav-link" to="/viewTutor">
                                     View Parents
@@ -46,6 +54,9 @@ export default function ParentRouting() {
             </nav>
 
             <Switch>
+                <Route  exact path="/">
+                    <ParentHome/>
+                </Route>
                 <Route  exact path="/viewTutor">
                     <ViewTutor />
                 </Route>
@@ -63,10 +74,10 @@ export default function ParentRouting() {
                 </Route>
 
                 <Route path="/rateTutor">
-                    
+                    <RateTutor/>
                 </Route>
                 <Route path="/viewEbook">
-                    
+                    <EbookTable/>
                 </Route>
             </Switch>
         </div>

@@ -1,6 +1,10 @@
 import React, { Component } from "react";
+import { withRouter } from 'react-router-dom';
+import * as actionCreators from '../actions/RegisterTutor'
+import { connect } from 'react-redux';
+import TutorHome from "./TutorHome";
 
-export class AddUpdateTutor extends Component {
+export class AddTutor extends Component {
   constructor(props) {
     super(props);
 
@@ -12,11 +16,24 @@ export class AddUpdateTutor extends Component {
     this.phoneNumber = React.createRef();
     this.address = React.createRef();
     this.qualifications = React.createRef();
-    this.requestList = [];
+    
   }
 
-  addTutor = () =>{
-      alert(this.name.current.value)
+  addTutor = (e) =>{
+
+      // alert(this.name.current.value+" "+this.username.current.value+" "+this.password.current.value+" "+this.subject.current.value+" "+this.phoneNumber.current.value+" "+this.address.current.value+" "+this.qualifications.current.value)
+      let Tutor = {
+        name : this.name.current.value,
+        username: this.username.current.value,
+        password : this.password.current.value,
+        subject : this.subject.current.value,
+        phoneNumber : this.phoneNumber.current.value,
+        address : this.address.current.value,
+        qualifications : this.qualifications.current.value,
+      }
+
+      this.props.onAddTutor(Tutor)
+      e.preventDefault()
   }
 
  
@@ -69,7 +86,7 @@ export class AddUpdateTutor extends Component {
                 <div class="col-sm-5">
                   <input
                     type="password"
-                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                    // pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                     class="form-control form-control-sm"
                     name="tutorPassword"
                     id="tutorPassword"
@@ -106,7 +123,7 @@ export class AddUpdateTutor extends Component {
                     class="form-control form-control-sm"
                     name="tutorPhoneNo"
                     id="tutorPhoneNo"
-                    ref={this.phoneNo}
+                    ref={this.phoneNumber}
                     required
                   />
                 </div>
@@ -159,6 +176,14 @@ export class AddUpdateTutor extends Component {
           </div>
         </div>
 
+        {/* <div className={(this.props.returnedMessage === '') ? '' : "alert"} role="alert">
+              {this.props.returnedMessage}
+            </div> */}
+            <div className="alert alert-successs" role="alert">
+              {
+                this.props.status === 200 ? <div>{this.props.returnedMessage}</div> : <div></div>
+              }
+            </div>
         
         
       </div>
@@ -166,4 +191,27 @@ export class AddUpdateTutor extends Component {
   }
 }
 
-export default AddUpdateTutor;
+
+const mapStateToProps = (state) => {
+  return {
+      returnedMessage: state.returnedMessage,
+      status: state.status
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+      onAddTutor: (Tutor) => {
+          // console.log("in on validate user")
+          dispatch(actionCreators.registerTutor(Tutor))
+      }
+      
+
+  }
+
+  
+
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(AddTutor))

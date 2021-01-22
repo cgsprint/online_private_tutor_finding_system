@@ -69,7 +69,7 @@ import React, { Component } from 'react'
 
                 <tbody>
 
-                  {
+                  {/* {
                       this.state.demoRequestList.map((request, index) =>(
 
                         <tr key={index}>
@@ -88,7 +88,7 @@ import React, { Component } from 'react'
                         </tr>
 
                       ))
-                  }
+                  } */}
 
                 </tbody>
 

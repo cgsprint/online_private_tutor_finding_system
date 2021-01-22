@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { Component } from 'react'
-import './style.css'
+// import './style.css'
 
  class ViewBookings extends Component {
 
@@ -32,7 +32,7 @@ import './style.css'
                         </tr>
                     </thead>
                     <tbody>
-                        {
+                        {/* {
                             this.state.bookingList.map((b) => (
                                 <tr key={b.bookingId}>
                                     <td>{b.bookingId}</td>
@@ -41,7 +41,7 @@ import './style.css'
 
                                 </tr>
                             ))
-                        }
+                        } */}
                     </tbody>
                 </table>
             </div>

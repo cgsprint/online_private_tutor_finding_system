@@ -62,9 +62,9 @@ import React from  'react';
   };
 
 
-  componentDidMount() {
-    this.props.clearState()
-}
+//   componentDidMount() {
+//     this.props.clearState()
+// }
 componentDidUpdate() {
     let check = this.props.returnedMessage.split(' ')
     if (check[0] === 'Successfully') {
@@ -127,13 +127,12 @@ update() {
                 </div>
 
                 <div style={{ fontSize: 12, color: "red" }}>
-                  {this.state.nameError}
+                  {/* {this.state.nameError} */}
                 </div>
 
                 <div style={{fontSize:12,color:"red"}}>
-        {this.state.nameError}
+        {/* {this.state.nameError} */}
         </div>
-
 
 
               </div>
@@ -203,7 +202,7 @@ update() {
                   />
                 </div>
                 <div style={{fontSize:12,color:"red"}}>
-        {this.state.phoneError}
+        {/* {this.state.phoneError} */}
         </div>
               </div>
 

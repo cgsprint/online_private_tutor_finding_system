@@ -5,7 +5,7 @@ import MainLogin from './components/MainLogin';
 
 
 import ParentLogin from './components/ParentLogin';
-import ParentRouting from './components/ParentRouting';
+import AdminRouting from './components/AdminRouting';
 
 
 
@@ -29,7 +29,7 @@ function App() {
       {/* <ParentTable/> */}
       {/* <TutorTable/> */}
 
-      {/* <AdminRouting/>/*} 
+     {/* <AdminRouting/> */}
      {/* <AdminLogin/>*/}
      {/*<UpdateTutor></UpdateTutor>*/}
     {/* <TutorLogin></TutorLogin>*/}
