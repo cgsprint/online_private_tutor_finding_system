@@ -16,7 +16,10 @@ class TutorViewEbook extends Component {
     
     componentDidMount() {
         
-            this.props.onViewEbooks() 
+        axios.get('http://localhost:8080/viewEbook',this.state)
+        .then((res) => {
+            this.setState({ ebooklist: res.data.data})
+         })
     }
 
 
@@ -59,6 +62,7 @@ class TutorViewEbook extends Component {
 }
 
 
+<<<<<<< HEAD
 const mapStateToProps = (state) => {
     return {
         returnedMessage: state.returnedMessage
@@ -82,3 +86,6 @@ const mapStateToProps = (state) => {
 
   export default connect(mapStateToProps, mapDispatchToProps)(withRouter(TutorViewEbook))
   
+=======
+export default TutorViewEbook;
+>>>>>>> 54b81ae3917080ebf16c6852d494794f7a44906e
