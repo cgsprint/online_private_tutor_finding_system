@@ -2,7 +2,12 @@ import axios from 'axios'
 
 export const UPDATE_TUTOR = 'UPDATE_TUTOR'
 export const TUTOR_VIEW_EBOOK = 'TUTOR_VIEW_EBOOK'
+export const GET_DEMO_REQUESTS = 'GET_DEMO_REQUESTS'
+export const GET_ALL_BOOKINGS = 'GET_ALL_BOOKINGS'
+export const ACCEPT_REQUEST = 'ACCEPT_REQUEST'
+export const DECLINE_REQUEST = 'DECLINE_REQUEST'
 export const CLEAR_STATE = 'CLEAR_STATE'
+
 
 
 const BASE_URL = 'http://localhost:8080/'
@@ -37,6 +42,94 @@ export const getAllEbooks = () => {
                 
             })
     }
+}
+
+const getDemoRequestsAction = (data) => {
+    return {
+        type: GET_DEMO_REQUESTS,
+        data
+    }
+}
+export const getAllDemoRequests = () => {
+    return (dispatch) => {
+        axios.get(BASE_URL + 'requests')
+            .then((response) => {
+                dispatch(getDemoRequestsAction(response.data))
+                
+            })
+    }
+}
+
+const getAllBookingsAction = (data) => {
+    return {
+        type: GET_ALL_BOOKINGS,
+        data
+    }
+}
+export const getAllBookings = () => {
+    return (dispatch) => {
+        axios.get(BASE_URL + 'bookings')
+            .then((response) => {
+                dispatch(getAllBookingsAction(response.data))
+                
+            })
+    }
+}
+
+const acceptRequestAction = (data) => {
+
+    return {
+
+        type: ACCEPT_REQUEST,
+
+        data
+
+    }
+
+}
+
+export const onAcceptRequest = (Id) => {
+
+    return (dispatch) => {
+
+        axios.delete(BASE_URL +(Id) )
+
+            .then((response) => {
+
+                dispatch(acceptRequestAction(response.data))
+
+            })
+
+    }
+
+}
+
+const declineRequestAction = (data) => {
+
+    return {
+
+        type: DECLINE_REQUEST,
+
+        data
+
+    }
+
+}
+
+export const onDeclineRequest = (Id) => {
+
+    return (dispatch) => {
+
+        axios.delete(BASE_URL +(Id) )
+
+            .then((response) => {
+
+                dispatch(declineRequestAction(response.data))
+
+            })
+
+    }
+
 }
 
 
