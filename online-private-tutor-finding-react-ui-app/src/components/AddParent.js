@@ -12,7 +12,21 @@ export class AddParent extends Component {
     this.email = React.createRef();
     this.address = React.createRef();
   }
-  
+  add() {
+    let newParent = {
+        parentId: this.parentId.current.value,
+        firstName: this.firstName.current.value,
+        lastName: this.lastName.current.value,
+        username: this.username.current.value,
+        password: this.password.current.value,
+        mobileNo: this.mobileNo.current.value,
+        email: this.email.current.value,
+        address: this.address.current.value,
+
+    }
+    this.props.onAddTrainee(newParent)
+
+}
     render() {
         return (
             <div class="container mt-5 px-3 py-3 border border-dark rounded">
@@ -141,7 +155,9 @@ export class AddParent extends Component {
               <div class="row mt-3">
                 <div class="col">
                   <button
-                    class="btn btn-primary btn-sm ">
+                    class="btn btn-primary btn-sm "
+                    onClick={this.add.bind(this)}
+                    >
                     Add
                   </button>
                 </div>
