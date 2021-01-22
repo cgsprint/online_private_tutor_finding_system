@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios'
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
-import * as actionCreated from '../actions/TutorActions'
 
 class TutorViewEbook extends Component {
 
@@ -58,6 +55,7 @@ class TutorViewEbook extends Component {
 
 
 
+
 const mapStateToProps = (state) => {
     return {
         returnedMessage: state.returnedMessage
@@ -81,6 +79,3 @@ const mapStateToProps = (state) => {
 
   export default connect(mapStateToProps, mapDispatchToProps)(withRouter(TutorViewEbook))
   
-
-
-

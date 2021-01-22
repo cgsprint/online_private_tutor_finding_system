@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import * as actionCreators from '../actions/ParentActions'
 
 export class AddParent extends Component {
   constructor(props) {
@@ -24,7 +27,7 @@ export class AddParent extends Component {
         address: this.address.current.value,
 
     }
-    this.props.onAddTrainee(newParent)
+    this.props.onAddParent(newParent)
 
 }
     render() {
@@ -173,6 +176,14 @@ export class AddParent extends Component {
       </div>
         )
     }
+    
+}
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onAddParent: (parent) => {
+      dispatch(actionCreators.addParent(parent))
+  }
+  }
 }
 
-export default AddParent
+export default connect(mapDispatchToProps)(withRouter(AddParent))
