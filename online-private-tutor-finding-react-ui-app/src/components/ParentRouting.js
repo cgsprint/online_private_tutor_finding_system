@@ -1,6 +1,10 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Link, Route } from "react-router-dom";
 import ViewTutor from './ViewTutor';
+import RequestDemo from './RequestDemo'
+import BookTutor from './BookTutor'
+import ViewBookedTutor from './ViewBookedTutor'
+import ViewEBook from './ViewEBook'
 
 export default function ParentRouting() {
     return (
@@ -51,22 +55,22 @@ export default function ParentRouting() {
                 </Route>
 
                 <Route path="/requestDemo">
-                    
+                    <RequestDemo />
                 </Route>
 
                 <Route path="/bookTutor">
-                    
+                    <BookTutor />
                 </Route>
 
                 <Route path="/viewBookedTutor">
-                    
+                    <ViewBookedTutor />
                 </Route>
 
                 <Route path="/rateTutor">
                     
                 </Route>
                 <Route path="/viewEbook">
-                    
+                    <ViewEBook />
                 </Route>
             </Switch>
         </div>
