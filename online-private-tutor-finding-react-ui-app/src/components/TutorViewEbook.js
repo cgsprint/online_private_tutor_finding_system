@@ -62,7 +62,7 @@ class TutorViewEbook extends Component {
 }
 
 
-<<<<<<< HEAD
+
 const mapStateToProps = (state) => {
     return {
         returnedMessage: state.returnedMessage
@@ -86,6 +86,6 @@ const mapStateToProps = (state) => {
 
   export default connect(mapStateToProps, mapDispatchToProps)(withRouter(TutorViewEbook))
   
-=======
-export default TutorViewEbook;
->>>>>>> 54b81ae3917080ebf16c6852d494794f7a44906e
+
+
+
