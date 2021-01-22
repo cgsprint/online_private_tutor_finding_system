@@ -14,12 +14,12 @@ function TutorRouting() {
                         <div className="collapse navbar-collapse" id="navbarNav">
                             <ul className="navbar-nav">
                                 <li className="nav-item">
-                                    <Link className="nav-link" to="/viewparents">
+                                    <Link className="nav-link" to="/viewBookings">
                                         View Bookings
                                     </Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link className="nav-link" to="/updatetutor">
+                                    <Link className="nav-link" to="/updateTutor">
                                         Update  Profile
                                     </Link>
                                 </li>
@@ -27,7 +27,7 @@ function TutorRouting() {
 
                                 
                                 <li className="nav-item">
-                                    <Link className="nav-link" to="/viewbook">
+                                    <Link className="nav-link" to="/viewEbook">
                                         View Ebook
                                     </Link>
                                 </li>

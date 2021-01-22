@@ -9,23 +9,18 @@ class TutorViewEbook extends Component {
     constructor(props) {
         super(props)
     
-        this.state = {
-             ebooklist: []
-        }
+       
     }       
     
     componentDidMount() {
-        
-        axios.get('http://localhost:8080/viewEbook',this.state)
-        .then((res) => {
-            this.setState({ ebooklist: res.data.data})
-         })
+        this.props.onViewEbooks()
     }
 
+   
 
     render() {
 
-        let ebooklist= this.state.ebooklist.map((ebook , index) => {
+        let ebooklist= this.props.ebooklist.map((ebook , index) => {
             return(
                 <tr key={index}>
                 <th>{ebook.ebookId}</th>
@@ -70,9 +65,9 @@ const mapStateToProps = (state) => {
   }
   
   const mapDispatchToProps = (dispatch) => {
-    return {
+    return {  
         onViewEbooks: () => {
-            return  dispatch(actionCreated.getAllEbooks())
+            return dispatch(actionCreated.getAllEbooks())
           },
           clearState: () => {
             return  dispatch(actionCreated.clearState())

@@ -52,17 +52,7 @@ import * as actionCreators from '../actions/TutorActions'
     return true;
   };
 
-  handleSubmit = (event) => {
-    event.preventDefault();
-    const isValid = this.validate();
-    if (isValid) {
-      console.log(this.state);
-
-       //Clear state
-      //  this.setState(initialState);
-    }
-  };
-
+  
 
   componentDidMount() {
     this.props.clearState()
@@ -96,7 +86,7 @@ update() {
           <div className="col">
             <h2>Update Tutor Profile</h2>
             <br></br>
-            <form method="post" onSubmit={this.handleSubmit}>
+            <form method="post">
               <div className="mb-3 row">
                 <label for="tutorId" className="col-sm-4 col-form-label">
                   Tutor Id
@@ -128,16 +118,6 @@ update() {
                   />
                 </div>
 
-                <div style={{ fontSize: 12, color: "red" }}>
-                  {this.state.nameError}
-                </div>
-
-                <div style={{fontSize:12,color:"red"}}>
-        {this.state.nameError}
-        </div>
-
-
-
               </div>
 
               <div className="mb-3 row">
@@ -163,7 +143,7 @@ update() {
                 <div className="col-sm-5">
                   <input
                     type="password"
-                    pattern="(?=.\d)(?=.[a-z])(?=.*[A-Z]).{8,}"
+                   
                     className="form-control form-control-sm"
                     name="tutorPassword"
                     id="tutorPassword"
@@ -204,9 +184,7 @@ update() {
                     required
                   />
                 </div>
-                <div style={{fontSize:12,color:"red"}}>
-        {this.state.phoneError}
-        </div>
+               
               </div>
 
               <div className="mb-3 row">
@@ -258,101 +236,38 @@ update() {
         
       )
       }
-
-
-
-      //         <div>
-      //           <label>Subject :</label>
-      //           <input
-      //             style={{ fontSize: 16 }}
-      //             name="subject"
-      //             type="text"
-      //             placeholder="Subject"
-      //             value={this.state.subject}
-      //             onChange={this.handleChange}
-      //           />
-      //         </div>
-      //         <div style={{ fontSize: 12, color: "red" }}>
-      //           {this.state.subjectError}
-      //         </div>
-      //         <div>
-      //           <label>Address :</label>
-      //           <input
-      //             style={{ fontSize: 16 }}
-      //             name="address"
-      //             type="text"
-      //             placeholder="Address"
-      //             value={this.state.address}
-      //             onChange={this.handleChange}
-      //           />
-      //         </div>
-
-      //         <div>
-      //           <label>Phone Number :</label>
-      //           <input
-      //             style={{ fontSize: 16 }}
-      //             name="phonenumber"
-      //             type="number"
-      //             placeholder="Phone Number"
-      //             value={this.state.phonenumber}
-      //             onChange={this.handleChange}
-      //           />
-      //         </div>
-      //         <br />
-
-      //         <button type="submit">Submit</button>
-      //       </form>
-      //     </div>
-      //   </div>
-      // </div>
-    
-
-
-
 }
 
+
 const mapStateToProps = (state) => {
   return {
       returnedMessage: state.returnedMessage
 
-<<<<<<< HEAD
-const mapStateToProps = (state) => {
-  return {
-      returnedMessage: state.returnedMessage
-=======
->>>>>>> 54b81ae3917080ebf16c6852d494794f7a44906e
+
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-<<<<<<< HEAD
+
 
       onUpdateTutor: (newTutorObject) => {
           dispatch(actionCreators.updateTutor(newTutorObject))
       },
       clearState: () => {
           dispatch(actionCreators.clearState())
-=======
-      onUpdateTutor: (tutorId, newTutorObject) => {
-          // dispatch(actionCreators.updateTutotr(tutorId, newTutorObject))
-      },
-      clearState: () => {
-          // dispatch(actionCreators.clearState())
->>>>>>> 54b81ae3917080ebf16c6852d494794f7a44906e
-
-      }
 
   }
 
 }
-<<<<<<< HEAD
+}
+
 
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(UpdateTutor))
-=======
-export default UpdateTutor
 
-// export default connect(mapStateToProps, mapDispatchToProps)(withRouter(UpdateTutor))
->>>>>>> 54b81ae3917080ebf16c6852d494794f7a44906e
+
+
+
+

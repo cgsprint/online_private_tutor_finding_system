@@ -1,5 +1,6 @@
 import * as actionCreators from '../actions/TutorActions'
 
+
 const initialState = {
     returnedMessage: 'data yet Found',
     ebooklist: []
@@ -21,7 +22,7 @@ const reducer = (state = initialState, action) => {
               ebooklist: listOfEbooks
           }
 
-          case actionCreators.UPDATE_TRUTOR:
+          case actionCreators.UPDATE_TUTOR:
             let messageAfterUpdation = action.data.message
             let listAfterUpdation = action.data.tutor
             console.log('Updating trainee')
@@ -41,3 +42,5 @@ const reducer = (state = initialState, action) => {
                 return state
     }
 }
+
+export default reducer
