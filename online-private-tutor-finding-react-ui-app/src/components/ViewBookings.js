@@ -1,5 +1,10 @@
-import axios from 'axios'
+
 import React, { Component } from 'react'
+
+// import './style.css'
+
+import { connect } from 'react-redux'
+import * as actionCreated from '../actions/TutorActions'
 // import './style.css'
 
  class ViewBookings extends Component {
@@ -13,10 +18,7 @@ import React, { Component } from 'react'
     }
     
     componentDidMount() {
-        axios.get('http://localhost:8080/bookedTutor',this.state)
-        .then((res) => {
-            this.setState({ bookingList: res.data.data})
-         })
+        this.props.onGetBookings()
     }
 
 
@@ -49,4 +51,28 @@ import React, { Component } from 'react'
     }
 }
 
-export default ViewBookings
+const mapStateToProps = (state) => {
+    return {
+        traineesList:state.traineesList,
+        returnedMessage: state.returnedMessage
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onGetBookings: () => {
+          return  dispatch(actionCreated.getAllBookings())
+        },
+        clearState: () => {
+          return  dispatch(actionCreated.clearState())
+
+        }
+
+    }
+
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(ViewBookings)
+
+

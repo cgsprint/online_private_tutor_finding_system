@@ -1,5 +1,7 @@
-import axios from 'axios'
+
 import React, { Component } from 'react'
+import * as actionCreated from '../actions/TutorActions'
+import { connect } from 'react-redux'
 
  class ViewDemoRequests extends Component {
 
@@ -22,10 +24,7 @@ import React, { Component } from 'react'
     
 
     componentDidMount() {
-        axios.get('http://localhost:8080/request',this.state)
-            .then((res) => {
-               this.setState({ demoRequestList: res.data.data})
-            })
+        this.props.onGetDemoRequests()
     }
 
     Accept(Id) {
@@ -98,4 +97,32 @@ import React, { Component } from 'react'
     }
 }
 
-export default ViewDemoRequests
+const mapStateToProps = (state) => {
+    return {
+        demoRequestList:state.demoRequestList,
+        
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onGetDemoRequests: () => {
+          return  dispatch(actionCreated.getAllDemoRequests())
+        },
+        onAcceptRequest: () => {
+            return dispatch(actionCreated.onAcceptRequest())
+        },
+        onDeclineRequest: () => {
+            return dispatch(actionCreated.onDeclineRequest())
+        },
+        clearState: () => {
+          return  dispatch(actionCreated.clearState())
+
+        }
+
+    }
+
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(ViewDemoRequests)

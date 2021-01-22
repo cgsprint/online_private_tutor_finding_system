@@ -33,7 +33,7 @@ export class AddTutor extends Component {
       }
 
       this.props.onAddTutor(Tutor)
-      e.preventDefault()
+      // e.preventDefault()
   }
 
  

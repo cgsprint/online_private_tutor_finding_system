@@ -13,6 +13,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 const store = createStore(reducer, applyMiddleware(thunk))
 
+
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
