@@ -1,9 +1,11 @@
 
-import React from  'react';
+import React, { Component } from  'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import * as actionCreators from '../actions/TutorActions'
 
 
-
- class UpdateTutor extends React.Component{  
+ class UpdateTutor extends Component{  
   
   constructor(props){
     super(props)
@@ -257,4 +259,27 @@ update() {
 }
 
 
-export default UpdateTutor
+const mapStateToProps = (state) => {
+  return {
+      returnedMessage: state.returnedMessage
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+
+      onUpdateTutor: (newTutorObject) => {
+          dispatch(actionCreators.updateTutor(newTutorObject))
+      },
+      clearState: () => {
+          dispatch(actionCreators.clearState())
+
+      }
+
+  }
+
+}
+
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(UpdateTutor))
