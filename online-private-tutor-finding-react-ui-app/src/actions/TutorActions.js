@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import axios from 'axios'
 
 export const UPDATE_TUTOR = 'UPDATE_TUTOR'
@@ -147,3 +148,5 @@ export const clearState = () => {
         dispatch(clearStateAction())
     }
 }
+=======
+>>>>>>> 69974a77c41f07a6f5980fd5f921baa6617b134a

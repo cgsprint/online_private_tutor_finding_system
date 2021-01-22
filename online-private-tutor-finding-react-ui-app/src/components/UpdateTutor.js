@@ -1,11 +1,9 @@
 
-import React, { Component } from  'react';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
-import * as actionCreators from '../actions/TutorActions'
+import React from  'react';
 
 
- class UpdateTutor extends Component{  
+
+ class UpdateTutor extends React.Component{  
   
   constructor(props){
     super(props)
@@ -315,44 +313,22 @@ const mapStateToProps = (state) => {
   return {
       returnedMessage: state.returnedMessage
 
-<<<<<<< HEAD
-const mapStateToProps = (state) => {
-  return {
-      returnedMessage: state.returnedMessage
-=======
->>>>>>> 54b81ae3917080ebf16c6852d494794f7a44906e
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-<<<<<<< HEAD
-
-      onUpdateTutor: (newTutorObject) => {
-          dispatch(actionCreators.updateTutor(newTutorObject))
-      },
-      clearState: () => {
-          dispatch(actionCreators.clearState())
-=======
       onUpdateTutor: (tutorId, newTutorObject) => {
           // dispatch(actionCreators.updateTutotr(tutorId, newTutorObject))
       },
       clearState: () => {
           // dispatch(actionCreators.clearState())
->>>>>>> 54b81ae3917080ebf16c6852d494794f7a44906e
 
       }
 
   }
 
 }
-<<<<<<< HEAD
-
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(UpdateTutor))
-=======
 export default UpdateTutor
 
 // export default connect(mapStateToProps, mapDispatchToProps)(withRouter(UpdateTutor))
->>>>>>> 54b81ae3917080ebf16c6852d494794f7a44906e
