@@ -1,28 +1,27 @@
 import React, { Component } from 'react';
 import axios from 'axios'
+import * as actionCreated from '../actions/TutorActions'
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+
 
 class TutorViewEbook extends Component {
 
     constructor(props) {
         super(props)
     
-        this.state = {
-             ebooklist: []
-        }
+       
     }       
     
     componentDidMount() {
-        
-        axios.get('http://localhost:8080/viewEbook',this.state)
-        .then((res) => {
-            this.setState({ ebooklist: res.data.data})
-         })
+        this.props.onViewEbooks()
     }
 
+   
 
     render() {
 
-        let ebooklist= this.state.ebooklist.map((ebook , index) => {
+        let ebooklist= this.props.ebooklist.map((ebook , index) => {
             return(
                 <tr key={index}>
                 <th>{ebook.ebookId}</th>
@@ -59,4 +58,28 @@ class TutorViewEbook extends Component {
 }
 
 
-export default TutorViewEbook;
+
+
+const mapStateToProps = (state) => {
+    return {
+        returnedMessage: state.returnedMessage
+    }
+  }
+  
+  const mapDispatchToProps = (dispatch) => {
+    return {  
+        onViewEbooks: () => {
+            return dispatch(actionCreated.getAllEbooks())
+          },
+          clearState: () => {
+            return  dispatch(actionCreated.clearState())
+  
+          }
+    }
+  
+  }
+  
+
+
+  export default connect(mapStateToProps, mapDispatchToProps)(withRouter(TutorViewEbook))
+  

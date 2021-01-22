@@ -21,7 +21,7 @@ const updateTutorAction = (data) => {
 }
 export const updateTutor = (newTutorDetails) => {
     return (dispatch) => {
-        axios.put(BASE_URL, newTutorDetails)
+        axios.put(BASE_URL+'updateTutor', newTutorDetails)
             .then((response) => {
                 alert("Tutor Updated added")
                 dispatch(updateTutorAction(response.data))

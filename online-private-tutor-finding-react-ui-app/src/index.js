@@ -11,15 +11,21 @@ import reducer from './reducers/AdminReducer'
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 
-const store = createStore(reducer, applyMiddleware(thunk))
 
+
+const store = createStore(reducer, applyMiddleware(thunk))
 
 ReactDOM.render(
   <React.StrictMode>
+
     <Provider store={store}>
+
+   <Provider store={store}>
+
       <BrowserRouter>
         <App  store={store} />
       </BrowserRouter>
+    </Provider>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
