@@ -1,20 +1,18 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import * as actionCreated from '../actions/ParentActions'
 
- class ViewEBook extends Component {
+ class ViewEbook extends Component {
 
-    constructor(props) {
-        super(props)
-    
-        this.state = {
-             ebookList: []
-        }
+    componentDidMount() {
+        this.props.onGetAllEbooks()
     }
     
 
 
     render() {
 
-        let ebookList = this.state.ebookList.map((e,index) =>{
+        let ebookList = this.props.ebookList.map((e,index) =>{
             return (
                 <tr key={index}>
                     <td>{e.ebookid}</td>
@@ -45,4 +43,24 @@ import React, { Component } from 'react'
     }
 }
 
-export default ViewEBook
+const mapStateToProps = (state) => {
+    return {
+        ebookList:state.ebookList
+        
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onGetAllEbooks: () => {
+          return  dispatch(actionCreated.getAllEbooks())
+        }
+
+    }
+
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(ViewEbook)
+
+

@@ -44,11 +44,6 @@ function TutorRouting() {
                                         View Ebook
                                     </Link>
                                 </li>
-                                <li className="nav-item">
-                                    <Link className="nav-link" to="/viewdemorequests">
-                                        View Demo Requests
-                                    </Link>
-                                </li>
                             </ul>
                         </div>
                     </div>
@@ -72,9 +67,6 @@ function TutorRouting() {
                         <TutorViewEbook></TutorViewEbook>
                     </Route>
 
-                    <Route path="/viewdemorequests">
-                        <ViewDemoRequests/>
-                    </Route>
                 </Switch>
             </div>
         </Router>

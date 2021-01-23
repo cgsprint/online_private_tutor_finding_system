@@ -9,7 +9,7 @@ import EbookTable from './EbookTable';
 import RequestDemo from './RequestDemo'
 import BookTutor from './BookTutor'
 import ViewBookedTutor from './ViewBookedTutor'
-import ViewEBook from './ViewEBook'
+import ViewEbook from './EbookTable';
 
 
 export default function ParentRouting() {
@@ -85,7 +85,7 @@ export default function ParentRouting() {
                 </Route>
                 <Route path="/viewEbook">
 
-                    <EbookTable/>
+                <ViewEbook></ViewEbook>
 
 
                 </Route>

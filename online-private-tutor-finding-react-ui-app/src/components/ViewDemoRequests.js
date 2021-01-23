@@ -21,7 +21,24 @@ import { connect } from 'react-redux'
 
     render() {
 
-
+            let demoRequestList = () => { this.state.demoRequestList.map((request, index) =>{
+                return(
+                <tr key={index}>
+                 <th>{request.Id}</th>
+                 <td>{request.tutorId}</td>
+                 <td>{request.subject}</td>
+                 <td>{request.localtime}</td>
+                 <td>{request.localdate}</td>
+                 <td>{request.parentId}</td>
+                 <td>     
+                 <button onClick={this.Accept.bind(this, request.Id)} className="btn btn-primary">Accept</button>
+                 </td>
+                 <td>
+                 <button onClick={this.Decline.bind(this, request.Id)} className="btn btn-primary">Decline</button>
+                 </td> 
+                 </tr>
+                )}
+             ) }
 
         return (
             <div>
@@ -51,26 +68,8 @@ import { connect } from 'react-redux'
 
                 <tbody>
 
-                   {
-                      this.state.demoRequestList.map((request, index) =>(
+                {demoRequestList}
 
-                        <tr key={index}>
-                         <th>{request.Id}</th>
-                         <td>{request.tutorId}</td>
-                         <td>{request.subject}</td>
-                         <td>{request.localtime}</td>
-                         <td>{request.localdate}</td>
-                         <td>{request.parentId}</td>
-                         <td>     
-                         <button onClick={this.Accept.bind(this, request.Id)} className="btn btn-primary">Accept</button>
-                         </td>
-                         <td>
-                         <button onClick={this.Decline.bind(this, request.Id)} className="btn btn-primary">Decline</button>
-                         </td> 
-                         </tr>
-
-                      ))
-                }
                  </tbody>
                   
 

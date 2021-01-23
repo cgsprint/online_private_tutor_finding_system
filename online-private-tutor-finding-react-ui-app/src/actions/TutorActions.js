@@ -52,7 +52,7 @@ const getDemoRequestsAction = (data) => {
 }
 export const getAllDemoRequests = () => {
     return (dispatch) => {
-        axios.get(BASE_URL + 'requests')
+        axios.get(BASE_URL + 'request')
             .then((response) => {
                 dispatch(getDemoRequestsAction(response.data))
                 

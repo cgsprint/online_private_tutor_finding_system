@@ -29,7 +29,7 @@ const getAllEbooksAction = (data) => {
 }
 export const getAllEbooks = () => {
     return (dispatch) => {
-        axios.get(BASE_URL+ 'ebooks')
+        axios.get(BASE_URL+ 'viewEbook')
             .then((response) => {
                 dispatch(getAllEbooksAction(response.data))
                 
