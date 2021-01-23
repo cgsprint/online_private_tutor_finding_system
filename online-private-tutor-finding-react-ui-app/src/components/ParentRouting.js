@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Link, Route } from "react-router-dom";
 import ParentHome from './ParentHome';
-import ViewTutor from './ViewTutor';
+import ViewTutorTable from './ViewTutorTable';
 
 import RateTutor from './RateTutor';
 import EbookTable from './EbookTable';
@@ -9,7 +9,7 @@ import EbookTable from './EbookTable';
 import RequestDemo from './RequestDemo'
 import BookTutor from './BookTutor'
 import ViewBookedTutor from './ViewBookedTutor'
-import ViewEBook from './ViewEBook'
+// import ViewEBook from './ViewEBook'
 
 
 export default function ParentRouting() {
@@ -27,7 +27,7 @@ export default function ParentRouting() {
                             </li>
                             <li className="nav-item">
                                 <Link className="nav-link" to="/viewTutor">
-                                    View Parents
+                                    View Tutor
                                 </Link>
                             </li>
                             <li className="nav-item">
@@ -65,7 +65,7 @@ export default function ParentRouting() {
                     <ParentHome/>
                 </Route>
                 <Route  exact path="/viewTutor">
-                    <ViewTutor />
+                    <ViewTutorTable />
                 </Route>
 
                 <Route path="/requestDemo">

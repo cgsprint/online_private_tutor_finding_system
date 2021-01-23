@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
+import * as actionCreated2 from '../actions/ParentViewTutorActions'
 
-
-export class ViewTutor extends Component {
+ class ViewTutor extends Component {
     constructor(props) {
         super(props)
     
@@ -9,6 +11,9 @@ export class ViewTutor extends Component {
              tutors: [],
              message: ''
         }
+    }
+    componentDidMount() {
+        this.props.onGetTutors()
     }
     myfetch(){
         // let URL ='http://localhost:8080/parent/viewAllTutor'
@@ -20,14 +25,11 @@ export class ViewTutor extends Component {
         //         console.log(res.data)
         //     })
     }
-    componentDidMount()
-    {
-        this.myfetch()
-    }
+    
 
     
     render() {
-        let tutorList= this.state.tutors.map((tutor , index) => {
+        let tutorsList= () =>{ this.props.tutors.map((tutor , index) => {
             return(
                 <tr key={index}>
                 <th>{tutor.tutorId}</th>
@@ -42,7 +44,8 @@ export class ViewTutor extends Component {
                 </td>
                 </tr>
                 )
-            })
+                
+            })}
         return (
             <div className="tutor-table-div">
                 <div>
@@ -62,7 +65,7 @@ export class ViewTutor extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {tutorList}
+                        {tutorsList}
                     </tbody>
                 </table>
                 </div>
@@ -70,5 +73,23 @@ export class ViewTutor extends Component {
         )
     }
 }
+const mapStateToProps = (state) => {
+    return {
+        tutorsList:state.tutorsList,
+        returnedMessage: state.returnedMessage
+    }
+}
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onGetTutors: () => {
+            console.log("To get Tutor")
+          return  dispatch(actionCreated2.getAllTutors())
+        },
+        clearState: () => {
+            return  dispatch(actionCreated2.clearState())
+  
+          }
+    }
+}
 
-export default ViewTutor
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(ViewTutor))

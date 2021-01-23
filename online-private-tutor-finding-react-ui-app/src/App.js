@@ -16,7 +16,8 @@ import TutorRouting from './components/TutorRouting';
 
 import TutorViewEbook from './components/TutorViewEbook';
 import UpdateTutor from './components/UpdateTutor';
-
+import ParentRouting from './components/ParentRouting'
+import  AddParent  from './components/RegisterParent';
 
 
 
@@ -25,11 +26,11 @@ function App() {
     <div className="App">
 
       
-    {/*<MainLogin/>*/}
+    <MainLogin/>
     
+    {/* <AddParent /> */}
 
-
-      {/*<ParentRouting />*/}
+      {/* <ParentRouting /> */}
     {/* <ParentLogin />*/}
      
       {/* <AddUpdateTutor/> */}
@@ -40,7 +41,7 @@ function App() {
      {/* <AdminLogin/>*/}
      {/*<UpdateTutor></UpdateTutor>*/}
     {/* <TutorLogin></TutorLogin>*/}
-    <TutorRouting></TutorRouting>
+    {/* <TutorRouting></TutorRouting> */}
      
      {/* <AdminRouting/>*/}
       {/* <AdminLogin/> */}
