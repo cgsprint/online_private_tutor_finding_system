@@ -5,7 +5,11 @@ import * as actionCreated3 from '../actions/ParentViewEbookAction'
 const initialState = {
     returnedMessage: 'data not Found',
     tutorsList: [],
+<<<<<<< HEAD
     ebookList: []
+=======
+    status: 0
+>>>>>>> 1e3a46f5cfd96a96a8e171f60134644547efdbc2
 }
 const parentReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -23,11 +27,13 @@ const parentReducer = (state = initialState, action) => {
         case actionCreators.ADD_Parent:
             let messageAfterAddition = action.data.message
             let listAfterAddition = action.data
+            let Reqstatus1 = action.status
             console.log('Addition of parent')
             console.log(listAfterAddition)
             console.log(messageAfterAddition)
             return {
-                returnedMessage: messageAfterAddition
+                returnedMessage: messageAfterAddition,
+                status : Reqstatus1
             }
             case actionCreated3.GET_ALL_EBOOKS:
                 let listOfEbooks = action.data.ebookList

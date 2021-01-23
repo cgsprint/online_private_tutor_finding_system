@@ -170,15 +170,25 @@ export class AddParent extends Component {
                     class="btn btn-primary btn-sm "
                     onClick={this.add.bind(this)}
                     >
-                    Add
+                  Register
                   </button>
                 </div>                
               </div>
               </div>
             </form>
           </div>
-        </div>
-
+          {/* <div className="alert alert-successs" role="alert">
+              {
+                this.props.status === 200 ? <div>{this.props.returnedMessage}</div> : <div></div>
+              }
+            </div>*/}
+        </div> 
+       <br></br>
+            <br></br>
+    
+            <div className={(this.props.returnedMessage === '') ? '' : "alert"} role="alert">
+              {this.props.returnedMessage}
+            </div>
         
         
       </div>
@@ -187,13 +197,14 @@ export class AddParent extends Component {
 }
 const mapStateToProps = (state) => {
   return {
-      returnedMessage: state.returnedMessage
+      returnedMessage: state.returnedMessage,
+      status: state.status
   }
 }
 const mapDispatchToProps = (dispatch) => {
   return {
       onAddParent: (newParent) => {
-          console.log("in on validate user")
+          console.log("Registering parent")
           dispatch(actionCreators.addParent(newParent))
       }
   }
