@@ -5,11 +5,17 @@ import React, { Component } from 'react'
 
 import { connect } from 'react-redux'
 import * as actionCreated from '../actions/TutorActions'
-
 // import './style.css'
 
  class ViewBookings extends Component {
 
+    constructor(props) {
+        super(props)
+    
+        this.state = {
+             bookingList: []
+        }
+    }
     
     componentDidMount() {
         this.props.onGetBookings()
@@ -19,27 +25,27 @@ import * as actionCreated from '../actions/TutorActions'
     render() {
         return (
             <div>
-                 <table className="table table-info demo-request-table">
-                     <thead>
-                         <tr>
-                             <th scope="col">BookingId</th>
-                             <th scope="col">ParentId</th>
-                             <th scope="col">Subject</th>
-                         </tr>
-                     </thead>
-                     <tbody>
-                         {
-                            this.props.bookingList.map((b) => (
+                <table className="table table-info demo-request-table">
+                    <thead>
+                        <tr>
+                            <th scope="col">BookingId</th>
+                            <th scope="col">ParentId</th>
+                            <th scope="col">Subject</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {/* {
+                            this.state.bookingList.map((b) => (
                                 <tr key={b.bookingId}>
-                                     <td>{b.bookingId}</td>
-                                     <td>{b.parentId}</td>
-                                     <td>{b.subject}</td>
+                                    <td>{b.bookingId}</td>
+                                    <td>{b.parentId}</td>
+                                    <td>{b.subject}</td>
 
-                                 </tr>
+                                </tr>
                             ))
-                        }
-                    </tbody> 
-                 </table> 
+                        } */}
+                    </tbody>
+                </table>
             </div>
         )
     }
@@ -47,7 +53,7 @@ import * as actionCreated from '../actions/TutorActions'
 
 const mapStateToProps = (state) => {
     return {
-        bookingList:state.bookingList,
+        traineesList:state.traineesList,
         returnedMessage: state.returnedMessage
     }
 }

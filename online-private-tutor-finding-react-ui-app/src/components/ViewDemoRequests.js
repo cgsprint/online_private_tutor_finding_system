@@ -4,6 +4,23 @@ import * as actionCreated from '../actions/TutorActions'
 import { connect } from 'react-redux'
 
  class ViewDemoRequests extends Component {
+
+    constructor(props) {
+        super(props)
+    
+        this.state = {
+             demoRequestList: [
+                 {
+                 Id: 1,
+                 tutorId: 12,
+                 subject: "English",
+                 locattime: "12:00",
+                 localdate: "10/jan/2010",
+                 parentId: 45
+                 }
+             ]
+        }
+    }
     
 
     componentDidMount() {
@@ -73,9 +90,10 @@ import { connect } from 'react-redux'
                  </tbody>
                   
 
+                
 
-                 </table>
-             </div>
+                </table>
+            </div>
         )
     }
 }

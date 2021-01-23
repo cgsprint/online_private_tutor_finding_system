@@ -15,20 +15,22 @@ export class AddParent extends Component {
     this.email = React.createRef();
     this.address = React.createRef();
   }
-  add() {
+  add = (e) => {
     let newParent = {
-        parentId: this.parentId.current.value,
+        // parentId: this.parentId.current.value,
         firstName: this.firstName.current.value,
         lastName: this.lastName.current.value,
         username: this.username.current.value,
         password: this.password.current.value,
         mobileNo: this.mobileNo.current.value,
         email: this.email.current.value,
-        address: this.address.current.value,
-
+        address: this.address.current.value
     }
-    this.props.onAddParent(newParent)
+    // alert(this.firstName.current.value + this.lastName.current.value)
+    this.props.onAddParent(newParent);
+    e.preventDefault();
 
+    //alert(this.firstName.current.value + this.lastName.current.value + this.username.current.value + this.password.current.value + this.mobileNo.current.value +this.email.current.value + this.address.current.value)
 }
     render() {
         return (
@@ -48,6 +50,7 @@ export class AddParent extends Component {
                   <input
                     type="text"
                     class="form-control form-control-sm"
+                    id="firstName"
                     name="firstName"
                     ref={this.firstName}
                     placeholder = "Eg: John"
@@ -64,6 +67,7 @@ export class AddParent extends Component {
                   <input
                     type="text"
                     class="form-control form-control-sm"
+                    id="lastName"
                     name="lastName"
                     ref={this.lastName}
                     placeholder = "Eg: Doe"
@@ -80,6 +84,7 @@ export class AddParent extends Component {
                   <input
                     type="text"
                     class="form-control form-control-sm"
+                    id="username"
                     name="username"
                     ref={this.username}
                     placeholder = "Eg: John"
@@ -98,6 +103,7 @@ export class AddParent extends Component {
                     // pattern="(?=.\d)(?=.[a-z])(?=.*[A-Z]).{8,}"
                     
                     class="form-control form-control-sm"
+                    id="password"
                     name="password"
                     ref={this.password}
                     placeholder="Eg: john@123"
@@ -115,6 +121,7 @@ export class AddParent extends Component {
                     type="number"
                     pattern = "^\d{10}"
                     class="form-control form-control-sm"
+                    id="mobileNo"
                     name="mobileNo"
                     ref={this.mobileNo}
                     placeholder="Eg: 1234668909"
@@ -132,6 +139,7 @@ export class AddParent extends Component {
                     type="email"
                     class="form-control form-control-sm"
                     name="email"
+                    id="email"
                     ref={this.email}
                     placeholder = "Eg: john@gmail.com"
                     required
@@ -148,6 +156,7 @@ export class AddParent extends Component {
                     type="text"
                     class="form-control form-control-sm"
                     name="address"
+                    id="address"
                     ref={this.address}
                     placeholder = "Eg: Andheri"
                     required
@@ -163,8 +172,7 @@ export class AddParent extends Component {
                     >
                     Add
                   </button>
-                </div>
-                
+                </div>                
               </div>
               </div>
             </form>
@@ -175,15 +183,20 @@ export class AddParent extends Component {
         
       </div>
         )
-    }
-    
+    } 
+}
+const mapStateToProps = (state) => {
+  return {
+      returnedMessage: state.returnedMessage
+  }
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-    onAddParent: (parent) => {
-      dispatch(actionCreators.addParent(parent))
-  }
+      onAddParent: (newParent) => {
+          console.log("in on validate user")
+          dispatch(actionCreators.addParent(newParent))
+      }
   }
 }
 
-export default connect(mapDispatchToProps)(withRouter(AddParent))
+export default connect(mapStateToProps,mapDispatchToProps)(withRouter(AddParent))

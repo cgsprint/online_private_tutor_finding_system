@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import AddParent from './AddParent';
+import AddParent from './RegisterParent';
     
 
 export class ParentLogin extends Component {
