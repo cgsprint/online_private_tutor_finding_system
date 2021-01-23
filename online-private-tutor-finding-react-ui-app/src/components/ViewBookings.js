@@ -1,8 +1,12 @@
 
 import React, { Component } from 'react'
+
+// import './style.css'
+
 import { connect } from 'react-redux'
 import * as actionCreated from '../actions/TutorActions'
 
+// import './style.css'
 
  class ViewBookings extends Component {
 

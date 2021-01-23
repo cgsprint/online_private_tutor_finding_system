@@ -1,9 +1,9 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Link, Route } from "react-router-dom";
-import TutorLogin from './TutorLogin'
+import TutorHome from './TutorHome';
+import ViewBookings from './ViewBookings';
 import TutorViewEbook from './TutorViewEbook'
 import UpdateTutor from './UpdateTutor'
-import ViewBookings from './ViewBookings';
 import ViewDemoRequests from './ViewDemoRequests';
 
 
@@ -16,12 +16,20 @@ function TutorRouting() {
                         <div className="collapse navbar-collapse" id="navbarNav">
                             <ul className="navbar-nav">
                                 <li className="nav-item">
-                                    <Link className="nav-link" to="/viewparents">
+
+                                    <Link className="nav-link" to="/">
+                                        
+                                    </Link>
+                                </li>
+                                <li className="nav-item">
+
+                                    <Link className="nav-link" to="/viewBookings">
+
                                         View Bookings
                                     </Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link className="nav-link" to="/updatetutor">
+                                    <Link className="nav-link" to="/updateTutor">
                                         Update  Profile
                                     </Link>
                                 </li>
@@ -32,8 +40,13 @@ function TutorRouting() {
                                 </li>
                                 
                                 <li className="nav-item">
-                                    <Link className="nav-link" to="/viewbook">
+                                    <Link className="nav-link" to="/viewEbook">
                                         View Ebook
+                                    </Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link className="nav-link" to="/viewdemorequests">
+                                        View Demo Requests
                                     </Link>
                                 </li>
                             </ul>
@@ -42,7 +55,9 @@ function TutorRouting() {
                 </nav>
 
                 <Switch>
-                    
+                    <Route exact path="/viewbookings">
+                        <ViewBookings/>
+                    </Route>
                     <Route path="/updatetutor">
                         <UpdateTutor></UpdateTutor>
                     </Route>
@@ -55,6 +70,10 @@ function TutorRouting() {
 
                     <Route path="/viewbook">
                         <TutorViewEbook></TutorViewEbook>
+                    </Route>
+
+                    <Route path="/viewdemorequests">
+                        <ViewDemoRequests/>
                     </Route>
                 </Switch>
             </div>

@@ -1,5 +1,8 @@
-
+import { withRouter } from 'react-router-dom';
 import React from  'react';
+import * as actionCreators from '../actions/TutorActions'
+import { connect } from 'react-redux';
+
 
 
 
@@ -50,21 +53,11 @@ import React from  'react';
     return true;
   };
 
-  handleSubmit = (event) => {
-    event.preventDefault();
-    const isValid = this.validate();
-    if (isValid) {
-      console.log(this.state);
+  
 
-       //Clear state
-      //  this.setState(initialState);
-    }
-  };
-
-
-  componentDidMount() {
-    this.props.clearState()
-}
+//   componentDidMount() {
+//     this.props.clearState()
+// }
 componentDidUpdate() {
     let check = this.props.returnedMessage.split(' ')
     if (check[0] === 'Successfully') {
@@ -94,7 +87,7 @@ update() {
           <div className="col">
             <h2>Update Tutor Profile</h2>
             <br></br>
-            <form method="post" onSubmit={this.handleSubmit}>
+            <form method="post">
               <div className="mb-3 row">
                 <label for="tutorId" className="col-sm-4 col-form-label">
                   Tutor Id
@@ -126,14 +119,14 @@ update() {
                   />
                 </div>
 
+
                 <div style={{ fontSize: 12, color: "red" }}>
-                  {this.state.nameError}
+                  {/* {this.state.nameError} */}
                 </div>
 
                 <div style={{fontSize:12,color:"red"}}>
-        {this.state.nameError}
+        {/* {this.state.nameError} */}
         </div>
-
 
 
               </div>
@@ -161,7 +154,7 @@ update() {
                 <div className="col-sm-5">
                   <input
                     type="password"
-                    pattern="(?=.\d)(?=.[a-z])(?=.*[A-Z]).{8,}"
+                   
                     className="form-control form-control-sm"
                     name="tutorPassword"
                     id="tutorPassword"
@@ -202,8 +195,9 @@ update() {
                     required
                   />
                 </div>
+
                 <div style={{fontSize:12,color:"red"}}>
-        {this.state.phoneError}
+        {/* {this.state.phoneError} */}
         </div>
               </div>
 
@@ -256,79 +250,34 @@ update() {
         
       )
       }
-
-
-
-      //         <div>
-      //           <label>Subject :</label>
-      //           <input
-      //             style={{ fontSize: 16 }}
-      //             name="subject"
-      //             type="text"
-      //             placeholder="Subject"
-      //             value={this.state.subject}
-      //             onChange={this.handleChange}
-      //           />
-      //         </div>
-      //         <div style={{ fontSize: 12, color: "red" }}>
-      //           {this.state.subjectError}
-      //         </div>
-      //         <div>
-      //           <label>Address :</label>
-      //           <input
-      //             style={{ fontSize: 16 }}
-      //             name="address"
-      //             type="text"
-      //             placeholder="Address"
-      //             value={this.state.address}
-      //             onChange={this.handleChange}
-      //           />
-      //         </div>
-
-      //         <div>
-      //           <label>Phone Number :</label>
-      //           <input
-      //             style={{ fontSize: 16 }}
-      //             name="phonenumber"
-      //             type="number"
-      //             placeholder="Phone Number"
-      //             value={this.state.phonenumber}
-      //             onChange={this.handleChange}
-      //           />
-      //         </div>
-      //         <br />
-
-      //         <button type="submit">Submit</button>
-      //       </form>
-      //     </div>
-      //   </div>
-      // </div>
-    
-
-
-
 }
+
+
 
 const mapStateToProps = (state) => {
   return {
       returnedMessage: state.returnedMessage
-
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-      onUpdateTutor: (tutorId, newTutorObject) => {
-          // dispatch(actionCreators.updateTutotr(tutorId, newTutorObject))
+
+
+
+      onUpdateTutor: (newTutorObject) => {
+          dispatch(actionCreators.updateTutor(newTutorObject))
       },
       clearState: () => {
-          // dispatch(actionCreators.clearState())
-
-      }
+          dispatch(actionCreators.clearState())
 
   }
 
 }
-export default UpdateTutor
 
-// export default connect(mapStateToProps, mapDispatchToProps)(withRouter(UpdateTutor))
+}
+
+
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(UpdateTutor))

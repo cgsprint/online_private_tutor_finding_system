@@ -4,12 +4,12 @@ import MainLogin from './components/MainLogin';
 
 
 import ParentLogin from './components/ParentLogin';
-import ParentRouting from './components/ParentRouting';
+import AdminRouting from './components/AdminRouting';
 
 import AddUpdateTutor from './components/AddTutor';
 import ParentTable from './components/ParentTable';
 import TutorTable from './components/TutorTable';
-import AdminRouting from './components/AdminRouting';
+// import AdminRouting from './components/AdminRouting';
 import AdminLogin from './components/AdminLogin';
 import TutorLogin from './components/TutorLogin';
 import TutorRouting from './components/TutorRouting';
@@ -30,8 +30,8 @@ function App() {
 
     <TutorRouting></TutorRouting>
       
-    {/* <MainLogin/> */}
-    {/* <RateTutor></RateTutor> */}
+    {/*<MainLogin/>*/}
+    
 
 
       {/*<ParentRouting />*/}
@@ -41,15 +41,15 @@ function App() {
       {/* <ParentTable/> */}
       {/* <TutorTable/> */}
 
-      {/* <AdminRouting/>/*} 
+     {/* <AdminRouting/> */}
      {/* <AdminLogin/>*/}
      {/*<UpdateTutor></UpdateTutor>*/}
     {/* <TutorLogin></TutorLogin>*/}
-    {/* <TutorRouting></TutorRouting>*/}
+    <TutorRouting></TutorRouting>
      
      {/* <AdminRouting/>*/}
       {/* <AdminLogin/> */}
-      {/* <TutorViewEbook/> */}
+      {/* <TutorViewEbook/>*/} 
       {/* <UpdateTutor/> */}
 
 

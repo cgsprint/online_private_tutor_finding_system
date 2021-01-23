@@ -25,34 +25,34 @@ import { connect } from 'react-redux'
 
         return (
             <div>
-                 <table className="table table-info demo-request-table">
- 
-                     <thead>
- 
-                         <tr>
- 
-                             <th scope="col">Id</th>
- 
-                             <th scope="col">TutorId</th>
- 
-                             <th scope="col">Subject</th>
- 
-                             <th scope="col">LocalTime</th>
- 
-                             <th scope="col">LocalDate</th>
- 
-                             <th scope="col">ParentId</th>
- 
-                             <th colSpan="2">Actions</th>
- 
-                         </tr>
- 
-                     </thead>
- 
-                 <tbody>
- 
+                <table className="table table-info demo-request-table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th scope="col">Id</th>
+
+                            <th scope="col">TutorId</th>
+
+                            <th scope="col">Subject</th>
+
+                            <th scope="col">LocalTime</th>
+
+                            <th scope="col">LocalDate</th>
+
+                            <th scope="col">ParentId</th>
+
+                            <th colSpan="2">Actions</th>
+
+                        </tr>
+
+                    </thead>
+
+                <tbody>
+
                    {
-                      this.props.demoRequestList.map((request, index) =>(
+                      this.state.demoRequestList.map((request, index) =>(
 
                         <tr key={index}>
                          <th>{request.Id}</th>
@@ -72,6 +72,8 @@ import { connect } from 'react-redux'
                       ))
                 }
                  </tbody>
+                  
+
 
                  </table>
              </div>
@@ -92,10 +94,10 @@ const mapDispatchToProps = (dispatch) => {
           return  dispatch(actionCreated.getAllDemoRequests())
         },
         onAcceptRequest: () => {
-            return dispatch(actionCreated.onAcceptRequest(Id))
+            return dispatch(actionCreated.onAcceptRequest())
         },
         onDeclineRequest: () => {
-            return dispatch(actionCreated.onDeclineRequest(Id))
+            return dispatch(actionCreated.onDeclineRequest())
         },
         clearState: () => {
           return  dispatch(actionCreated.clearState())
