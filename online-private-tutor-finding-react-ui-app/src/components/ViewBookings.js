@@ -1,18 +1,11 @@
 
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import * as actionCreated from './actions/TutorActions'
-import './style.css'
+import * as actionCreated from '../actions/TutorActions'
+
 
  class ViewBookings extends Component {
 
-    constructor(props) {
-        super(props)
-    
-        this.state = {
-             bookingList: []
-        }
-    }
     
     componentDidMount() {
         this.props.onGetBookings()
@@ -22,27 +15,27 @@ import './style.css'
     render() {
         return (
             <div>
-                <table className="table table-info demo-request-table">
-                    <thead>
-                        <tr>
-                            <th scope="col">BookingId</th>
-                            <th scope="col">ParentId</th>
-                            <th scope="col">Subject</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            this.state.bookingList.map((b) => (
+                 <table className="table table-info demo-request-table">
+                     <thead>
+                         <tr>
+                             <th scope="col">BookingId</th>
+                             <th scope="col">ParentId</th>
+                             <th scope="col">Subject</th>
+                         </tr>
+                     </thead>
+                     <tbody>
+                         {
+                            this.props.bookingList.map((b) => (
                                 <tr key={b.bookingId}>
-                                    <td>{b.bookingId}</td>
-                                    <td>{b.parentId}</td>
-                                    <td>{b.subject}</td>
+                                     <td>{b.bookingId}</td>
+                                     <td>{b.parentId}</td>
+                                     <td>{b.subject}</td>
 
-                                </tr>
+                                 </tr>
                             ))
                         }
-                    </tbody>
-                </table>
+                    </tbody> 
+                 </table> 
             </div>
         )
     }
@@ -50,7 +43,7 @@ import './style.css'
 
 const mapStateToProps = (state) => {
     return {
-        traineesList:state.traineesList,
+        bookingList:state.bookingList,
         returnedMessage: state.returnedMessage
     }
 }

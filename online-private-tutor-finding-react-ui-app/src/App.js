@@ -16,6 +16,8 @@ import TutorRouting from './components/TutorRouting';
 
 import TutorViewEbook from './components/TutorViewEbook';
 import UpdateTutor from './components/UpdateTutor';
+import RateTutor from './components/RateTutor';
+import ViewDemoRequests from './components/ViewDemoRequests';
 
 
 
@@ -24,8 +26,12 @@ function App() {
   return (
     <div className="App">
 
+      {/* <ViewDemoRequests></ViewDemoRequests> */}
+
+    <TutorRouting></TutorRouting>
       
-    <MainLogin/>
+    {/* <MainLogin/> */}
+    {/* <RateTutor></RateTutor> */}
 
 
       {/*<ParentRouting />*/}

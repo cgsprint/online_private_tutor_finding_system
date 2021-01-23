@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Switch, Link, Route } from "react-router-dom";
 import TutorLogin from './TutorLogin'
 import TutorViewEbook from './TutorViewEbook'
 import UpdateTutor from './UpdateTutor'
+import ViewBookings from './ViewBookings';
+import ViewDemoRequests from './ViewDemoRequests';
 
 
 function TutorRouting() {
@@ -23,8 +25,11 @@ function TutorRouting() {
                                         Update  Profile
                                     </Link>
                                 </li>
-
-
+                                <li className="nav-item">
+                                    <Link className="nav-link" to="/viewrequests">
+                                         Demo Requests
+                                    </Link>
+                                </li>
                                 
                                 <li className="nav-item">
                                     <Link className="nav-link" to="/viewbook">
@@ -40,6 +45,12 @@ function TutorRouting() {
                     
                     <Route path="/updatetutor">
                         <UpdateTutor></UpdateTutor>
+                    </Route>
+                    <Route path="/viewparents">
+                        <ViewBookings></ViewBookings>
+                    </Route>
+                    <Route path="/viewrequests">
+                        <ViewDemoRequests></ViewDemoRequests>
                     </Route>
 
                     <Route path="/viewbook">
