@@ -1,6 +1,6 @@
 
 import axios from 'axios'
-
+import { TUTOR_BASE_URL } from '../utils/constants'
 export const UPDATE_TUTOR = 'UPDATE_TUTOR'
 export const TUTOR_VIEW_EBOOK = 'TUTOR_VIEW_EBOOK'
 export const GET_DEMO_REQUESTS = 'GET_DEMO_REQUESTS'
@@ -53,7 +53,7 @@ const getDemoRequestsAction = (data) => {
 }
 export const getAllDemoRequests = () => {
     return (dispatch) => {
-        axios.get(BASE_URL + 'request')
+        axios.get(TUTOR_BASE_URL + '/request')
             .then((response) => {
                 dispatch(getDemoRequestsAction(response.data))
                 
@@ -69,7 +69,7 @@ const getAllBookingsAction = (data) => {
 }
 export const getAllBookings = () => {
     return (dispatch) => {
-        axios.get(BASE_URL + 'bookings')
+        axios.get(TUTOR_BASE_URL + '/bookings')
             .then((response) => {
                 dispatch(getAllBookingsAction(response.data))
                 

@@ -33,7 +33,7 @@ function App() {
 
     {/* <TutorRouting></TutorRouting> */}
       
-    <MainLogin/>
+    {/* <MainLogin/> */}
     
     {/* <AddParent /> */}
 
@@ -49,8 +49,8 @@ function App() {
      {/* <AdminLogin/>*/}
      {/*<UpdateTutor></UpdateTutor>*/}
     {/* <TutorLogin></TutorLogin>*/}
-    {/* <TutorRouting></TutorRouting> */}
-     
+    <TutorRouting></TutorRouting>
+{/*       */}
      {/* <AdminRouting/>*/}
       {/* <AdminLogin/> */}
       {/* <TutorViewEbook/>*/} 

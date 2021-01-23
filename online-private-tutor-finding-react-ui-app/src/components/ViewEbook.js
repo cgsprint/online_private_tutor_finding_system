@@ -1,8 +1,17 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import * as actionCreated from '../actions/ParentActions'
+import * as actionCreated from '../actions/ParentViewEbookAction'
 
  class ViewEbook extends Component {
+
+    // constructor(props) {
+        // super(props)
+        // 
+        // this.state = {
+            //  renderForm: ' VIEW_EBOOK_TABLE',
+            //  tId: 0
+        // }
+    // }
 
     componentDidMount() {
         this.props.onGetAllEbooks()
@@ -11,6 +20,8 @@ import * as actionCreated from '../actions/ParentActions'
 
 
     render() {
+
+        // var render_form = this.state.renderForm;
 
         let ebookList = this.props.ebookList.map((e,index) =>{
             return (
@@ -22,7 +33,7 @@ import * as actionCreated from '../actions/ParentActions'
                 </tr>
             )
         })
-
+        // if(render_form=== 'VIEW_EBOOK_TABLE' ){
         return (
             <div>
                 <table className="table table-info demo-request-table">
@@ -40,8 +51,10 @@ import * as actionCreated from '../actions/ParentActions'
                 </table>    
             </div>
         )
+        
     }
 }
+
 
 const mapStateToProps = (state) => {
     return {

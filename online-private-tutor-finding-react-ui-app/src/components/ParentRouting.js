@@ -9,7 +9,7 @@ import EbookTable from './EbookTable';
 import RequestDemo from './RequestDemo'
 import BookTutor from './BookTutor'
 import ViewBookedTutor from './ViewBookedTutor'
-import ViewEbook from './EbookTable';
+import ViewEbook from './ViewEbook';
 
 
 export default function ParentRouting() {

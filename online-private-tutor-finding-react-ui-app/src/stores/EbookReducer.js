@@ -1,10 +1,10 @@
-import * as actionCreators from '../actions/ParentActions'
+import * as actionCreators from '../actions/ParentViewEbookAction'
 const initialState = {
     returnedMessage: 'data yet Found',
     ebookList: []
 }
 
-const reducer = (state = initialState, action) => {
+const Ebookreducer = (state = initialState, action) => {
     switch (action.type) {
         case actionCreators.GET_ALL_EBOOKS:
             let listOfEbooks = action.data.ebookList
@@ -22,4 +22,4 @@ const reducer = (state = initialState, action) => {
     }
 }
 
-export default reducer
+export default Ebookreducer

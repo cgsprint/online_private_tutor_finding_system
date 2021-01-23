@@ -1,9 +1,11 @@
 import * as actionCreators from '../actions/ParentActions'
 import * as actionCreated2 from '../actions/ParentViewTutorActions'
+import * as actionCreated3 from '../actions/ParentViewEbookAction'
 
 const initialState = {
     returnedMessage: 'data not Found',
-    tutorsList: []
+    tutorsList: [],
+    ebookList: []
 }
 const parentReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -27,6 +29,17 @@ const parentReducer = (state = initialState, action) => {
             return {
                 returnedMessage: messageAfterAddition
             }
+            case actionCreated3.GET_ALL_EBOOKS:
+                let listOfEbooks = action.data.ebookList
+                
+                console.log(action.data)
+                console.log('List of ebooks')
+                console.log(listOfEbooks)
+                
+                return {
+                    
+                    ebookList: listOfEbooks
+                }
             default:
             return state
     }

@@ -4,7 +4,9 @@ import * as actionCreators from '../actions/TutorActions'
 
 const initialState = {
     returnedMessage: 'data yet Found',
-    ebooklist: []
+    ebooklist: [],
+    requestList: [],
+    bookingList: []
 }
 
 const reducer = (state = initialState, action) => {
@@ -33,6 +35,28 @@ const reducer = (state = initialState, action) => {
                 returnedMessage: messageAfterUpdation,
                 traineesList: listAfterUpdation
             }
+            case actionCreators.GET_DEMO_REQUESTS:
+                let listofrequests = action.data.requestList
+                
+                console.log(action.data)
+                console.log('List of requests')
+                console.log(listofrequests)
+                
+                return {
+                    
+                    requestList: listofrequests
+                }
+                case actionCreators.GET_ALL_BOOKINGS:
+                    let listofbookings = action.data.bookingList
+                    
+                    console.log(action.data)
+                    console.log('List of requests')
+                    console.log(listofbookings)
+                    
+                    return {
+                        
+                        bookingList: listofbookings
+                    }
           case actionCreators.CLEAR_STATE:
                 return {
                     returnedMessage: '',
