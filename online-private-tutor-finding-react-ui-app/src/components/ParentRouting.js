@@ -4,7 +4,7 @@ import ParentHome from './ParentHome';
 import ViewTutor from './ViewTutor';
 
 import RateTutor from './RateTutor';
-import EbookTable from './EbookTable';
+import EbookTable from './AdminEbookTable';
 
 import RequestDemo from './RequestDemo'
 import BookTutor from './BookTutor'

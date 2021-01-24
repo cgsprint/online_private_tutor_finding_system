@@ -25,7 +25,7 @@ function App() {
     <div className="App">
 
       
-    {/*<MainLogin/>*/}
+    {/* <MainLogin/> */}
     
 
 
@@ -36,11 +36,11 @@ function App() {
       {/* <ParentTable/> */}
       {/* <TutorTable/> */}
 
-     {/* <AdminRouting/> */}
+     <AdminRouting/>
      {/* <AdminLogin/>*/}
      {/*<UpdateTutor></UpdateTutor>*/}
     {/* <TutorLogin></TutorLogin>*/}
-    <TutorRouting></TutorRouting>
+    {/* <TutorRouting></TutorRouting> */}
      
      {/* <AdminRouting/>*/}
       {/* <AdminLogin/> */}

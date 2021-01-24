@@ -1,9 +1,8 @@
-import { withRouter } from 'react-router-dom';
+
 import React from  'react';
-import * as actionCreators from '../actions/TutorActions'
 import { connect } from 'react-redux';
-
-
+import { withRouter } from 'react-router-dom';
+import * as actionCreators from '../actions/TutorActions'
 
 
  class UpdateTutor extends React.Component{  
@@ -55,9 +54,9 @@ import { connect } from 'react-redux';
 
   
 
-//   componentDidMount() {
-//     this.props.clearState()
-// }
+  componentDidMount() {
+    this.props.clearState()
+}
 componentDidUpdate() {
     let check = this.props.returnedMessage.split(' ')
     if (check[0] === 'Successfully') {
@@ -80,6 +79,8 @@ update() {
 
 }
 
+
+
   render(){
       return(
         <div className="container mt-5 px-3 py-3 border border-dark rounded">
@@ -87,7 +88,7 @@ update() {
           <div className="col">
             <h2>Update Tutor Profile</h2>
             <br></br>
-            <form method="post">
+            <form >
               <div className="mb-3 row">
                 <label for="tutorId" className="col-sm-4 col-form-label">
                   Tutor Id
@@ -119,16 +120,6 @@ update() {
                   />
                 </div>
 
-
-                <div style={{ fontSize: 12, color: "red" }}>
-                  {/* {this.state.nameError} */}
-                </div>
-
-                <div style={{fontSize:12,color:"red"}}>
-        {/* {this.state.nameError} */}
-        </div>
-
-
               </div>
 
               <div className="mb-3 row">
@@ -154,7 +145,8 @@ update() {
                 <div className="col-sm-5">
                   <input
                     type="password"
-                   
+                    //pattern="(?=.\d)(?=.[a-z])(?=.*[A-Z]).{8,}"
+                    pattern="[A-Z]{1,}[a-z]{1,}[0-9]{1,}[a-z]{1,}"
                     className="form-control form-control-sm"
                     name="tutorPassword"
                     id="tutorPassword"
@@ -186,8 +178,8 @@ update() {
                 </label>
                 <div className="col-sm-5">
                   <input
-                    type="number"
-                    pattern="[6-9]{4}[0-9]{6}"
+                    type="text"
+                    pattern="^[7-9]{1}[0-9]{2}[0-9]{2}[0-9]{3}[0-9]{2}"
                     className="form-control form-control-sm"
                     name="tutorPhoneNo"
                     id="tutorPhoneNo"
@@ -195,10 +187,7 @@ update() {
                     required
                   />
                 </div>
-
-                <div style={{fontSize:12,color:"red"}}>
-        {/* {this.state.phoneError} */}
-        </div>
+               
               </div>
 
               <div className="mb-3 row">
