@@ -1,8 +1,15 @@
-
+import { withRouter } from 'react-router-dom';
 import React from  'react';
+<<<<<<< HEAD
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import * as actionCreators from '../actions/TutorActions'
+=======
+import * as actionCreators from '../actions/TutorActions'
+import { connect } from 'react-redux';
+
+
+>>>>>>> e33c488336c5ae59ca6e275b1efbe5da12ce99e6
 
 
  class UpdateTutor extends React.Component{  
@@ -76,9 +83,9 @@ import * as actionCreators from '../actions/TutorActions'
 
   
 
-  componentDidMount() {
-    this.props.clearState()
-}
+//   componentDidMount() {
+//     this.props.clearState()
+// }
 componentDidUpdate() {
     let check = this.props.returnedMessage.split(' ')
     if (check[0] === 'Successfully') {
@@ -141,6 +148,16 @@ update() {
                     
                   />
                 </div>
+
+
+                <div style={{ fontSize: 12, color: "red" }}>
+                  {/* {this.state.nameError} */}
+                </div>
+
+                <div style={{fontSize:12,color:"red"}}>
+        {/* {this.state.nameError} */}
+        </div>
+
 
               </div>
 
@@ -209,7 +226,10 @@ update() {
                     
                   />
                 </div>
-               
+
+                <div style={{fontSize:12,color:"red"}}>
+        {/* {this.state.phoneError} */}
+        </div>
               </div>
 
               <div className="mb-3 row">

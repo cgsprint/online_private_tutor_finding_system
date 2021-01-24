@@ -1,10 +1,16 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Link, Route } from "react-router-dom";
-import ViewTutor from './ViewTutor';
+import ParentHome from './ParentHome';
+import ViewTutorTable from './ViewTutorTable';
+
+import RateTutor from './RateTutor';
+import EbookTable from './EbookTable';
+
 import RequestDemo from './RequestDemo'
 import BookTutor from './BookTutor'
 import ViewBookedTutor from './ViewBookedTutor'
-import ViewEBook from './ViewEBook'
+import ViewEbook from './ViewEbook';
+
 
 export default function ParentRouting() {
     return (
@@ -15,8 +21,13 @@ export default function ParentRouting() {
                     <div className="collapse navbar-collapse" id="navbarNav">
                         <ul className="navbar-nav">
                             <li className="nav-item">
+                                <Link className="nav-link" to="/">
+                                    
+                                </Link>
+                            </li>
+                            <li className="nav-item">
                                 <Link className="nav-link" to="/viewTutor">
-                                    View Parents
+                                    View Tutor
                                 </Link>
                             </li>
                             <li className="nav-item">
@@ -50,8 +61,11 @@ export default function ParentRouting() {
             </nav>
 
             <Switch>
+                <Route  exact path="/">
+                    <ParentHome/>
+                </Route>
                 <Route  exact path="/viewTutor">
-                    <ViewTutor />
+                    <ViewTutorTable />
                 </Route>
 
                 <Route path="/requestDemo">
@@ -67,10 +81,13 @@ export default function ParentRouting() {
                 </Route>
 
                 <Route path="/rateTutor">
-                    
+                    <RateTutor/>
                 </Route>
                 <Route path="/viewEbook">
-                    <ViewEBook />
+
+                <ViewEbook></ViewEbook>
+
+
                 </Route>
             </Switch>
         </div>

@@ -5,19 +5,23 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import thunk from "redux-thunk";
+import { applyMiddleware, createStore } from 'redux';
+import reducer from './reducers/AdminReducer.js'
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { createStore, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk'
-import reducer from './stores/TutorReducer'
+
+
 const store = createStore(reducer, applyMiddleware(thunk))
 
 ReactDOM.render(
   <React.StrictMode>
+
+    
+
    <Provider store={store}>
+
       <BrowserRouter>
         <App  store={store} />
       </BrowserRouter>

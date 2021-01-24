@@ -1,5 +1,12 @@
 import React, { Component } from "react";
-import AddParent from './AddParent'
+import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import AddParent from './RegisterParent'
+import AdminRouting from './AdminRouting'
+import TutorRouting from './TutorRouting'
+import ParentRouting from './ParentRouting'
+import * as actionCreators from '../actions/ValidateUser'
+
 
 export class MainLogin extends Component {
   constructor(props) {
@@ -47,15 +54,24 @@ export class MainLogin extends Component {
     }
   };
 
-  userLogin = () => {
+  userLogin = (e) => {
     // alert(
     //   this.state.userRole+ " " + this.state.userPassword +" "+ this.state.userUsername
     // );
 
+    let User = {
+      userUsername :this.state.userUsername,
+      userPassword : this.state.userPassword,
+      userRole :this.state.userRole
+    }
 
-
+    console.log("in userLogin")
+    this.props.onValidateUser(User)
+    e.preventDefault();
 
   };
+
+  
 
   renderRegister = () =>
   {
@@ -64,8 +80,29 @@ export class MainLogin extends Component {
     })
   }
 
+  // componentDidUpdate() {
+  //   if(this.state.userRole === 'admin' && this.props.status)
+  //   {
+  //     this.setState({
+  //       renderPage : "ADMIN_ROUTING"
+  //     })
+  //   } 
+  // }
+
   render() {
     const renderComponent = this.state.renderPage;
+
+   
+      
+      // if(this.props.status === 200 || this.state.userRole === 'admin')
+      // {
+      //     return (<div>
+      //       <h2>Admin</h2>
+      //     </div>
+      //     )
+      // }
+    
+
     if(renderComponent === "MAIN_LOGIN")
     {
       return (
@@ -188,7 +225,19 @@ export class MainLogin extends Component {
               </div>
             </div>
           </div>
-        </div>
+          <div className={"alert"} role="alert">
+              { 
+                this.props.status === 200 ? 
+                (this.state.userRole === 'admin' ? this.setState({renderPage: "ADMIN_ROUTING"}) :
+                (this.state.userRole === 'tutor' ? this.setState({renderPage: "TUTOR_ROUTING"}) : 
+                (this.state.userRole === 'parent' ? this.setState({renderPage: "PARENT_ROUTING"}) : <div></div>))) : <div></div>
+              }
+          </div>
+          
+          </div>
+          
+          
+      
       );
     }
 
@@ -199,11 +248,102 @@ export class MainLogin extends Component {
         <AddParent/>
       </div>);
     }
+    else if(this.state.renderPage === 'ADMIN_ROUTING')
+    {
+      return (
+      <div>
+        <AdminRouting/>
+      </div>);
+    }
+    else if(this.state.renderPage === 'TUTOR_ROUTING')
+    {
+      return (
+      <div>
+        <TutorRouting/>
+      </div>);
+    }
+    else if(this.state.renderPage === 'PARENT_ROUTING')
+    {
+      return (
+      <div>
+        <ParentRouting/>
+      </div>);
+    }
     else
     {
       return <div>{this.state.renderPage}</div>;
     }
+
+    
+
+    // if(this.props.status === 200 && this.state.userRole === "admin")
+    // {
+    //   return (
+    //     <div>
+    //       <h2>Admin success</h2>
+    //     </div>
+    //   );
+    // }
+    // else if(this.props.status === 200 && this.state.userRole === "tutor")
+    // {
+    //   return (
+    //     <div>
+    //       <h2>Tutor success</h2>
+    //     </div>
+    //   );
+    // }
+    // else if(this.props.status === 200 && this.state.userRole === "parent")
+    // {
+    //   return (
+    //     <div>
+    //       <h2>Tutor success</h2>
+    //     </div>
+    //   );
+    // }
+    // else
+    // {
+    //   return <div>{this.state.renderPage}</div>;
+    // }
+  }
+
+  
+}
+
+const timer = () => {
+    setInterval(() => {
+      if(this.state.status === 200)
+      {
+        this.setState({
+          renderPage: "ADMIN_ROUTING"
+        })
+      }
+
+    }, 1000);
+}
+
+
+
+const mapStateToProps = (state) => {
+  return {
+      returnedMessage: state.returnedMessage,
+      status: state.status
   }
 }
 
-export default MainLogin;
+const mapDispatchToProps = (dispatch) => {
+  return {
+      onValidateUser: (User) => {
+          console.log("in on validate user")
+          dispatch(actionCreators.validateUser(User))
+      }
+      
+
+  }
+
+  
+
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(MainLogin))
+// export default MainLogin
+

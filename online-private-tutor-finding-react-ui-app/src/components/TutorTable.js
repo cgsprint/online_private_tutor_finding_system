@@ -1,6 +1,11 @@
 import React, { Component } from 'react'
 
 export class TutorTable extends Component {
+
+    // componentDidMount() {
+    //     this.props.onGetTutors()
+    // }
+
     render() {
         return (
             <div>
@@ -37,6 +42,31 @@ export class TutorTable extends Component {
         )
     }
 }
+
+
+// const mapStateToProps = (state) => {
+//     return {
+//         traineesList:state.traineesList,
+//         returnedMessage: state.returnedMessage
+//     }
+// }
+
+// const mapDispatchToProps = (dispatch) => {
+//     return {
+//         onGetTrainees: () => {
+//           return  dispatch(actionCreated.getAllTrainees())
+//         },
+//         onDeleteTrainee: (traineeId, newTraineeObject) => {
+//           return dispatch(actionCreated.deleteTrainee(traineeId, newTraineeObject))
+//         },
+//         clearState: () => {
+//           return  dispatch(actionCreated.clearState())
+
+//         }
+
+//     }
+
+// }
 
 export default TutorTable
 
