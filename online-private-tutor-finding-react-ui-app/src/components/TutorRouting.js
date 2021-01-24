@@ -42,7 +42,7 @@ function TutorRouting() {
                         <UpdateTutor></UpdateTutor>
                     </Route>
 
-                    <Route path="/viewbook">
+                    <Route path="/viewEbook">
                         <TutorViewEbook></TutorViewEbook>
                     </Route>
                 </Switch>

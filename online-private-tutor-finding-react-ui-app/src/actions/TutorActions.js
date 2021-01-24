@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 import axios from 'axios'
 
 export const UPDATE_TUTOR = 'UPDATE_TUTOR'
@@ -37,7 +37,7 @@ const TutorViewEbookAction = (data) => {
 }
 export const getAllEbooks = () => {
     return (dispatch) => {
-        axios.get(BASE_URL+'viewEbooks')
+        axios.get(BASE_URL+'viewEbook')
             .then((response) => {
                 dispatch(TutorViewEbookAction(response.data))
                 
@@ -148,5 +148,4 @@ export const clearState = () => {
         dispatch(clearStateAction())
     }
 }
-=======
->>>>>>> 69974a77c41f07a6f5980fd5f921baa6617b134a
+

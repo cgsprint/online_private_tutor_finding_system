@@ -1,6 +1,8 @@
 
 import React from  'react';
-
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import * as actionCreators from '../actions/TutorActions'
 
 
  class UpdateTutor extends React.Component{  
@@ -17,38 +19,60 @@ import React from  'react';
     this.phonenumber = React.createRef();
     this.qualification = React.createRef();
 
+    this.state = {
+      nameError: "",
+      usernameError: "",
+      passwordError: "",
+      subjectError: "",
+      phoneNoError: "",
+      qualificationsError: "",
+      addressError: "",
+    };
+
   
   }
 
   
-  validate=()=>{
- let usernameError="";
- 
- let phoneError="";
-
-
-    if (this.state.username.length > 5) {
-      usernameError = "username  should be more than 5 characters";
-    }
-
   
-
-      if(!this.state.phonenumber.length==10){
-        phoneError="mobile number should  be 10";
-      }
-
+    validate = (e) => {
+      let {nameError,usernameError,passwordError,subjectError,phoneNoError,addressError,qualificationsError} = this.state;
     
-
-    if ( usernameError || phoneError) {
-      this.setState({
-        
-        usernameError,      
-        phoneError,
-      });
-      return false;
-    }
-    return true;
-  };
+      if (!this.name.current.value) {
+          nameError="This field can not be blank"
+      }
+      if(!this.username.current.value){
+          usernameError= "This field can not be blank"
+      }
+      if (!this.password.current.value) {
+          passwordError= "This field can not be blank"
+      }
+     
+      if(!this.subject.current.value){
+          subjectError= "This field can not be blank"
+      }
+      if (!this.phoneNumber.current.value) {
+          phoneNoError= "This field can not be blank"
+      }
+     
+      if(!this.address.current.value){
+          addressError= "This field can not be blank"
+      }
+      if(!this.qualifications.current.value){
+          qualificationsError= "This field can not be blank"
+      }
+      if(nameError||usernameError||passwordError||subjectError||phoneNoError||addressError||qualificationsError){
+        this.setState({nameError,usernameError,passwordError,subjectError,phoneNoError,addressError,qualificationsError})
+        setTimeout(() => {
+          this.setState({nameError:'',usernameError:'',passwordError:'',subjectError:'',phoneNoError:'',addressError:'',qualificationsError:''})
+          
+        }, 1000);
+        return false;
+      }
+  
+      return true;
+      
+    };
+  
 
   
 
@@ -77,6 +101,8 @@ update() {
 
 }
 
+
+
   render(){
       return(
         <div className="container mt-5 px-3 py-3 border border-dark rounded">
@@ -84,7 +110,7 @@ update() {
           <div className="col">
             <h2>Update Tutor Profile</h2>
             <br></br>
-            <form method="post">
+            <form >
               <div className="mb-3 row">
                 <label for="tutorId" className="col-sm-4 col-form-label">
                   Tutor Id
@@ -96,7 +122,7 @@ update() {
                     name="tutorId"
                     id="tutorId"
                     ref={this.tutorId}
-                    required
+                    
                   />
                 </div>
               </div>
@@ -112,7 +138,7 @@ update() {
                     name="tutorName"
                     id="tutorName"
                     ref={this.name}
-                    required
+                    
                   />
                 </div>
 
@@ -129,7 +155,7 @@ update() {
                     name="tutorUsername"
                     id="tutorUsername"
                     ref={this.username}
-                    required
+                    
                   />
                 </div>
               </div>
@@ -141,12 +167,13 @@ update() {
                 <div className="col-sm-5">
                   <input
                     type="password"
-                   
+                    //pattern="(?=.\d)(?=.[a-z])(?=.*[A-Z]).{8,}"
+                    pattern="[A-Z]{1,}[a-z]{1,}[0-9]{1,}[a-z]{1,}"
                     className="form-control form-control-sm"
                     name="tutorPassword"
                     id="tutorPassword"
                     ref={this.password}
-                    required
+                    
                   />
                 </div>
               </div>
@@ -162,7 +189,7 @@ update() {
                     name="tutorSubject"
                     id="tutorSubject"
                     ref={this.subject}
-                    required
+                    
                   />
                 </div>
               </div>
@@ -173,13 +200,13 @@ update() {
                 </label>
                 <div className="col-sm-5">
                   <input
-                    type="number"
-                    pattern="[6-9]{4}[0-9]{6}"
+                    type="text"
+                    pattern="^[7-9]{1}[0-9]{2}[0-9]{2}[0-9]{3}[0-9]{2}"
                     className="form-control form-control-sm"
                     name="tutorPhoneNo"
                     id="tutorPhoneNo"
                     ref={this.phonenumber}
-                    required
+                    
                   />
                 </div>
                
@@ -196,7 +223,7 @@ update() {
                     name="tutorAddress"
                     id="tutorAddress"
                     ref={this.address}
-                    required
+                   
                   />
                 </div>
               </div>
@@ -215,7 +242,7 @@ update() {
                     name="tutorQualification"
                     id="tutorQualification"
                     ref={this.qualification}
-                    required
+                   
                   />
                 </div>
               </div>

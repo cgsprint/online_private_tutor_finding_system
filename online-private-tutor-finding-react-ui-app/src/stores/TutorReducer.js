@@ -10,16 +10,10 @@ const initialState = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
       case actionCreators.TUTOR_VIEW_EBOOK:
-          let listOfEbooks = action.data.ebooklist
-          let resMessage=action.data.resMessage
-          console.log(action.data)
-          console.log('List of Ebooks')
-          console.log(listOfEbooks)
-          if(listOfEbooks.length==0){
-              resMessage='No Data Found'
-          }
+          let listOfEbooks = action.data
+          
           return {
-              returnedMessage: resMessage,
+             
               ebooklist: listOfEbooks
           }
 

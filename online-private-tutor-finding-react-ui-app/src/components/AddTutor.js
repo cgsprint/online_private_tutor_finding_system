@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from 'react-redux';
+import * as actionCreated from '../actions/TutorActions'
 
 export class AddUpdateTutor extends Component {
   constructor(props) {
