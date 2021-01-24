@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 
 import axios from 'axios'
+=======
+>>>>>>> e33c488336c5ae59ca6e275b1efbe5da12ce99e6
 
+import axios from 'axios'
+import { TUTOR_BASE_URL } from '../utils/constants'
 export const UPDATE_TUTOR = 'UPDATE_TUTOR'
 export const TUTOR_VIEW_EBOOK = 'TUTOR_VIEW_EBOOK'
 export const GET_DEMO_REQUESTS = 'GET_DEMO_REQUESTS'
@@ -37,7 +42,7 @@ const TutorViewEbookAction = (data) => {
 }
 export const getAllEbooks = () => {
     return (dispatch) => {
-        axios.get(BASE_URL+'viewEbooks')
+        axios.get(BASE_URL+'viewEbook')
             .then((response) => {
                 dispatch(TutorViewEbookAction(response.data))
                 
@@ -53,7 +58,7 @@ const getDemoRequestsAction = (data) => {
 }
 export const getAllDemoRequests = () => {
     return (dispatch) => {
-        axios.get(BASE_URL + 'requests')
+        axios.get(TUTOR_BASE_URL + '/request')
             .then((response) => {
                 dispatch(getDemoRequestsAction(response.data))
                 
@@ -69,7 +74,7 @@ const getAllBookingsAction = (data) => {
 }
 export const getAllBookings = () => {
     return (dispatch) => {
-        axios.get(BASE_URL + 'bookings')
+        axios.get(TUTOR_BASE_URL + '/bookings')
             .then((response) => {
                 dispatch(getAllBookingsAction(response.data))
                 
@@ -148,3 +153,7 @@ export const clearState = () => {
         dispatch(clearStateAction())
     }
 }
+<<<<<<< HEAD
+
+=======
+>>>>>>> e33c488336c5ae59ca6e275b1efbe5da12ce99e6

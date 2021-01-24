@@ -1,128 +1,109 @@
 
 import React, { Component } from 'react'
-import * as actionCreated from '../actions/TutorActions'
+import * as actionCreators from '../actions/TutorActions'
 import { connect } from 'react-redux'
 
- class ViewDemoRequests extends Component {
+
+export class ViewDemoRequest extends Component {
 
     constructor(props) {
         super(props)
     
         this.state = {
-             demoRequestList: [
-                 {
-                 Id: 1,
-                 tutorId: 12,
-                 subject: "English",
-                 locattime: "12:00",
-                 localdate: "10/jan/2010",
-                 parentId: 45
-                 }
-             ]
+             renderForm: 'VIEW_DEMO_REQUEST_TABLE',
+             tId: 0
         }
     }
     
 
+
     componentDidMount() {
-        this.props.onGetDemoRequests()
+        this.props.onGetDemoRequests();
     }
 
-    Accept(Id) {
-        this.props.onAcceptRequest(Id)
-    }
+    // accept = (Id) => {
+    //     // console.log(Id)
+    //     this.props.onAcceptRequest(Id);
+    // }
 
-    Decline(Id) {
-        this.props.onDeclineRequest(Id)
-    }
-    
+    // decline = (Id) => {
+    //     // console.log(tutorId)
+    //    this.props.onDeclineRequest(Id)
+    // }
 
     render() {
+       
+        
+        var render_form = this.state.renderForm;
 
+        let requestList= () =>{this.props.requestsList.map((request,index)=>{
+            return(
+                <tr key={index}>
+                    <th>{request.Id}</th>
+                    <td>{request.tutorId}</td>
+                    <td>{request.subject}</td>
+                    <td>{request.localtime}</td> 
+                    <td>{request.localdate}</td> 
+                    <td>{request.parentId}</td> 
+                     <td colSpan="2">
+                        <button onClick={this.accept.bind(this,request.Id)} className="btn btn-info btn-sm">ACCEPT</button>
+                        <button onClick={this.decline.bind(this,request.Id)} className="btn btn-danger ml-5 btn-sm">DECLINE</button>
+                    </td> 
+                </tr>
+            )
+        })
+    }
+        // if(render_form === 'VIEW_TUTOR_TABLE')
+        // {
+            return (
 
-
-        return (
+           
             <div>
-                <table className="table table-info demo-request-table">
-
+                
+                <h2 className="text-center">Demo Request List</h2>
+                <table className="table table-stripped">
                     <thead>
-
                         <tr>
-
                             <th scope="col">Id</th>
-
                             <th scope="col">TutorId</th>
-
                             <th scope="col">Subject</th>
-
-                            <th scope="col">LocalTime</th>
-
-                            <th scope="col">LocalDate</th>
-
+                            <th scope="col">Time</th>
+                            <th scope="col">Date</th>
                             <th scope="col">ParentId</th>
-
-                            <th colSpan="2">Actions</th>
-
+                            <th scope="col">Actions</th>
                         </tr>
-
                     </thead>
 
-                <tbody>
+                    <tbody>
+                        {requestList}
+                    </tbody>
 
-                  {/* {
-                      this.state.demoRequestList.map((request, index) =>(
-
-                        <tr key={index}>
-                        <th>{request.Id}</th>
-                        <td>{request.tutorId}</td>
-                        <td>{request.subject}</td>
-                        <td>{request.localtime}</td>
-                        <td>{request.localdate}</td>
-                        <td>{request.parentId}</td>
-                        <td>     
-                        <button onClick={this.Accept.bind(this, request.Id)} className="btn btn-primary">Accept</button>
-                        </td>
-                        <td>
-                        <button onClick={this.Decline.bind(this, request.Id)} className="btn btn-primary">Decline</button>
-                        </td> 
-                        </tr>
-
-                      ))
-                  } */}
-
-                </tbody>
-
+                    
+                    
                 </table>
+
             </div>
         )
+        
+        
     }
 }
 
+
 const mapStateToProps = (state) => {
     return {
-        demoRequestList:state.demoRequestList,
-        
+        requestsList:state.requestsList,
+        returnedMessage: state.returnedMessage
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
         onGetDemoRequests: () => {
-          return  dispatch(actionCreated.getAllDemoRequests())
-        },
-        onAcceptRequest: () => {
-            return dispatch(actionCreated.onAcceptRequest())
-        },
-        onDeclineRequest: () => {
-            return dispatch(actionCreated.onDeclineRequest())
-        },
-        clearState: () => {
-          return  dispatch(actionCreated.clearState())
-
+          return  dispatch(actionCreators.getAllDemoRequests())
         }
-
     }
 
 }
 
-
-export default connect(mapStateToProps, mapDispatchToProps)(ViewDemoRequests)
+export default connect(mapStateToProps, mapDispatchToProps)(ViewDemoRequest)

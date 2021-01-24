@@ -1,20 +1,29 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import * as actionCreated from '../actions/ParentViewEbookAction'
 
- class ViewEBook extends Component {
+ class ViewEbook extends Component {
 
-    constructor(props) {
-        super(props)
-    
-        this.state = {
-             ebookList: []
-        }
+    // constructor(props) {
+        // super(props)
+        // 
+        // this.state = {
+            //  renderForm: ' VIEW_EBOOK_TABLE',
+            //  tId: 0
+        // }
+    // }
+
+    componentDidMount() {
+        this.props.onGetAllEbooks()
     }
     
 
 
     render() {
 
-        let ebookList = this.state.ebookList.map((e,index) =>{
+        // var render_form = this.state.renderForm;
+
+        let ebookList = this.props.ebookList.map((e,index) =>{
             return (
                 <tr key={index}>
                     <td>{e.ebookid}</td>
@@ -24,7 +33,7 @@ import React, { Component } from 'react'
                 </tr>
             )
         })
-
+        // if(render_form=== 'VIEW_EBOOK_TABLE' ){
         return (
             <div>
                 <table className="table table-info demo-request-table">
@@ -42,7 +51,29 @@ import React, { Component } from 'react'
                 </table>    
             </div>
         )
+        
     }
 }
 
-export default ViewEBook
+
+const mapStateToProps = (state) => {
+    return {
+        ebookList:state.ebookList
+        
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onGetAllEbooks: () => {
+          return  dispatch(actionCreated.getAllEbooks())
+        }
+
+    }
+
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(ViewEbook)
+
+

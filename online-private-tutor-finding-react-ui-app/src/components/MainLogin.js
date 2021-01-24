@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import AddParent from './AddParent'
+import AddParent from './RegisterParent'
 import AdminRouting from './AdminRouting'
 import TutorRouting from './TutorRouting'
 import ParentRouting from './ParentRouting'

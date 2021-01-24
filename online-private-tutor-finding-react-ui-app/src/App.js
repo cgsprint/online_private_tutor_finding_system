@@ -16,6 +16,11 @@ import TutorRouting from './components/TutorRouting';
 
 import TutorViewEbook from './components/TutorViewEbook';
 import UpdateTutor from './components/UpdateTutor';
+import ParentRouting from './components/ParentRouting'
+import  AddParent  from './components/RegisterParent';
+import RateTutor from './components/RateTutor';
+import ViewDemoRequests from './components/ViewDemoRequests';
+
 
 
 
@@ -24,12 +29,18 @@ function App() {
   return (
     <div className="App">
 
+      {/* <ViewDemoRequests></ViewDemoRequests> */}
+
+    {/* <TutorRouting></TutorRouting> */}
       
+
     {/* <MainLogin/> */}
+
     
+    {/* <AddParent /> */}
 
 
-      {/*<ParentRouting />*/}
+      {/* <ParentRouting></ParentRouting> */}
     {/* <ParentLogin />*/}
      
       {/* <AddUpdateTutor/> */}
@@ -40,8 +51,13 @@ function App() {
      {/* <AdminLogin/>*/}
      {/*<UpdateTutor></UpdateTutor>*/}
     {/* <TutorLogin></TutorLogin>*/}
+
     {/* <TutorRouting></TutorRouting> */}
+
      
+
+    <TutorRouting></TutorRouting>
+
      {/* <AdminRouting/>*/}
       {/* <AdminLogin/> */}
       {/* <TutorViewEbook/>*/} 

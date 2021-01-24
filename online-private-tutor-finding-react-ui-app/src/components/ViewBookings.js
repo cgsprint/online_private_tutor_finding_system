@@ -1,11 +1,8 @@
 
 import React, { Component } from 'react'
-
-// import './style.css'
-
 import { connect } from 'react-redux'
 import * as actionCreated from '../actions/TutorActions'
-// import './style.css'
+
 
  class ViewBookings extends Component {
 
@@ -23,9 +20,19 @@ import * as actionCreated from '../actions/TutorActions'
 
 
     render() {
+
+        let bookingList= () => {this.props.bookingsList.map((b,index)=>{
+            return(
+                <tr key={index}>
+                    <th>{b.Id}</th>
+                    <td>{b.parentId}</td>
+                    <td>{b.subject}</td>
+		</tr>
+		)}
+		)}
         return (
             <div>
-                <table className="table table-info demo-request-table">
+                <table className="table table-stripped">
                     <thead>
                         <tr>
                             <th scope="col">BookingId</th>
@@ -34,16 +41,7 @@ import * as actionCreated from '../actions/TutorActions'
                         </tr>
                     </thead>
                     <tbody>
-                        {/* {
-                            this.state.bookingList.map((b) => (
-                                <tr key={b.bookingId}>
-                                    <td>{b.bookingId}</td>
-                                    <td>{b.parentId}</td>
-                                    <td>{b.subject}</td>
-
-                                </tr>
-                            ))
-                        } */}
+                        {bookingList}
                     </tbody>
                 </table>
             </div>
@@ -53,7 +51,7 @@ import * as actionCreated from '../actions/TutorActions'
 
 const mapStateToProps = (state) => {
     return {
-        traineesList:state.traineesList,
+        bookingsList:state.bookingsList,
         returnedMessage: state.returnedMessage
     }
 }

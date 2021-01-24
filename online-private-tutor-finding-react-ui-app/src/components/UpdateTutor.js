@@ -5,6 +5,9 @@ import { withRouter } from 'react-router-dom';
 import * as actionCreators from '../actions/TutorActions'
 
 
+
+
+
  class UpdateTutor extends React.Component{  
   
   constructor(props){
@@ -19,38 +22,60 @@ import * as actionCreators from '../actions/TutorActions'
     this.phonenumber = React.createRef();
     this.qualification = React.createRef();
 
+    this.state = {
+      nameError: "",
+      usernameError: "",
+      passwordError: "",
+      subjectError: "",
+      phoneNoError: "",
+      qualificationsError: "",
+      addressError: "",
+    };
+
   
   }
 
   
-  validate=()=>{
- let usernameError="";
- 
- let phoneError="";
-
-
-    if (this.state.username.length > 5) {
-      usernameError = "username  should be more than 5 characters";
-    }
-
   
-
-      if(!this.state.phonenumber.length==10){
-        phoneError="mobile number should  be 10";
-      }
-
+    validate = (e) => {
+      let {nameError,usernameError,passwordError,subjectError,phoneNoError,addressError,qualificationsError} = this.state;
     
-
-    if ( usernameError || phoneError) {
-      this.setState({
-        
-        usernameError,      
-        phoneError,
-      });
-      return false;
-    }
-    return true;
-  };
+      if (!this.name.current.value) {
+          nameError="This field can not be blank"
+      }
+      if(!this.username.current.value){
+          usernameError= "This field can not be blank"
+      }
+      if (!this.password.current.value) {
+          passwordError= "This field can not be blank"
+      }
+     
+      if(!this.subject.current.value){
+          subjectError= "This field can not be blank"
+      }
+      if (!this.phoneNumber.current.value) {
+          phoneNoError= "This field can not be blank"
+      }
+     
+      if(!this.address.current.value){
+          addressError= "This field can not be blank"
+      }
+      if(!this.qualifications.current.value){
+          qualificationsError= "This field can not be blank"
+      }
+      if(nameError||usernameError||passwordError||subjectError||phoneNoError||addressError||qualificationsError){
+        this.setState({nameError,usernameError,passwordError,subjectError,phoneNoError,addressError,qualificationsError})
+        setTimeout(() => {
+          this.setState({nameError:'',usernameError:'',passwordError:'',subjectError:'',phoneNoError:'',addressError:'',qualificationsError:''})
+          
+        }, 1000);
+        return false;
+      }
+  
+      return true;
+      
+    };
+  
 
   
 
@@ -100,7 +125,7 @@ update() {
                     name="tutorId"
                     id="tutorId"
                     ref={this.tutorId}
-                    required
+                    
                   />
                 </div>
               </div>
@@ -116,7 +141,7 @@ update() {
                     name="tutorName"
                     id="tutorName"
                     ref={this.name}
-                    required
+                    
                   />
                 </div>
 
@@ -133,7 +158,7 @@ update() {
                     name="tutorUsername"
                     id="tutorUsername"
                     ref={this.username}
-                    required
+                    
                   />
                 </div>
               </div>
@@ -151,7 +176,7 @@ update() {
                     name="tutorPassword"
                     id="tutorPassword"
                     ref={this.password}
-                    required
+                    
                   />
                 </div>
               </div>
@@ -167,7 +192,7 @@ update() {
                     name="tutorSubject"
                     id="tutorSubject"
                     ref={this.subject}
-                    required
+                    
                   />
                 </div>
               </div>
@@ -184,7 +209,7 @@ update() {
                     name="tutorPhoneNo"
                     id="tutorPhoneNo"
                     ref={this.phonenumber}
-                    required
+                    
                   />
                 </div>
                
@@ -201,7 +226,7 @@ update() {
                     name="tutorAddress"
                     id="tutorAddress"
                     ref={this.address}
-                    required
+                   
                   />
                 </div>
               </div>
@@ -220,7 +245,7 @@ update() {
                     name="tutorQualification"
                     id="tutorQualification"
                     ref={this.qualification}
-                    required
+                   
                   />
                 </div>
               </div>

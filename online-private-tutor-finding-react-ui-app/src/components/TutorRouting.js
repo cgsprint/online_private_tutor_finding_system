@@ -33,17 +33,15 @@ function TutorRouting() {
                                         Update  Profile
                                     </Link>
                                 </li>
-
-
+                                <li className="nav-item">
+                                    <Link className="nav-link" to="/viewrequests">
+                                         Demo Requests
+                                    </Link>
+                                </li>
                                 
                                 <li className="nav-item">
                                     <Link className="nav-link" to="/viewEbook">
                                         View Ebook
-                                    </Link>
-                                </li>
-                                <li className="nav-item">
-                                    <Link className="nav-link" to="/viewdemorequests">
-                                        View Demo Requests
                                     </Link>
                                 </li>
                             </ul>
@@ -58,14 +56,17 @@ function TutorRouting() {
                     <Route path="/updatetutor">
                         <UpdateTutor></UpdateTutor>
                     </Route>
+                    <Route path="/viewparents">
+                        <ViewBookings></ViewBookings>
+                    </Route>
+                    <Route path="/viewrequests">
+                        <ViewDemoRequests></ViewDemoRequests>
+                    </Route>
 
-                    <Route path="/viewbook">
+                    <Route path="/viewEbook">
                         <TutorViewEbook></TutorViewEbook>
                     </Route>
 
-                    <Route path="/viewdemorequests">
-                        <ViewDemoRequests/>
-                    </Route>
                 </Switch>
             </div>
         </Router>
