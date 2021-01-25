@@ -5,15 +5,8 @@ export const GET_ALL_TUTORS = 'GET_ALL_TUTORS'
 
 
 
-<<<<<<< HEAD
-
-
-
-
-const addParentAction = (data) => {
-=======
 const addParentAction = (data,status) => {
->>>>>>> 1e3a46f5cfd96a96a8e171f60134644547efdbc2
+
     return {
         type: ADD_Parent,
         data,

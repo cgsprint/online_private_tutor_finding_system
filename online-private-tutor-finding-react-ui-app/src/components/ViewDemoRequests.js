@@ -35,8 +35,8 @@ export class ViewDemoRequest extends Component {
        
         
         var render_form = this.state.renderForm;
-
-        let requestList= () =>{this.props.requestsList.map((request,index)=>{
+        if(this.props.requestList!= null){
+        var requestList= () =>{this.props.requestsList.map((request,index)=>{
             return(
                 <tr key={index}>
                     <th>{request.Id}</th>
@@ -53,8 +53,9 @@ export class ViewDemoRequest extends Component {
             )
         })
     }
-        // if(render_form === 'VIEW_TUTOR_TABLE')
-        // {
+}
+        if(render_form === 'VIEW_DEMO_REQUEST_TABLE')
+        {
             return (
 
            
@@ -84,8 +85,12 @@ export class ViewDemoRequest extends Component {
 
             </div>
         )
-        
-        
+            }
+
+       else
+        {
+            return null
+        }  
     }
 }
 

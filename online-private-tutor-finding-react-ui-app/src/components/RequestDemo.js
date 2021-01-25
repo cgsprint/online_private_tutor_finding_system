@@ -37,7 +37,7 @@ import 'react-datepicker/dist/react-datepicker.css'
  
                 <div className="form-group"> 
                     <label for="subject" class="col-sm-3 col-form-label">Enter Subject:</label>
-                    <input type="email"  className="form-control form-control-sm" name="subject"  id="subject" placeholder="Enter Subject"  ref={subjectRef} required title="Enter a subject" />
+                    <input type="text"  className="form-control form-control-sm" name="subject"  id="subject" placeholder="Enter Subject"  ref={subjectRef} required title="Enter a subject" />
                 </div>
                  
                 <div className="form-group">
@@ -54,6 +54,8 @@ import 'react-datepicker/dist/react-datepicker.css'
             </div></div></div>
         );
     }
+
+
 
 
 export default RequestDemo

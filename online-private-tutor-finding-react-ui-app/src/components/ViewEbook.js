@@ -4,14 +4,14 @@ import * as actionCreated from '../actions/ParentViewEbookAction'
 
  class ViewEbook extends Component {
 
-    // constructor(props) {
-        // super(props)
-        // 
-        // this.state = {
-            //  renderForm: ' VIEW_EBOOK_TABLE',
-            //  tId: 0
-        // }
-    // }
+    constructor(props) {
+        super(props)
+        
+        this.state = {
+             renderForm: ' VIEW_EBOOK_TABLE',
+             tId: 0
+        }
+    }
 
     componentDidMount() {
         this.props.onGetAllEbooks()
@@ -21,9 +21,10 @@ import * as actionCreated from '../actions/ParentViewEbookAction'
 
     render() {
 
-        // var render_form = this.state.renderForm;
-
-        let ebookList = this.props.ebookList.map((e,index) =>{
+        var render_form = this.state.renderForm;
+        if(this.props.ebookList!== null){
+        
+        var ebookList = this.props.ebooksList.map((e,index) =>{
             return (
                 <tr key={index}>
                     <td>{e.ebookid}</td>
@@ -33,7 +34,8 @@ import * as actionCreated from '../actions/ParentViewEbookAction'
                 </tr>
             )
         })
-        // if(render_form=== 'VIEW_EBOOK_TABLE' ){
+        }
+        if(render_form=== 'VIEW_EBOOK_TABLE' ){
         return (
             <div>
                 <table className="table table-info demo-request-table">
@@ -51,14 +53,18 @@ import * as actionCreated from '../actions/ParentViewEbookAction'
                 </table>    
             </div>
         )
-        
+        }
+        else
+        {
+            return null
+        } 
     }
 }
 
 
 const mapStateToProps = (state) => {
     return {
-        ebookList:state.ebookList
+        ebooksList:state.ebooksList
         
     }
 }
