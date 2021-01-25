@@ -10,7 +10,8 @@ import * as actionCreated from '../actions/TutorActions'
         super(props)
     
         this.state = {
-             bookingList: []
+            renderForm: 'VIEW_BOOKINGS_TABLE',
+            tId: 0
         }
     }
     
@@ -21,7 +22,10 @@ import * as actionCreated from '../actions/TutorActions'
 
     render() {
 
-        let bookingList= () => {this.props.bookingsList.map((b,index)=>{
+        var render_form = this.state.renderForm;
+        if(this.props.bookingsList!== null)
+        {
+        var bookingsList =this.props.bookingsList.map((b,index)=>{
             return(
                 <tr key={index}>
                     <th>{b.Id}</th>
@@ -29,7 +33,9 @@ import * as actionCreated from '../actions/TutorActions'
                     <td>{b.subject}</td>
 		</tr>
 		)}
-		)}
+        )}
+        if(render_form === 'VIEW_BOOKINGS_TABLE')
+{
         return (
             <div>
                 <table className="table table-stripped">
@@ -41,11 +47,12 @@ import * as actionCreated from '../actions/TutorActions'
                         </tr>
                     </thead>
                     <tbody>
-                        {bookingList}
+                        {bookingsList}
                     </tbody>
                 </table>
             </div>
         )
+        }   
     }
 }
 

@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-
-import axios from 'axios'
-=======
->>>>>>> e33c488336c5ae59ca6e275b1efbe5da12ce99e6
 
 import axios from 'axios'
 import { TUTOR_BASE_URL } from '../utils/constants'
@@ -153,7 +148,3 @@ export const clearState = () => {
         dispatch(clearStateAction())
     }
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> e33c488336c5ae59ca6e275b1efbe5da12ce99e6

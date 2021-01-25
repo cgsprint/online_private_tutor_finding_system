@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import * as actionCreated from '../actions/ParentViewEbookAction'
+import * as actionCreators from '../actions/ParentViewEbookAction'
 
  class ViewEbook extends Component {
 
@@ -8,7 +8,7 @@ import * as actionCreated from '../actions/ParentViewEbookAction'
         super(props)
         
         this.state = {
-             renderForm: ' VIEW_EBOOK_TABLE',
+             renderForm: 'VIEW_EBOOK_TABLE',
              tId: 0
         }
     }
@@ -22,12 +22,16 @@ import * as actionCreated from '../actions/ParentViewEbookAction'
     render() {
 
         var render_form = this.state.renderForm;
-        if(this.props.ebookList!== null){
+        console.log("render_form ", render_form)
+        console.log("Ebook List " ,this.props.ebooksList)
         
-        var ebookList = this.props.ebooksList.map((e,index) =>{
+
+        if(this.props.ebooksList!== null){
+        
+        var ebooksList = this.props.ebooksList.map((e,index) =>{
             return (
                 <tr key={index}>
-                    <td>{e.ebookid}</td>
+                    <th>{e.ebookid}</th>
                     <td>{e.title}</td>
                     <td>{e.authorname}</td>
                     <td>{e.url}</td>
@@ -35,10 +39,10 @@ import * as actionCreated from '../actions/ParentViewEbookAction'
             )
         })
         }
-        if(render_form=== 'VIEW_EBOOK_TABLE' ){
+        if(render_form === 'VIEW_EBOOK_TABLE' ){
         return (
             <div>
-                <table className="table table-info demo-request-table">
+                <table className="table table-stripped">
                     <thead>
                         <tr>
                             <th scope="col">EBookId</th>
@@ -48,7 +52,7 @@ import * as actionCreated from '../actions/ParentViewEbookAction'
                         </tr>
                     </thead>
                     <tbody>
-                        {ebookList}
+                        {ebooksList}
                     </tbody>
                 </table>    
             </div>
@@ -56,14 +60,17 @@ import * as actionCreated from '../actions/ParentViewEbookAction'
         }
         else
         {
-            return null
+            return "Table not found"
         } 
     }
 }
 
 
 const mapStateToProps = (state) => {
+    console.log(state.ebooksList)
+    console.log("Ebook Table")
     return {
+    
         ebooksList:state.ebooksList
         
     }
@@ -72,7 +79,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         onGetAllEbooks: () => {
-          return  dispatch(actionCreated.getAllEbooks())
+          return  dispatch(actionCreators.getAllEbooks())
         }
 
     }

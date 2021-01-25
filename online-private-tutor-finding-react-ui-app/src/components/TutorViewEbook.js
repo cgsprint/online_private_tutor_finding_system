@@ -1,14 +1,8 @@
 import React, { Component } from 'react';
-<<<<<<< HEAD
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
-import * as actionCreated from '../actions/TutorActions'
-=======
 import axios from 'axios'
 import * as actionCreated from '../actions/TutorActions'
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
->>>>>>> e33c488336c5ae59ca6e275b1efbe5da12ce99e6
 
 
 class TutorViewEbook extends Component {
