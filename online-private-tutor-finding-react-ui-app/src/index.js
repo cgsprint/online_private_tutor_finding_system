@@ -15,7 +15,7 @@ import tutorReducer from './stores/TutorReducer';
 
 
 
-const store = createStore(tutorReducer, applyMiddleware(thunk))
+const store = createStore(parentReducer, applyMiddleware(thunk))
 
 ReactDOM.render(
   <React.StrictMode>

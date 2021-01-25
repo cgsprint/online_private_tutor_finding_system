@@ -31,8 +31,8 @@ function App() {
 
       {/* <ViewDemoRequests></ViewDemoRequests> */}
 
-    <TutorRouting></TutorRouting>
-      
+    {/* <TutorRouting></TutorRouting> */}
+{/*        */}
 
     {/* <MainLogin/> */}
 
@@ -40,7 +40,7 @@ function App() {
     {/* <AddParent /> */}
 
 
-      {/* <ParentRouting></ParentRouting> */}
+      <ParentRouting></ParentRouting>
     {/* <ParentLogin />*/}
      
       {/* <AddUpdateTutor/> */}
