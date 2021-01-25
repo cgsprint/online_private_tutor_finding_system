@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+
+import axios from 'axios'
+=======
+>>>>>>> e33c488336c5ae59ca6e275b1efbe5da12ce99e6
 
 import axios from 'axios'
 import { TUTOR_BASE_URL } from '../utils/constants'
@@ -37,7 +42,7 @@ const TutorViewEbookAction = (data) => {
 }
 export const getAllEbooks = () => {
     return (dispatch) => {
-        axios.get(BASE_URL+'viewEbooks')
+        axios.get(BASE_URL+'viewEbook')
             .then((response) => {
                 dispatch(TutorViewEbookAction(response.data))
                 
@@ -148,3 +153,7 @@ export const clearState = () => {
         dispatch(clearStateAction())
     }
 }
+<<<<<<< HEAD
+
+=======
+>>>>>>> e33c488336c5ae59ca6e275b1efbe5da12ce99e6

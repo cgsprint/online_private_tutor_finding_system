@@ -26,6 +26,14 @@ export const validateUser = (User) => {
                 console.log(response)
                 
             })
+            .catch((err) => {
+                dispatch(validateUserAction(err,404))
+
+                setTimeout(() => {
+                    dispatch(validateUserAction(err,0))
+                        
+                }, 1500);
+            })
         } 
         if(User.userRole === 'tutor')
         {
@@ -36,6 +44,13 @@ export const validateUser = (User) => {
                 dispatch(validateUserAction(response.data,response.status))
                 console.log(response)
                 
+            }).catch((err) => {
+                dispatch(validateUserAction(err,404))
+
+                setTimeout(() => {
+                    dispatch(validateUserAction(err,0))
+                        
+                }, 1500);
             })
         } 
         if(User.userRole === 'parent')
@@ -47,6 +62,13 @@ export const validateUser = (User) => {
                 dispatch(validateUserAction(response.data,response.status))
                 console.log(response.status)
                 
+            }).catch((err) => {
+                dispatch(validateUserAction(err,404))
+
+                setTimeout(() => {
+                    dispatch(validateUserAction(err,0))
+                        
+                }, 1500);
             })
         }  
         

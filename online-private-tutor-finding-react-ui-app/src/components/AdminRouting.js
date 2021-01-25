@@ -9,7 +9,7 @@ import AddEbook from './AddEbook';
 import UpdateEbook from './UpdateEbook';
 import ParentTable from './ParentTable';
 import TutorTable from './TutorTable';
-import EbookTable from './EbookTable';
+import EbookTable from './AdminEbookTable';
 
 function AdminRouting() {
     return (
@@ -32,11 +32,6 @@ function AdminRouting() {
                                 <li className="nav-item">
                                     <Link className="nav-link" to="/addtutor">
                                         Add Tutor
-                                    </Link>
-                                </li>
-                                <li className="nav-item">
-                                    <Link className="nav-link" to="/updatetutor">
-                                        Update Tutor
                                     </Link>
                                 </li>
                                 <li className="nav-item">
@@ -73,10 +68,6 @@ function AdminRouting() {
 
                     <Route path="/addtutor">
                         <AddTutor/>
-                    </Route>
-
-                    <Route path="/updatetutor">
-                        <UpdateTutor/>
                     </Route>
 
                     <Route path="/addebook">

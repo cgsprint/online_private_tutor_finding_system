@@ -1,12 +1,33 @@
 import React, { Component } from "react";
+<<<<<<< HEAD
+import { withRouter } from "react-router-dom";
+import * as actionCreators from "../actions/RegisterTutor";
+import { connect } from "react-redux";
+=======
+<<<<<<< HEAD
+import { connect } from 'react-redux';
+import * as actionCreated from '../actions/TutorActions'
+=======
 import { withRouter } from 'react-router-dom';
 import * as actionCreators from '../actions/RegisterTutor'
 import { connect } from 'react-redux';
+>>>>>>> 11cb2b369dc6aa1263045afd3d134dbdabb279e9
 import TutorHome from "./TutorHome";
+>>>>>>> e33c488336c5ae59ca6e275b1efbe5da12ce99e6
 
 export class AddTutor extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      nameError: "",
+      usernameError: "",
+      passwordError: "",
+      subjectError: "",
+      phoneNoError: "",
+      qualificationsError: "",
+      addressError: "",
+    };
 
     this.tutorId = React.createRef();
     this.name = React.createRef();
@@ -16,39 +37,120 @@ export class AddTutor extends Component {
     this.phoneNumber = React.createRef();
     this.address = React.createRef();
     this.qualifications = React.createRef();
-    
   }
 
-  addTutor = (e) =>{
+  validate = (e) => {
+    let {
+      nameError,
+      usernameError,
+      passwordError,
+      subjectError,
+      phoneNoError,
+      addressError,
+      qualificationsError,
+    } = this.state;
 
+    if (!this.name.current.value) {
+      nameError = "This field can not be blank";
+    }
+    if (!this.username.current.value) {
+      usernameError = "This field can not be blank";
+    }
+    if (!this.password.current.value) {
+      passwordError = "This field can not be blank";
+    } else if (this.password.current.value.length < 8) {
+      passwordError = "Password must be 8 character long";
+    }
+    if (!this.subject.current.value) {
+      subjectError = "This field can not be blank";
+    }
+    if (!this.phoneNumber.current.value) {
+      phoneNoError = "This field can not be blank";
+    } else if (this.phoneNumber.current.value.length !== 10) {
+      phoneNoError = "Number must be 10 digit long";
+    }
+    if (!this.address.current.value) {
+      addressError = "This field can not be blank";
+    }
+    if (!this.qualifications.current.value) {
+      qualificationsError = "This field can not be blank";
+    }
+    if (
+      nameError ||
+      usernameError ||
+      passwordError ||
+      subjectError ||
+      phoneNoError ||
+      addressError ||
+      qualificationsError
+    ) {
+      this.setState({
+        nameError,
+        usernameError,
+        passwordError,
+        subjectError,
+        phoneNoError,
+        addressError,
+        qualificationsError,
+      });
+      setTimeout(() => {
+        this.setState({
+          nameError: "",
+          usernameError: "",
+          passwordError: "",
+          subjectError: "",
+          phoneNoError: "",
+          addressError: "",
+          qualificationsError: "",
+        });
+      }, 1000);
+      return false;
+    }
+
+    return true;
+  };
+
+  addTutor = (e) => {
+    e.preventDefault();
+    const valid = this.validate(e);
+    console.log(valid);
+    if (valid === true) {
       // alert(this.name.current.value+" "+this.username.current.value+" "+this.password.current.value+" "+this.subject.current.value+" "+this.phoneNumber.current.value+" "+this.address.current.value+" "+this.qualifications.current.value)
       let Tutor = {
-        name : this.name.current.value,
+        name: this.name.current.value,
         username: this.username.current.value,
-        password : this.password.current.value,
-        subject : this.subject.current.value,
-        phoneNumber : this.phoneNumber.current.value,
-        address : this.address.current.value,
-        qualifications : this.qualifications.current.value,
-      }
+        password: this.password.current.value,
+        subject: this.subject.current.value,
+        phoneNumber: this.phoneNumber.current.value,
+        address: this.address.current.value,
+        qualifications: this.qualifications.current.value,
+      };
 
-      this.props.onAddTutor(Tutor)
+      this.props.onAddTutor(Tutor);
       // e.preventDefault()
-  }
+      this.name.current.value = "";
+      this.username.current.value = "";
+      this.password.current.value = "";
+      this.subject.current.value = "";
+      this.phoneNumber.current.value = "";
+      this.address.current.value = "";
+      this.qualifications.current.value = "";
+    }
+  };
 
- 
   render() {
     return (
-      <div class="container mt-5 px-3 py-3 border border-dark rounded">
+      <div class="container mt-5 px-3 py-3 border border-dark rounded  form-group required">
         <div class="row">
           <div class="col">
             <h2>Add Tutor</h2>
             <br></br>
-            <form>
-              
-
-              <div class="mb-3 row">
-                <label for="tutorName" class="col-sm-4 col-form-label">
+            <form method="post">
+              <div class="mb-3 row ">
+                <label
+                  for="tutorName"
+                  class="col-sm-4 col-form-label control-label"
+                >
                   Tutor Name
                 </label>
                 <div class="col-sm-5">
@@ -58,13 +160,17 @@ export class AddTutor extends Component {
                     name="tutorName"
                     id="tutorName"
                     ref={this.name}
-                    required
                   />
+                  <br></br>
+                  <div className="font-size-small text-danger">{this.state.nameError}</div>
                 </div>
               </div>
 
               <div class="mb-3 row">
-                <label for="tutorUsername" class="col-sm-4 col-form-label">
+                <label
+                  for="tutorUsername"
+                  class="col-sm-4 col-form-label control-label"
+                >
                   Tutor Username
                 </label>
                 <div class="col-sm-5">
@@ -74,13 +180,19 @@ export class AddTutor extends Component {
                     name="tutorUsername"
                     id="tutorUsername"
                     ref={this.username}
-                    required
-                  />
+                  /><br></br>
+                  <div className="font-size-small text-danger">
+                  {this.state.usernameError}
                 </div>
+                </div>
+                
               </div>
 
               <div class="mb-3 row">
-                <label for="tutorPassword" class="col-sm-4 col-form-label">
+                <label
+                  for="tutorPassword"
+                  class="col-sm-4 col-form-label control-label"
+                >
                   Tutor Password
                 </label>
                 <div class="col-sm-5">
@@ -91,13 +203,19 @@ export class AddTutor extends Component {
                     name="tutorPassword"
                     id="tutorPassword"
                     ref={this.password}
-                    required
-                  />
+                  /><br></br>
+                <div className="font-size-small text-danger">
+                  {this.state.passwordError}
                 </div>
+                </div>
+                
               </div>
 
               <div class="mb-3 row">
-                <label for="tutorSubject" class="col-sm-4 col-form-label">
+                <label
+                  for="tutorSubject"
+                  class="col-sm-4 col-form-label control-label"
+                >
                   Tutor Subject
                 </label>
                 <div class="col-sm-5">
@@ -107,13 +225,19 @@ export class AddTutor extends Component {
                     name="tutorSubject"
                     id="tutorSubject"
                     ref={this.subject}
-                    required
-                  />
+                  /><br></br>
+                  <div className="font-size-small text-danger">
+                  {this.state.subjectError}
                 </div>
+                </div>
+                
               </div>
 
               <div class="mb-3 row">
-                <label for="tutorPhoneNo" class="col-sm-4 col-form-label">
+                <label
+                  for="tutorPhoneNo"
+                  class="col-sm-4 col-form-label control-label"
+                >
                   Tutor Phone No.
                 </label>
                 <div class="col-sm-5">
@@ -124,13 +248,19 @@ export class AddTutor extends Component {
                     name="tutorPhoneNo"
                     id="tutorPhoneNo"
                     ref={this.phoneNumber}
-                    required
-                  />
+                  /><br></br>
+                  <div className="font-size-small text-danger">
+                  {this.state.phoneNoError}
                 </div>
+                </div>
+                
               </div>
 
               <div class="mb-3 row">
-                <label for="tutorAddress" class="col-sm-4 col-form-label">
+                <label
+                  for="tutorAddress"
+                  class="col-sm-4 col-form-label control-label"
+                >
                   Tutor Address
                 </label>
                 <div class="col-sm-5">
@@ -140,13 +270,19 @@ export class AddTutor extends Component {
                     name="tutorAddress"
                     id="tutorAddress"
                     ref={this.address}
-                    required
-                  />
+                  /><br></br>
+                  <div className="font-size-small text-danger">
+                  {this.state.addressError}
                 </div>
+                </div>
+                
               </div>
 
               <div class="mb-3 row">
-                <label for="tutorQualification" class="col-sm-4 col-form-label">
+                <label
+                  for="tutorQualification"
+                  class="col-sm-4 col-form-label control-label"
+                >
                   Tutor Qualification
                 </label>
                 <div class="col-sm-5">
@@ -156,62 +292,58 @@ export class AddTutor extends Component {
                     name="tutorQualification"
                     id="tutorQualification"
                     ref={this.qualifications}
-                    required
-                  />
+                  /><br></br>
+                <div className="font-size-small text-danger">
+                  {this.state.qualificationsError}
                 </div>
+                </div>
+                
               </div>
 
               <div class="row mt-3">
                 <div class="col">
                   <button
                     class="btn btn-primary btn-sm"
-                    onClick={this.addTutor}
+                    onClick={this.addTutor.bind(this)}
                   >
                     Add
                   </button>
                 </div>
-                
               </div>
             </form>
           </div>
         </div>
 
-        {/* <div className={(this.props.returnedMessage === '') ? '' : "alert"} role="alert">
-              {this.props.returnedMessage}
-            </div> */}
-            <div className="alert alert-successs" role="alert">
+        {/* <div className="alert alert-successs" role="alert">
               {
                 this.props.status === 200 ? <div>{this.props.returnedMessage}</div> : <div></div>
               }
-            </div>
-        
-        
+              
+            </div> */}
+
+        <div>{this.props.returnedMessage1}</div>
       </div>
     );
   }
 }
 
-
 const mapStateToProps = (state) => {
   return {
-      returnedMessage: state.returnedMessage,
-      status: state.status
-  }
-}
+    returnedMessage1: state.returnedMessage1,
+    status: state.status,
+  };
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {
-      onAddTutor: (Tutor) => {
-          // console.log("in on validate user")
-          dispatch(actionCreators.registerTutor(Tutor))
-      }
-      
+    onAddTutor: (Tutor) => {
+      // console.log("in on validate user")
+      dispatch(actionCreators.registerTutor(Tutor));
+    },
+  };
+};
 
-  }
-
-  
-
-}
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(AddTutor))
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(AddTutor));

@@ -1,75 +1,117 @@
 import React, { Component } from 'react'
+import { withRouter } from 'react-router-dom';
+import * as actionCreators from '../actions/UpdateEbookAction'
+import { connect } from 'react-redux';
 
-export class UpdateEbook extends Component {
+class UpdateEbook extends Component {
+  constructor(props) {
+    super(props);
+    
+    this.ebookId = React.createRef()
+    this.title = React.createRef()
+    this.authorname = React.createRef()
+    this.url = React.createRef()
+  }
+  
+  componentDidMount() {
+    this.props.clearState()
+}
+  componentDidUpdate() {
+    let check = this.props.returnedMessage.split(' ')
+    if(check[0] === 'Successfully') {
+      setTimeout(() => {
+        this.props.history.push('/updateebook')
+      }, 2000)
+    }
+  }
+
+  update() {
+    let ebook = {
+      ebookId : this.ebookId.current.value,
+      title : this.title.current.value,
+      authorname : this.authorname.current.value,
+      url : this.url.current.value
+
+    }
+    this.props.onUpdateEbook(ebook)
+  }
     render() {
         return (
-            <div class="container mt-5 px-3 py-3 border border-dark rounded">
-        <div class="row">
-          <div class="col">
+            <div className="container mt-5 px-3 py-3 border border-dark rounded">
+        <div className="row">
+          <div className="col">
             <h2>Add Ebook</h2>
             <br></br>
-            <form method="post">
-              <div class="mb-3 row">
-                <label for="bookid" class="col-sm-4 col-form-label">
+            <form>
+              <div className="mb-3 row">
+                <label htmlFor="ebookId" className="col-sm-4 col-form-label">
                   Ebook Id
                 </label>
-                <div class="col-sm-5 ">
+                <div className="col-sm-5 ">
                   <input
                     type="number"
-                    class="form-control form-control-sm"
+                    className="form-control form-control-sm"
                     name="ebookId"
+                    id="ebookId"
+                    ref={this.ebookId}
                     required
                   />
                 </div>
               </div>
 
-              <div class="mb-3 row">
-                <label for="title" class="col-sm-4 col-form-label">
+              <div className="mb-3 row">
+                <label htmlFor="title" className="col-sm-4 col-form-label">
                   Ebook Title
                 </label>
-                <div class="col-sm-5">
+                <div className="col-sm-5">
                   <input
                     type="text"
-                    class="form-control form-control-sm"
-                    name="ebookTitle"
+                    className="form-control form-control-sm"
+                    name="title"
+                    id="title"
+                    ref={this.title}
                     required
                   />
                 </div>
               </div>
 
-              <div class="mb-3 row">
-                <label for="auth" class="col-sm-4 col-form-label">
+              <div className="mb-3 row">
+                <label for="auth" className="col-sm-4 col-form-label">
                   Ebook Authorname
                 </label>
-                <div class="col-sm-5">
+                <div className="col-sm-5">
                   <input
                     type="text"
-                    class="form-control form-control-sm"
-                    name="ebookAuthorname"
+                    className="form-control form-control-sm"
+                    name="authorname"
+                    id="authorname"
+                    ref={this.authorname}
                     required
                   />
                 </div>
               </div>
 
-              <div class="mb-3 row">
-                <label for="url" class="col-sm-4 col-form-label">
+              <div className="mb-3 row">
+                <label for="url" className="col-sm-4 col-form-label">
                   Ebook Url
                 </label>
-                <div class="col-sm-5">
+                <div className="col-sm-5">
                   <input
                     type="url"
-                    class="form-control form-control-sm"
-                    name="ebookUrl"
+                    className="form-control form-control-sm"
+                    name="url"
+                    id="url"
+                    ref={this.url}
                     required
                   />
                 </div>
               </div>
 
-              <div class="row mt-3">
-                <div class="col">
+              <div className="row mt-3">
+                <div className="col">
                   <button
-                    class="btn btn-primary btn-sm"
-                    onClick={this.addEbook}
+                    className="btn btn-primary btn-sm"
+                    onClick={this.update.bind(this)}
                   >
                     Update
                   </button>
@@ -78,10 +120,36 @@ export class UpdateEbook extends Component {
             </form>
           </div>
         </div>
+
+        <div className={(this.props.returnedMessage === '') ? '' : "alert"} role="alert">
+              {this.props.returnedMessage}
+            </div>
+
       </div>
 
         )
     }
 }
 
-export default UpdateEbook
+const mapStateToProps = (state) => {
+  return {
+      returnedMessage: state.returnedMessage
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+      
+      onUpdateEbook: (newEbookObject) => {
+          dispatch(actionCreators.updateEbook(newEbookObject))
+      },
+      clearState: () => {
+          dispatch(actionCreators.clearState())
+
+      }
+
+  }
+
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(UpdateEbook))
