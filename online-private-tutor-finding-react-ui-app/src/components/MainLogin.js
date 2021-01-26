@@ -233,10 +233,10 @@ export class MainLogin extends Component {
                 (this.state.userRole === 'parent' ? this.setState({renderPage: "PARENT_ROUTING"}) : <div></div>))) : <div></div>
               }
           </div>
-          
+         
+
           </div>
-          
-          
+         
       
       );
     }

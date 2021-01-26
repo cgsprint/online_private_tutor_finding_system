@@ -78,6 +78,7 @@ export class UpdateEbook extends Component {
             </form>
           </div>
         </div>
+
       </div>
 
         )

@@ -189,9 +189,12 @@ export class AddParent extends Component {
             <div className={(this.props.returnedMessage === '') ? '' : "alert"} role="alert">
               {this.props.returnedMessage}
             </div>
-        
+            <hr></hr>
+
         
       </div>
+
+      
         )
     } 
 }

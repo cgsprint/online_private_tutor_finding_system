@@ -24,7 +24,8 @@ import ViewEbook from './components/ViewEbook';
 import ViewBookedTutor from './components/ViewBookedTutor';
 import RequestDemo from './components/RequestDemo';
 import BookTutor from './components/BookTutor';
-import Home from './components/Home';
+import AdminHome from './components/AdminHome';
+import ParentHome from './components/ParentHome'
 
 
 
@@ -38,12 +39,12 @@ function App() {
 
     {/* <TutorRouting></TutorRouting> */}
       
-    {/*<MainLogin/>*/ }
+   {/* <MainLogin/>*/}
     
     {/* <AddParent /> */}
 
 
-      {/* <ParentRouting></ParentRouting> */}
+      <ParentRouting></ParentRouting> 
     {/* <ParentLogin />*/}
      
       {/* <AddUpdateTutor/> */}
@@ -65,7 +66,10 @@ function App() {
      {/* <RequestDemo></RequestDemo>*/}
      {/*<BookTutor></BookTutor>*/}
    { /* <RateTutor></RateTutor>*/}
-   <Home></Home>
+ 
+ {/* <AdminHome></AdminHome> */}
+ {/* <ParentHome></ParentHome> */}
+ 
 
 
     </div>

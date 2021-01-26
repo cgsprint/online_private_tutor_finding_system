@@ -48,7 +48,8 @@ import * as actionCreated from '../actions/ParentViewEbookAction'
                     <tbody>
                         {ebookList}
                     </tbody>
-                </table>    
+                </table>  
+                
             </div>
         )
         

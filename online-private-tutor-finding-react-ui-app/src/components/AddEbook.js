@@ -66,6 +66,8 @@ class AddUpdateEbook extends Component {
             </form>
           </div>
         </div>
+
+       
       </div>
     );
   }

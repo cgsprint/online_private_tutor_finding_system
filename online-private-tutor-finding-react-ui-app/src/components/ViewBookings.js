@@ -44,6 +44,7 @@ import * as actionCreated from '../actions/TutorActions'
                         {bookingList}
                     </tbody>
                 </table>
+
             </div>
         )
     }

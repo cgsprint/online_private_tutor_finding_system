@@ -19,6 +19,8 @@ class ViewEbook extends Component {
                     </thead>
 
                 </table>
+
+                
             </div>
         );
     }

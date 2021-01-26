@@ -49,6 +49,7 @@ class TutorViewEbook extends Component {
                         }
                     </tbody>
                 </table>
+               
             </div>
         )
     }

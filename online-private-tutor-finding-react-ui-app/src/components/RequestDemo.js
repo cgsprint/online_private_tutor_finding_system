@@ -23,7 +23,7 @@ import 'react-datepicker/dist/react-datepicker.css'
               <div class="col">
                 <h2>Demo Request</h2>
                 <br></br>
-            <form>
+            <form method="post">
             <div className="mb-3-row">
                     <label for="parentid" class="col-form-label">Enter ParentId:</label>
                     <input type="text"  className="form-control form-control-sm" name="parentId"  id="parentId"  placeholder="ParentId" ref={parentIdRef}  required title="Enter a valid Id " />
@@ -51,7 +51,9 @@ import 'react-datepicker/dist/react-datepicker.css'
                 <button type="submit" className="btn btn-dark btn-md" onClick={requestdemo} >Request</button>
                 
             </form>
-            </div></div></div>
+            </div></div>
+          
+            </div>
         );
     }
 

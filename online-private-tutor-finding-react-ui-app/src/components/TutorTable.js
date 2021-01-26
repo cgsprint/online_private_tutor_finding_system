@@ -37,7 +37,7 @@ export class TutorTable extends Component {
                     
                     
                 </table>
-
+ 
             </div>
         )
     }

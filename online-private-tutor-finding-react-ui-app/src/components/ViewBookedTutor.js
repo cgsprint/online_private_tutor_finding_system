@@ -43,7 +43,8 @@ import React, { Component } from 'react'
                     <tbody>
                         {bookedtutorList}
                     </tbody>
-                </table>    
+                </table>  
+
             </div>
         )
     }
