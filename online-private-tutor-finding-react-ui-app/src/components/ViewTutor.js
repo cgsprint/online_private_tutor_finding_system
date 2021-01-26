@@ -75,6 +75,7 @@ import * as actionCreated2 from '../actions/ParentViewTutorActions'
                     </tbody>
                 </table>
                 </div>
+               
             </div>
         )
     }

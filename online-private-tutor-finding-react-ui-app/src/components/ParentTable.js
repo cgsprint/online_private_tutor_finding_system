@@ -86,6 +86,7 @@ export class ParentTable extends Component {
                     
                 </table>
 
+
             </div>
         )
     }

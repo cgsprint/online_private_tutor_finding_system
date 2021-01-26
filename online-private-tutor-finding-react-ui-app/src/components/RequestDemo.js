@@ -23,7 +23,7 @@ import 'react-datepicker/dist/react-datepicker.css'
               <div class="col">
                 <h2>Demo Request</h2>
                 <br></br>
-            <form>
+            <form method="post">
             <div className="mb-3-row">
                     <label for="parentid" class="col-form-label">Enter ParentId:</label>
                     <input type="text"  className="form-control form-control-sm" name="parentId"  id="parentId"  placeholder="ParentId" ref={parentIdRef}  required title="Enter a valid Id " />
@@ -37,7 +37,7 @@ import 'react-datepicker/dist/react-datepicker.css'
  
                 <div className="form-group"> 
                     <label for="subject" class="col-sm-3 col-form-label">Enter Subject:</label>
-                    <input type="email"  className="form-control form-control-sm" name="subject"  id="subject" placeholder="Enter Subject"  ref={subjectRef} required title="Enter a subject" />
+                    <input type="text"  className="form-control form-control-sm" name="subject"  id="subject" placeholder="Enter Subject"  ref={subjectRef} required title="Enter a subject" />
                 </div>
                  
                 <div className="form-group">
@@ -51,9 +51,13 @@ import 'react-datepicker/dist/react-datepicker.css'
                 <button type="submit" className="btn btn-dark btn-md" onClick={requestdemo} >Request</button>
                 
             </form>
-            </div></div></div>
+            </div></div>
+          
+            </div>
         );
     }
+
+
 
 
 export default RequestDemo

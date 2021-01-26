@@ -48,6 +48,7 @@ export class ViewTutorTable extends Component {
         if(this.props.tutorsList !== null)
         {
 
+        if(this.props.tutorList!== null){
         var tutorList=this.props.tutorsList.map((tutor,index)=>{
             return(
                 <tr key={index}>
@@ -65,8 +66,8 @@ export class ViewTutorTable extends Component {
             )
         })
 
-    }
 
+    }
         if(render_form === 'VIEW_TUTOR_TABLE')
         {
             return (
@@ -107,28 +108,33 @@ export class ViewTutorTable extends Component {
         //         </div>
         //     )
         // }
-        // else
-        // {
-        //     return null
-        // }
-    }
-}
-
-
-const mapStateToProps = (state) => {
-    return {
-        tutorsList:state.tutorsList,
-        returnedMessage: state.returnedMessage
-    }
-}
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-        onGetTutors: () => {
-          return  dispatch(actionCreators.getAllTutors())
+        else
+        {
+            return null
         }
     }
 
 }
+
+    const mapStateToProps = (state) => {
+        return {
+            tutorsList:state.tutorsList,
+            returnedMessage: state.returnedMessage
+        }
+    }
+    
+    const mapDispatchToProps = (dispatch) => {
+        return {
+            onGetTutors: () => {
+              return  dispatch(actionCreators.getAllTutors())
+            }
+        }
+    
+    }
+
+
+
+
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(ViewTutorTable)

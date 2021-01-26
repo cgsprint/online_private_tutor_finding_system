@@ -284,9 +284,12 @@ export class AddParent extends Component {
             <div >
               {this.props.returnedMessage4}
             </div>
-        
+            <hr></hr>
+
         
       </div>
+
+      
         )
     } 
 }

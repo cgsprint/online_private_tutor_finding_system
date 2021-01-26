@@ -11,11 +11,14 @@ import adminreducer from './reducers/AdminReducer.js'
 // import parentreducer from './stores/ParentReducer'
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
-
+import parentReducer from './stores/ParentReducer';
+import tutorReducer from './stores/TutorReducer';
 
 
 const adminstore = createStore(adminreducer, applyMiddleware(thunk))
 // const parentstore = createStore(parentreducer, applyMiddleware(thunk))
+
+const store = createStore(parentReducer, applyMiddleware(thunk))
 
 ReactDOM.render(
   <React.StrictMode>

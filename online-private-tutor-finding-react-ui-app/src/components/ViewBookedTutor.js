@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import * as actionCreators from '../actions/ParentBookedTutor'
+import { connect } from 'react-redux'
 
  class ViewBookedTutor extends Component {
 
@@ -6,18 +8,26 @@ import React, { Component } from 'react'
         super(props)
     
         this.state = {
-             bookedtutorList: []
+            renderForm: 'VIEW_BOOKED_TUTOR',
+            tId: 0
         }
     }
     
+    componentDidMount() {
+        this.props.onGetBookedTutor()
+    }
 
 
     render() {
 
-        let bookedtutorList = this.state.bookedtutorList.map((b,index) =>{
+        var render_form = this.state.renderForm;
+        console.log(render_form)
+        if(this.props.bookedtutorsList!==null)
+        {
+        var bookedtutorsList = this.state.bookedtutorsList.map((b,index) =>{
             return (
                 <tr key={index}>
-                    <td>{b.tutorid}</td>
+                    <th>{b.tutorid}</th>
                     <td>{b.name}</td>
                     <td>{b.address}</td>
                     <td>{b.subject}</td>
@@ -26,7 +36,10 @@ import React, { Component } from 'react'
                 </tr>
             )
         })
+    }
 
+        if(render_form === 'VIEW_BOOKED_TUTOR')
+{
         return (
             <div>
                 <table className="table table-info demo-request-table">
@@ -41,12 +54,32 @@ import React, { Component } from 'react'
                         </tr>
                     </thead>
                     <tbody>
-                        {bookedtutorList}
+                        {bookedtutorsList}
                     </tbody>
-                </table>    
+                </table>  
+
             </div>
-        )
+            )
+        }
     }
 }
 
-export default ViewBookedTutor
+const mapStateToProps = (state) => {
+    return {
+        bookedtutorsList:state.bookedtutorsList,
+        returnedMessage: state.returnedMessage
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onGetBookedTutor: () => {
+          return  dispatch(actionCreators.getBookedTutor())
+        }
+    }
+
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ViewBookedTutor)
+
+

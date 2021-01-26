@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 
+
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import * as actionCreated from '../actions/TutorActions'
 
+import axios from 'axios'
 
 
 class TutorViewEbook extends Component {
@@ -46,6 +48,7 @@ class TutorViewEbook extends Component {
                         }
                     </tbody>
                 </table>
+               
             </div>
         )
     }

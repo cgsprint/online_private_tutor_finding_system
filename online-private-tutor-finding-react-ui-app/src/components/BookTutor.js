@@ -47,7 +47,9 @@ import 'react-datepicker/dist/react-datepicker.css'
                 <button type="submit" className="btn btn-dark btn-" onClick={booktutor} >Booked</button>
                 
             </form>
-            </div></div></div>
+            </div></div>
+           
+            </div>
         );
     }
 

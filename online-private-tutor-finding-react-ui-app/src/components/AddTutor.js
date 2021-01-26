@@ -1,11 +1,17 @@
 import React, { Component } from "react";
+
 import { Redirect } from "react-router-dom";
+
 import { withRouter } from "react-router-dom";
-import * as actionCreators from "../actions/RegisterTutor";
 import { connect } from "react-redux";
+
 import * as actionCreated from '../actions/TutorActions'
 
 import TutorHome from "./TutorHome";
+
+import * as actionCreators from '../actions/RegisterTutor'
+
+
 
 export class AddTutor extends Component {
   constructor(props) {

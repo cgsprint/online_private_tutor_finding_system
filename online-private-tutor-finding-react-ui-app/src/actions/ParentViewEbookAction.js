@@ -12,9 +12,10 @@ const getAllEbooksAction = (data) => {
 }
 export const getAllEbooks = () => {
     return (dispatch) => {
-        axios.get(PARENT_BASE_URL + '/viewEbook', { 
-            'Access-Control-Allow-Origin': '*'
-        }
+        axios.get(PARENT_BASE_URL + '/viewEbook'
+        // , { 
+            // 'Access-Control-Allow-Origin': '*'
+        // }
 )
             .then((response) => {
                 dispatch(getAllEbooksAction(response.data))  

@@ -3,6 +3,7 @@ import { PARENT_BASE_URL} from '../utils/constants.js'
 export const ADD_Parent = 'ADD_Parent'
 export const GET_ALL_TUTORS = 'GET_ALL_TUTORS'
 
+
 const addParentAction = (data,status) => {
     return {
         type: ADD_Parent,
