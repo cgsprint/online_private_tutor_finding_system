@@ -6,8 +6,9 @@ import * as actionCreators5 from '../actions/GetParentList'
 import * as actionCreators6 from '../actions/GetTutorById'
 import * as actionCreators7 from '../actions/UpdateTutorByAdmin'
 import * as actionCreators8 from '../actions/AddEbookAction'
-import * as actionCreators9 from '../actions/GetEbookAdmin'
+import * as actionCreators9 from '../actions/GetEbookListAdmin'
 import * as actionCreators10 from '../actions/UpdateEbookAction'
+import * as actionCreators11 from '../actions/DeleteEbook'
 
 const initialState = {
     returnedMessage: '',
@@ -15,19 +16,93 @@ const initialState = {
     parentsList: [],
     tutor: [],
     ebooksList: [],
-    status: 0
+    status: 0,
+    adminOb: {},
+    tutorOb: {},
+    parentOb: {}
 }
 
 const AdminReducer = (state= initialState,action) => {
     switch(action.type){
-        case actionCreators.VALIDATE_USER:
+        case actionCreators.VALIDATE_ADMIN:
             let resMessage1 = action.data.message
-            let Reqstatus1 = action.status
+            let Reqstatus1 = action.status;
+            if(action.data.adminLst != null)
+            {
+                var adminObject = {
+                    adminId: action.data.adminLst[0].adminId,
+                    adminName: action.data.adminLst[0].adminName,
+                    adminUsername: action.data.adminLst[0].adminUsername,
+                    adminPassword: action.data.adminLst[0].adminPassword
+                }
+            }
+            else{
+                resMessage1 = "Username and passord is incorrect"
+            }
             
-            console.log(action);
+            
+            // console.log("In Admin reducer",action.data.adminLst[0]);
             return {
                 returnedMessage : resMessage1,
-                status : Reqstatus1
+                status : Reqstatus1,
+                adminOb : adminObject
+            }
+
+        case actionCreators.VALIDATE_TUTOR:
+            let resMessage11 = action.data.message
+            let Reqstatus11 = action.status;
+            if(action.data.tutorLst != null)
+            {
+                
+                var tutorObject = {
+                    tutorId: action.data.tutorLst[0].tutorId,
+                    tutorName: action.data.tutorLst[0].name,
+                    tutorUsername: action.data.tutorLst[0].username,
+                    tutorPassword: action.data.tutorLst[0].password,
+                    tutorSubject: action.data.tutorLst[0].subject,
+                    tutorPhoneNo: action.data.tutorLst[0].phoneNumber,
+                    tutorAddress: action.data.tutorLst[0].address,
+                    tutorQualifications: action.data.tutorLst[0].qualifications
+                }
+            }
+            else
+            {
+                resMessage11 = "Username and passord is incorrect"
+            }
+            
+            // console.log("In Admin reducer",action.data.adminLst[0]);
+            return {
+                returnedMessage : resMessage11,
+                status : Reqstatus11,
+                tutorOb : tutorObject
+            }
+
+        case actionCreators.VALIDATE_PARENT:
+            let resMessage13 = action.data.message
+            let Reqstatus13 = action.status;
+            if(action.data.tutorLst != null)
+            {
+                var parentObject = {
+                    parentId: action.data.parentLst[0].tutorId,
+                    parentFirstName: action.data.parentLst[0].firstName,
+                    parentLastName: action.data.parentLst[0].lastName,
+                    parentUsername: action.data.parentLst[0].username,
+                    parentPassword: action.data.parentLst[0].password,
+                    parentMobileNo: action.data.parentLst[0].mobileNo,
+                    parentEmail: action.data.parentLst[0].email,
+                    parentAddress: action.data.parentLst[0].address
+                }
+            }
+            else{
+                resMessage13 = "Username and passord is incorrect"
+            }
+            
+            
+            // console.log("In Admin reducer",action.data.adminLst[0]);
+            return {
+                returnedMessage : resMessage13,
+                status : Reqstatus13,
+                parentOb : parentObject
             }
         case actionCreators2.REGISTER_TUTOR:
             // let resMessage2 = action.data.message
@@ -61,7 +136,7 @@ const AdminReducer = (state= initialState,action) => {
             }
             
             return {
-                returnedMessage1: rMessage,
+                returnedMessage4: rMessage,
                 status : rStatus
             }
         case actionCreators3.GET_ALL_TUTORS:
@@ -152,14 +227,14 @@ const AdminReducer = (state= initialState,action) => {
                 returnedMessage2: rMessage3,
                 status : rStatus3
             }     
-        case actionCreators9.GET_EBOOK:
+        case actionCreators9.GET_ALL_EBOOKS:
 
             // console.log(action.data)
             let eList= action.data
             
-            
+            console.log("eList"+eList);
             return {
-                parentsList: eList
+                ebooksList: eList
             } 
         case actionCreators10.UPDATE_EBOOK:
             let messageAfterUpdation = action.data.message
@@ -168,9 +243,16 @@ const AdminReducer = (state= initialState,action) => {
             console.log(listAfterUpdation)
             console.log(messageAfterUpdation)
             return {
-                returnedMessage: messageAfterUpdation,
+                returnedMessage3: messageAfterUpdation,
                 ebookList: listAfterUpdation
             }
+        case actionCreators11.DELETE_EBOOK:
+        // console.log(action.data)
+            let eListAfterDeletion = action.data
+            // console.log("eListAfterDeletion",eListAfterDeletion)
+            return {
+                ebooksList: eListAfterDeletion
+            } 
         default:
             return state    
     }

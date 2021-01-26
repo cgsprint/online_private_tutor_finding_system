@@ -6,6 +6,23 @@ import { connect } from 'react-redux';
 class UpdateEbook extends Component {
   constructor(props) {
     super(props);
+
+    const token = localStorage.getItem('token');
+    
+    console.log("token is",token);
+    let loggedIn = true
+
+    if(token === null)
+    {
+        loggedIn = false
+    }
+
+    this.state = {
+      loggedIn,
+      titleError: '',
+      authornameErro : '',
+      urlError: ''
+    }
     
     this.ebookId = React.createRef()
     this.title = React.createRef()
@@ -14,33 +31,88 @@ class UpdateEbook extends Component {
   }
   
   componentDidMount() {
-    this.props.clearState()
-}
-  componentDidUpdate() {
-    let check = this.props.returnedMessage.split(' ')
-    if(check[0] === 'Successfully') {
-      setTimeout(() => {
-        this.props.history.push('/updateebook')
-      }, 2000)
-    }
+    // this.props.clearState()
+    console.log(this.props.ebookObject);
   }
+    
+  // componentDidUpdate() {
+  //   let check = this.props.returnedMessage.split(' ')
+  //   if(check[0] === 'Successfully') {
+  //     setTimeout(() => {
+  //       this.props.history.push('/updateebook')
+  //     }, 2000)
+  //   }
+  // }
 
-  update() {
-    let ebook = {
-      ebookId : this.ebookId.current.value,
-      title : this.title.current.value,
-      authorname : this.authorname.current.value,
-      url : this.url.current.value
+
+  validate = (e) => {
+    let {
+      titleError,
+      authornameError,
+      urlError
+    } = this.state;
+
+    if (!this.title.current.value) {
+      titleError = "This field can not be blank";
+    }
+    if (!this.authorname.current.value) {
+      authornameError = "This field can not be blank";
+    }
+    if (!this.url.current.value) {
+      urlError = "This field can not be blank";
+    }
+    if (
+      titleError ||
+      authornameError ||
+      urlError 
+    ) {
+      this.setState({
+        titleError,
+        authornameError,
+        urlError
+      });
+      setTimeout(() => {
+        this.setState({
+          titleError: "",
+          authornameError: "",
+          urlError: ""
+        });
+      }, 1000);
+      return false;
+    }
+
+    return true;
+  };
+  update(e) {
+
+    const valid = this.validate(e);
+    if(valid === true)
+    {
+      let ebook = {
+        ebookId : this.ebookId.current.value,
+        title : this.title.current.value,
+        authorname : this.authorname.current.value,
+        url : this.url.current.value
+      }
+      e.preventDefault();
+      this.props.onUpdateEbook(ebook)
 
     }
-    this.props.onUpdateEbook(ebook)
+
+    
   }
     render() {
+
+      if(this.state.loggedIn === false)
+      {
+          // return <Redirect to="/" />
+          window.location.href = 'http://localhost:3000/';
+      } 
         return (
-            <div className="container mt-5 px-3 py-3 border border-dark rounded">
+            <div className="container mt-5 px-3 py-3 border border-dark text-dark rounded">
         <div className="row">
           <div className="col">
-            <h2>Add Ebook</h2>
+            <h2>Update Ebook</h2>
             <br></br>
             <form>
               <div className="mb-3 row">
@@ -53,8 +125,9 @@ class UpdateEbook extends Component {
                     className="form-control form-control-sm"
                     name="ebookId"
                     id="ebookId"
+                    defaultValue={this.props.ebookObject.ebookID}
                     ref={this.ebookId}
-                    required
+                    readOnly = {true}
                   />
                 </div>
               </div>
@@ -69,9 +142,10 @@ class UpdateEbook extends Component {
                     className="form-control form-control-sm"
                     name="title"
                     id="title"
+                    defaultValue={this.props.ebookObject.ebookTitle}
                     ref={this.title}
-                    required
-                  />
+                  /><br></br>
+                  <div className="font-size-small text-danger">{this.state.titleError}</div>
                 </div>
               </div>
 
@@ -84,10 +158,11 @@ class UpdateEbook extends Component {
                     type="text"
                     className="form-control form-control-sm"
                     name="authorname"
+                    defaultValue={this.props.ebookObject.ebookAuthorname}
                     id="authorname"
                     ref={this.authorname}
-                    required
-                  />
+                  /><br></br>
+                  <div className="font-size-small text-danger">{this.state.authornameError}</div>
                 </div>
               </div>
 
@@ -100,10 +175,11 @@ class UpdateEbook extends Component {
                     type="url"
                     className="form-control form-control-sm"
                     name="url"
+                    defaultValue={this.props.ebookObject.ebookUrl}
                     id="url"
                     ref={this.url}
-                    required
-                  />
+                  /><br></br>
+                  <div className="font-size-small text-danger">{this.state.urlError}</div>
                 </div>
               </div>
 
@@ -122,7 +198,7 @@ class UpdateEbook extends Component {
         </div>
 
         <div className={(this.props.returnedMessage === '') ? '' : "alert"} role="alert">
-              {this.props.returnedMessage}
+              {this.props.returnedMessage3}
             </div>
 
       </div>
@@ -133,7 +209,7 @@ class UpdateEbook extends Component {
 
 const mapStateToProps = (state) => {
   return {
-      returnedMessage: state.returnedMessage
+      returnedMessage3: state.returnedMessage3
   }
 }
 

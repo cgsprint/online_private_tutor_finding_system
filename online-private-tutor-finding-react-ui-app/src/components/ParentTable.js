@@ -1,10 +1,30 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import * as actionCreators from '../actions/GetParentList'
+import { Redirect } from "react-router-dom";
 
 
 
 export class ParentTable extends Component {
+
+    constructor(props) {
+        super(props)
+        const token = localStorage.getItem('token');
+    
+        console.log("token is",token);
+        let loggedIn = true
+
+        if(token === null)
+        {
+            loggedIn = false
+        }
+
+        this.state = {
+             loggedIn
+        }
+
+        
+    }
 
     componentDidMount() {
         this.props.onGetParents();
@@ -14,7 +34,16 @@ export class ParentTable extends Component {
 
     render() {
 
-        let parentList=this.props.parentsList.map((parent,index)=>{
+        if(this.state.loggedIn === false)
+        {
+            // return <Redirect to="/" />
+            window.location.href = 'http://localhost:3000/';
+        }
+
+        if(this.props.parentsList != null)
+        {
+        
+        var parentList=this.props.parentsList.map((parent,index)=>{
             return(
                 <tr key={index}>
                     <th>{parent.parentId}</th>
@@ -27,11 +56,20 @@ export class ParentTable extends Component {
                 </tr>
             )
         })
+
+    }
+    else{
         return (
+            <div>Empty list</div>
+        )
+    }
+        return (
+
+            
             <div>
                 
-                <h2 className="text-center">Parent List</h2>
-                <table className="table table-stripped">
+                <h2 className="text-center text-dark">Parent List</h2>
+                <table className="table table-striped text-dark">
                     <thead>
                        <tr>
                             <th scope="col">Id</th>

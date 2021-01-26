@@ -7,10 +7,21 @@ class AddEbook extends Component {
   constructor(props) {
     super(props);
 
+    // const token = localStorage.getItem('token');
+    
+    // console.log("token is",token);
+    // let loggedIn = true
+
+    // if(token === null)
+    // {
+    //     loggedIn = false
+    // }
+
     this.state = {
       titleError: "",
       authornameError: "",
-      urlError: ""
+      urlError: "",
+      // loggedIn
     };
     
     this.title = React.createRef()
@@ -53,6 +64,8 @@ class AddEbook extends Component {
     
   }
 
+
+
   add(e) {
     e.preventDefault();
     const validate = this.validate()
@@ -76,8 +89,15 @@ class AddEbook extends Component {
   
  
   render() {
+
+    // if(this.state.loggedIn === false)
+    // {
+    //     // return <Redirect to="/" />
+    //     window.location.href = 'http://localhost:3000/';
+    // } 
+    
     return (
-      <div className="container mt-5 px-3 py-3 border border-dark rounded form-group required">
+      <div className="container mt-5 px-3 py-3 border border-dark text-dark rounded form-group required">
         <div className="row">
           <div className="col">
             <h2>Add Ebook</h2>

@@ -1,23 +1,25 @@
 import React, { Component } from "react";
-<<<<<<< HEAD
+import { Redirect } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 import * as actionCreators from "../actions/RegisterTutor";
 import { connect } from "react-redux";
-=======
-<<<<<<< HEAD
-import { connect } from 'react-redux';
 import * as actionCreated from '../actions/TutorActions'
-=======
-import { withRouter } from 'react-router-dom';
-import * as actionCreators from '../actions/RegisterTutor'
-import { connect } from 'react-redux';
->>>>>>> 11cb2b369dc6aa1263045afd3d134dbdabb279e9
+
 import TutorHome from "./TutorHome";
->>>>>>> e33c488336c5ae59ca6e275b1efbe5da12ce99e6
 
 export class AddTutor extends Component {
   constructor(props) {
     super(props);
+
+    // const token = localStorage.getItem('token');
+    
+    // console.log("token is",token);
+    // let loggedIn = true
+
+    // if(token === null)
+    // {
+    //     loggedIn = false
+    // }
 
     this.state = {
       nameError: "",
@@ -27,6 +29,7 @@ export class AddTutor extends Component {
       phoneNoError: "",
       qualificationsError: "",
       addressError: "",
+      // loggedIn
     };
 
     this.tutorId = React.createRef();
@@ -37,6 +40,11 @@ export class AddTutor extends Component {
     this.phoneNumber = React.createRef();
     this.address = React.createRef();
     this.qualifications = React.createRef();
+  }
+
+  componentDidUpdate()
+  {
+    // this.props.history.push('/admin/viewtutors');
   }
 
   validate = (e) => {
@@ -136,11 +144,19 @@ export class AddTutor extends Component {
       this.address.current.value = "";
       this.qualifications.current.value = "";
     }
+    window.location.href = 'http://localhost:3000/admin/viewtutors'
   };
 
   render() {
+
+    // if(this.state.loggedIn === false)
+    // {
+    //     // return <Redirect to="/" />
+    //     window.location.href = 'http://localhost:3000/';
+    // }
+
     return (
-      <div class="container mt-5 px-3 py-3 border border-dark rounded  form-group required">
+      <div class="container mt-5 px-3 py-3 border border-dark rounded text-dark form-group required">
         <div class="row">
           <div class="col">
             <h2>Add Tutor</h2>
@@ -321,7 +337,7 @@ export class AddTutor extends Component {
               
             </div> */}
 
-        <div>{this.props.returnedMessage1}</div>
+        <div class="text-dark">{this.props.returnedMessage1}</div>
       </div>
     );
   }

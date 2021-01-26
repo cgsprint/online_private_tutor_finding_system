@@ -6,15 +6,29 @@ import * as actionCreators2 from '../actions/DeleteTutor'
 import * as actionCreators4 from '../actions/UpdateTutorByAdmin'
 
 import AdminUpdateTutor from './AdminUpdateTutor';
+import { Redirect } from 'react-router';
 
 
 export class TutorTable extends Component {
 
     constructor(props) {
         super(props)
+
+        const token = localStorage.getItem('token');
+    
+        console.log("token is",token);
+        let loggedIn = true
+
+        if(token === null)
+        {
+            loggedIn = false
+        }
+
+    
     
         this.state = {
             renderForm: 'VIEW_TUTOR_TABLE',
+            loggedIn,
             TutorObj: {
                 tutorId: 0,
                 tutorName: "",
@@ -24,7 +38,7 @@ export class TutorTable extends Component {
                 tutorPhoneNo: 0,
                 tutorAddress: "",
                 tutorQualification: ""
-            }
+                }
         }
     }
     
@@ -71,6 +85,7 @@ export class TutorTable extends Component {
             
         })
 
+
         // let TutorObj = {
         //     tutorId: tutor.tutorId,
         //     tutorName: tutor.name,
@@ -83,6 +98,8 @@ export class TutorTable extends Component {
 
         // }
 
+        // <Redirect to="/updatetutor" />
+
         console.log("Tutor obj is "+this.state.TutorObj.tutorUsername)
 
         // this.props.onGetTutorById(tutorId);
@@ -94,16 +111,27 @@ export class TutorTable extends Component {
     
 
     render() {
+
+        
+
+        if(this.state.loggedIn === false)
+        {
+            // return <Redirect to="/" />
+            window.location.href = 'http://localhost:3000/';
+        } 
         // let madeArr = Object.values(this.props.tutorsList)
         // console.log(this.props.tutorsList);
-        const tList = this.props.tutorsList;
+        // const tList = this.props.tutorsList;
         var render_form = this.state.renderForm;
 
         
 
         if(render_form === 'VIEW_TUTOR_TABLE')
         {
-            let tutorList=tList.map((tutor,index)=>{
+            if(this.props.tutorsList != null)
+        {
+        
+            var tutorList=this.props.tutorsList.map((tutor,index)=>{
                 return(
                     <tr key={index}>
                         <th>{tutor.tutorId}</th>
@@ -119,13 +147,14 @@ export class TutorTable extends Component {
                     </tr>
                 )
             })
+        }
             return (
 
            
             <div>
                 
-                <h2 className="text-center">Tutor List</h2>
-                <table className="table table-stripped">
+                <h2 className="text-center text-dark">Tutor List</h2>
+                <table className="table table-stripped text-dark">
                     <thead>
                         <tr>
                             <th scope="col">Id</th>
@@ -152,7 +181,7 @@ export class TutorTable extends Component {
         {
             return (
                 <div>
-                    <AdminUpdateTutor tutorObject={this.state.TutorObj}></AdminUpdateTutor>
+                   <AdminUpdateTutor tutorObject={this.state.TutorObj}></AdminUpdateTutor>
                 </div>
             )
         }

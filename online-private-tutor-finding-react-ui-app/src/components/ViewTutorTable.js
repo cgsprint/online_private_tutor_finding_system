@@ -44,7 +44,11 @@ export class ViewTutorTable extends Component {
         
         var render_form = this.state.renderForm;
 
-        let tutorList=this.props.tutorsList.map((tutor,index)=>{
+        
+        if(this.props.tutorsList !== null)
+        {
+
+        var tutorList=this.props.tutorsList.map((tutor,index)=>{
             return(
                 <tr key={index}>
                     <th>{tutor.tutorId}</th>
@@ -60,6 +64,8 @@ export class ViewTutorTable extends Component {
                 </tr>
             )
         })
+
+    }
 
         if(render_form === 'VIEW_TUTOR_TABLE')
         {

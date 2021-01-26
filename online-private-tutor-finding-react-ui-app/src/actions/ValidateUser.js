@@ -3,12 +3,30 @@ import  { ADMIN_BASE_URL } from '../utils/constants'
 import  { TUTOR_BASE_URL } from '../utils/constants'
 import  { PARENT_BASE_URL } from '../utils/constants'
 
-export const VALIDATE_USER = 'VALIDATE_USER';
+export const VALIDATE_ADMIN = 'VALIDATE_ADMIN';
+export const VALIDATE_TUTOR = 'VALIDATE_TUTOR';
+export const VALIDATE_PARENT = 'VALIDATE_PARENT';
 
 
-const validateUserAction = (data,status) => {
+const validateAdminAction = (data,status) => {
     return {
-        type: VALIDATE_USER,
+        type: VALIDATE_ADMIN,
+        data,
+        status
+    }
+}
+
+const validateTutorAction = (data,status) => {
+    return {
+        type: VALIDATE_TUTOR,
+        data,
+        status
+    }
+}
+
+const validateParentAction = (data,status) => {
+    return {
+        type: VALIDATE_PARENT,
         data,
         status
     }
@@ -22,15 +40,15 @@ export const validateUser = (User) => {
         
             axios.post(ADMIN_BASE_URL+`/login?username=${User.userUsername}&password=${User.userPassword}`)
             .then((response) => {
-                dispatch(validateUserAction(response.data,response.status))
+                dispatch(validateAdminAction(response.data,response.status))
                 console.log(response)
                 
             })
             .catch((err) => {
-                dispatch(validateUserAction(err,404))
+                dispatch(validateAdminAction(err,404))
 
                 setTimeout(() => {
-                    dispatch(validateUserAction(err,0))
+                    dispatch(validateAdminAction(err,0))
                         
                 }, 1500);
             })
@@ -41,14 +59,14 @@ export const validateUser = (User) => {
         
             axios.post(TUTOR_BASE_URL+`/logintutor?username=${User.userUsername}&password=${User.userPassword}`)
             .then((response) => {
-                dispatch(validateUserAction(response.data,response.status))
+                dispatch(validateTutorAction(response.data,response.status))
                 console.log(response)
                 
             }).catch((err) => {
-                dispatch(validateUserAction(err,404))
+                dispatch(validateTutorAction(err,404))
 
                 setTimeout(() => {
-                    dispatch(validateUserAction(err,0))
+                    dispatch(validateTutorAction(err,0))
                         
                 }, 1500);
             })
@@ -59,14 +77,14 @@ export const validateUser = (User) => {
         
             axios.post(PARENT_BASE_URL+`/login?username=${User.userUsername}&password=${User.userPassword}`)
             .then((response) => {
-                dispatch(validateUserAction(response.data,response.status))
+                dispatch(validateParentAction(response.data,response.status))
                 console.log(response.status)
                 
             }).catch((err) => {
-                dispatch(validateUserAction(err,404))
+                dispatch(validateParentAction(err,404))
 
                 setTimeout(() => {
-                    dispatch(validateUserAction(err,0))
+                    dispatch(validateParentAction(err,0))
                         
                 }, 1500);
             })
