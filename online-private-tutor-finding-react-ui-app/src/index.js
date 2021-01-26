@@ -10,7 +10,8 @@ import { applyMiddleware, createStore } from 'redux';
 import reducer from './reducers/AdminReducer.js'
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
-import parentReducer from './stores/ParentReducer.js'
+import parentReducer from './stores/ParentReducer';
+import tutorReducer from './stores/TutorReducer';
 
 
 

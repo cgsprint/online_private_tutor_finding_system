@@ -63,7 +63,7 @@ function TutorRouting() {
                         <ViewDemoRequests></ViewDemoRequests>
                     </Route>
 
-                    <Route path="/viewbook">
+                    <Route path="/viewEbook">
                         <TutorViewEbook></TutorViewEbook>
                     </Route>
 

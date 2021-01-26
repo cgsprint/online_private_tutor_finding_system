@@ -6,6 +6,17 @@ import * as actionCreators from '../actions/ParentActions'
 export class AddParent extends Component {
   constructor(props) {
     super(props)
+
+    this.state = {
+      firstNameError: "",
+      lastNameError: "",
+      usernameError: "",
+      passwordError: "",
+      mobileNoError: "",
+      emailError: "",
+      addressError: "",
+    };
+
     this.parentId = React.createRef();
     this.firstName = React.createRef();
     this.lastName = React.createRef();
@@ -15,6 +26,14 @@ export class AddParent extends Component {
     this.email = React.createRef();
     this.address = React.createRef();
   }
+
+  validate = () => {
+    if (!this.firstName.current.value) {
+      this.setState({
+        firstNameError: "Fill this blank field",
+      });
+    }
+  };
   add = (e) => {
     let newParent = {
         // parentId: this.parentId.current.value,

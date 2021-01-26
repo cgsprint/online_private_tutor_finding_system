@@ -21,22 +21,22 @@ export class ViewDemoRequest extends Component {
         this.props.onGetDemoRequests();
     }
 
-    // accept = (Id) => {
-    //     // console.log(Id)
-    //     this.props.onAcceptRequest(Id);
-    // }
+    accept = (Id) => {
+        // console.log(Id)
+        this.props.onAcceptRequest(Id);
+    }
 
-    // decline = (Id) => {
-    //     // console.log(tutorId)
-    //    this.props.onDeclineRequest(Id)
-    // }
+    decline = (Id) => {
+        // console.log(tutorId)
+       this.props.onDeclineRequest(Id)
+    }
 
     render() {
        
         
         var render_form = this.state.renderForm;
-
-        let requestList= () =>{this.props.requestsList.map((request,index)=>{
+        if(this.props.requestsList!= null){
+        var requestsList= this.props.requestsList.map((request,index)=>{
             return(
                 <tr key={index}>
                     <th>{request.Id}</th>
@@ -52,9 +52,10 @@ export class ViewDemoRequest extends Component {
                 </tr>
             )
         })
-    }
-        // if(render_form === 'VIEW_TUTOR_TABLE')
-        // {
+    
+}
+        if(render_form === 'VIEW_DEMO_REQUEST_TABLE')
+        {
             return (
 
            
@@ -75,7 +76,7 @@ export class ViewDemoRequest extends Component {
                     </thead>
 
                     <tbody>
-                        {requestList}
+                        {requestsList}
                     </tbody>
 
                     
@@ -84,8 +85,12 @@ export class ViewDemoRequest extends Component {
              
             </div>
         )
-        
-        
+            }
+
+       else
+        {
+            return null
+        }  
     }
 }
 

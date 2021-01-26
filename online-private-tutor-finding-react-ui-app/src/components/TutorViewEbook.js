@@ -7,16 +7,12 @@ import { withRouter } from 'react-router-dom';
 
 class TutorViewEbook extends Component {
 
-    constructor(props) {
-        super(props)
-    
-       
-    }       
     
     componentDidMount() {
         this.props.onViewEbooks()
     }
 
+    
    
 
     render() {
@@ -26,7 +22,7 @@ class TutorViewEbook extends Component {
                 <tr key={index}>
                 <th>{ebook.ebookId}</th>
                 <td>{ebook.title}</td>
-                <td>{ebook.author}</td>
+                <td>{ebook.authorname}</td>
                 <td>{ebook.url}</td>
                 
                 </tr>
@@ -63,7 +59,9 @@ class TutorViewEbook extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        returnedMessage: state.returnedMessage
+  ebooklist:state.ebooklist
+
+
     }
   }
   
@@ -77,7 +75,7 @@ const mapStateToProps = (state) => {
   
           }
     }
-  
+    
   }
   
 

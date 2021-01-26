@@ -5,6 +5,7 @@ import Jumbotron from 'react-bootstrap/Jumbotron'
 
 function AdminHome() {
     return (
+<<<<<<< HEAD
         <div style={{backgroundColor:"LightPink"}}>
             <Jumbotron style={{backgroundImage: 'url(https://th.bing.com/th/id/Red57359be7816a73496989c5c33f63a0?rik=jDAo3eeXcQXeKw&riu=http%3a%2f%2frankingsacademy.com%2fwp-content%2fuploads%2f2017%2f04%2flibraary.jpg&ehk=AkRBd5S0F2nTKr9q47%2b6V8t8dNmI42E1llyp7GQJBZI%3d&risl=&pid=ImgRaw)',   fontFamily: "Arial" }}>
   <h1 style={{color:"green"}}><u><b>Welcome</b></u></h1>
@@ -60,6 +61,10 @@ function AdminHome() {
     </p>
   </div>
   </footer><hr></hr>
+=======
+        <div>
+            <h2>Hello </h2>
+>>>>>>> e852c60f018a99ced5ac24f10710e27f004d7a0a
         </div>
     )
 }

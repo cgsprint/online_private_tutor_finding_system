@@ -37,7 +37,7 @@ const TutorViewEbookAction = (data) => {
 }
 export const getAllEbooks = () => {
     return (dispatch) => {
-        axios.get(BASE_URL+'viewEbooks')
+        axios.get(BASE_URL+'viewEbook')
             .then((response) => {
                 dispatch(TutorViewEbookAction(response.data))
                 

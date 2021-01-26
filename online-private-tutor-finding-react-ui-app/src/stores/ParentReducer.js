@@ -1,15 +1,17 @@
 import * as actionCreators from '../actions/ParentActions'
-import * as actionCreated2 from '../actions/ParentViewTutorActions'
-import * as actionCreated3 from '../actions/ParentViewEbookAction'
+import * as actionCreators2 from '../actions/ParentViewTutorActions'
+import * as actionCreators3 from '../actions/ParentViewEbookAction'
+import * as actionCreators4 from '../actions/ParentBookedTutor'
 
 const initialState = {
     returnedMessage: 'data not Found',
     tutorsList: [],
-    status: 0
+    ebooksList: [],
+    bookedtutorsList: []
 }
 const parentReducer = (state = initialState, action) => {
     switch (action.type) {
-        case actionCreated2.GET_ALL_TUTORS:
+        case actionCreators2.GET_ALL_TUTORS:
             let listOfTutors = action.data;
             let resMessage=action.data.resMessage
             console.log(action.data)
@@ -31,17 +33,28 @@ const parentReducer = (state = initialState, action) => {
                 returnedMessage: messageAfterAddition,
                 status : Reqstatus1
             }
-            case actionCreated3.GET_ALL_EBOOKS:
-                let listOfEbooks = action.data.ebookList
-                
-                console.log(action.data)
+            case actionCreators3.GET_ALL_EBOOKS:
+                let listOfEbooks = action.data;
+                // 
+                // console.log(action.data)
                 console.log('List of ebooks')
                 console.log(listOfEbooks)
                 
                 return {
                     
-                    ebookList: listOfEbooks
+                    ebooksList: listOfEbooks
                 }
+                case actionCreators4.GET_BOOKED_TUTOR:
+                    let listOfbookedTutor = action.data;
+                    
+                    console.log(action.data)
+                    console.log('List of bookedTutor')
+                    console.log(listOfbookedTutor)
+                    
+                    return {
+                        
+                        bookedtutorsList: listOfbookedTutor
+                    }
             default:
             return state
     }
