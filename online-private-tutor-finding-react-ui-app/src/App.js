@@ -26,6 +26,7 @@ import RequestDemo from './components/RequestDemo';
 import BookTutor from './components/BookTutor';
 import AdminHome from './components/AdminHome';
 import ParentHome from './components/ParentHome'
+import TutorHome from './components/TutorHome'
 
 
 
@@ -46,7 +47,7 @@ function App() {
     {/* <AddParent /> */}
 
 
-      <ParentRouting></ParentRouting>
+      {/* <ParentRouting></ParentRouting> */}
     {/* <ParentLogin />*/}
      
       {/* <AddUpdateTutor/> */}
@@ -76,7 +77,7 @@ function App() {
  
  {/* <AdminHome></AdminHome> */}
  {/* <ParentHome></ParentHome> */}
- 
+ <TutorHome></TutorHome>
 
 
     </div>

@@ -8,10 +8,10 @@ function AdminHome() {
 
         <div style={{backgroundColor:"LightPink"}}>
             <Jumbotron style={{backgroundImage: 'url(https://th.bing.com/th/id/Red57359be7816a73496989c5c33f63a0?rik=jDAo3eeXcQXeKw&riu=http%3a%2f%2frankingsacademy.com%2fwp-content%2fuploads%2f2017%2f04%2flibraary.jpg&ehk=AkRBd5S0F2nTKr9q47%2b6V8t8dNmI42E1llyp7GQJBZI%3d&risl=&pid=ImgRaw)', fontFamily: "Arial" }}>
-  <h1 style={{color:"green"}}><u><b>Welcome</b></u></h1>
+  <h1 style={{color:"green"}}><u><b>Hello Admin!!</b></u></h1>
   <p style={{color:"yellow"}}><b> 
   The direction in which education starts a man will determine his future life!!
-  <p style={{color:"white"}}>So, let's start our future from here. By following the small steps you can rich to the  the toppest tutors all over the India......</p>
+  <p style={{color:"white"}}>We build students, we provide us the knowledge.BE WITH US ......</p>
    </b> 
   </p>
   
