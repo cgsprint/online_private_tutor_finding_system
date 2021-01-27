@@ -1,14 +1,31 @@
 import React, { Component } from "react";
 
+import { Redirect } from "react-router-dom";
+
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import * as actionCreators from '../actions/RegisterTutor'
+
+import * as actionCreated from '../actions/TutorActions'
+
 import TutorHome from "./TutorHome";
+
+import * as actionCreators from '../actions/RegisterTutor'
+
 
 
 export class AddTutor extends Component {
   constructor(props) {
     super(props);
+
+    // const token = localStorage.getItem('token');
+    
+    // console.log("token is",token);
+    // let loggedIn = true
+
+    // if(token === null)
+    // {
+    //     loggedIn = false
+    // }
 
     this.state = {
       nameError: "",
@@ -18,6 +35,7 @@ export class AddTutor extends Component {
       phoneNoError: "",
       qualificationsError: "",
       addressError: "",
+      // loggedIn
     };
 
     this.tutorId = React.createRef();
@@ -28,6 +46,11 @@ export class AddTutor extends Component {
     this.phoneNumber = React.createRef();
     this.address = React.createRef();
     this.qualifications = React.createRef();
+  }
+
+  componentDidUpdate()
+  {
+    // this.props.history.push('/admin/viewtutors');
   }
 
   validate = (e) => {
@@ -127,14 +150,22 @@ export class AddTutor extends Component {
       this.address.current.value = "";
       this.qualifications.current.value = "";
     }
+    window.location.href = 'http://localhost:3000/admin/viewtutors'
   };
 
   render() {
+
+    // if(this.state.loggedIn === false)
+    // {
+    //     // return <Redirect to="/" />
+    //     window.location.href = 'http://localhost:3000/';
+    // }
+
     return (
-      <div class="container mt-5 px-3 py-3 border border-dark rounded  form-group required">
+      <div class="container mt-5 px-3 py-3 border border-dark rounded text-dark form-group required">
         <div class="row">
           <div class="col">
-            <h2>Add Tutor</h2>
+            <h2><b><u>Add Tutor</u></b></h2>
             <br></br>
             <form method="post">
               <div class="mb-3 row ">
@@ -142,7 +173,7 @@ export class AddTutor extends Component {
                   for="tutorName"
                   class="col-sm-4 col-form-label control-label"
                 >
-                  Tutor Name
+                  <b>Tutor Name</b>
                 </label>
                 <div class="col-sm-5">
                   <input
@@ -162,7 +193,7 @@ export class AddTutor extends Component {
                   for="tutorUsername"
                   class="col-sm-4 col-form-label control-label"
                 >
-                  Tutor Username
+                  <b>Tutor Username</b>
                 </label>
                 <div class="col-sm-5">
                   <input
@@ -184,7 +215,7 @@ export class AddTutor extends Component {
                   for="tutorPassword"
                   class="col-sm-4 col-form-label control-label"
                 >
-                  Tutor Password
+                <b>Tutor Password</b>
                 </label>
                 <div class="col-sm-5">
                   <input
@@ -207,7 +238,7 @@ export class AddTutor extends Component {
                   for="tutorSubject"
                   class="col-sm-4 col-form-label control-label"
                 >
-                  Tutor Subject
+                  <b>Tutor Subject</b>
                 </label>
                 <div class="col-sm-5">
                   <input
@@ -229,7 +260,7 @@ export class AddTutor extends Component {
                   for="tutorPhoneNo"
                   class="col-sm-4 col-form-label control-label"
                 >
-                  Tutor Phone No.
+                  <b>Tutor Phone No.</b>
                 </label>
                 <div class="col-sm-5">
                   <input
@@ -252,7 +283,7 @@ export class AddTutor extends Component {
                   for="tutorAddress"
                   class="col-sm-4 col-form-label control-label"
                 >
-                  Tutor Address
+                  <b>Tutor Address</b>
                 </label>
                 <div class="col-sm-5">
                   <input
@@ -274,7 +305,7 @@ export class AddTutor extends Component {
                   for="tutorQualification"
                   class="col-sm-4 col-form-label control-label"
                 >
-                  Tutor Qualification
+                  <b>Tutor Qualification</b>
                 </label>
                 <div class="col-sm-5">
                   <input
@@ -312,7 +343,7 @@ export class AddTutor extends Component {
               
             </div> */}
 
-        <div>{this.props.returnedMessage1}</div>
+        <div class="text-dark">{this.props.returnedMessage1}</div>
       </div>
     );
   }

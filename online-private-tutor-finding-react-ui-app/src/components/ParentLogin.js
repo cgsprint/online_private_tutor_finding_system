@@ -31,13 +31,13 @@ export class ParentLogin extends Component {
           <div class="container mt-5 px-3 py-3 border border-dark rounded">
           <div class="row">
             <div class="col">
-              <h2>Parent Login</h2>
+              <h2><b><u>Parent Login</u></b></h2>
               <br></br>
               <form>
   
                 <div class="mb-3 row">
                   <label for="username" class="col-sm-4 col-form-label">
-                    Username :
+                   <b> Username :</b>
                   </label>
                   <div class="col-sm-5">
                     <input
@@ -53,7 +53,7 @@ export class ParentLogin extends Component {
   
                 <div class="mb-3 row">
                   <label for="password" class="col-sm-4 col-form-label">
-                    Password :
+                   <b> Password :</b>
                   </label>
                   <div class="col-sm-5">
                     <input

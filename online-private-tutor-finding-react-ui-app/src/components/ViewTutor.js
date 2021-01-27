@@ -29,7 +29,12 @@ import * as actionCreated2 from '../actions/ParentViewTutorActions'
 
     
     render() {
-        let tutorsList= () =>{ this.props.tutors.map((tutor , index) => {
+
+        if(this.props.tutors !== null)
+        {
+
+        
+        var tutorsList= () =>{ this.props.tutors.map((tutor , index) => {
             return(
                 <tr key={index}>
                 <th>{tutor.tutorId}</th>
@@ -46,6 +51,7 @@ import * as actionCreated2 from '../actions/ParentViewTutorActions'
                 )
                 
             })}
+        }
         return (
             <div className="tutor-table-div">
                 <div>

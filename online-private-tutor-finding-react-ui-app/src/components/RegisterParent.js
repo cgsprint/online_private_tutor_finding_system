@@ -27,15 +27,84 @@ export class AddParent extends Component {
     this.address = React.createRef();
   }
 
-  validate = () => {
+  validate = (e) => {
+    let {
+      firstNameError,
+      lastNameError,
+      usernameError,
+      passwordError,
+      mobileNoError,
+      emailError,
+      addressError,
+    } = this.state;
+
     if (!this.firstName.current.value) {
-      this.setState({
-        firstNameError: "Fill this blank field",
-      });
+      firstNameError = "This field can not be blank";
     }
+    if (!this.lastName.current.value) {
+      lastNameError = "This field can not be blank";
+    }
+    if (!this.username.current.value) {
+      usernameError = "This field can not be blank";
+    }
+    if (!this.password.current.value) {
+      passwordError = "This field can not be blank";
+    } else if (this.password.current.value.length < 8) {
+      passwordError = "Password must be 8 character long";
+    }
+    if (!this.mobileNo.current.value) {
+      mobileNoError = "This field can not be blank";
+    }
+    if (!this.email.current.value) {
+      emailError = "This field can not be blank";
+    }
+    if (!this.address.current.value) {
+      addressError = "This field can not be blank";
+    }
+    
+    if (
+      firstNameError ||
+      lastNameError ||
+      usernameError ||
+      passwordError ||
+      mobileNoError ||
+      emailError ||
+      addressError
+    ) {
+      this.setState({
+        firstNameError,
+        lastNameError,
+        usernameError,
+        passwordError,
+        mobileNoError,
+        emailError,
+        addressError
+      });
+      setTimeout(() => {
+        this.setState({
+          firstNameError: "",
+          lastNameError: "",
+          usernameError: "",
+          passwordError: "",
+          mobileNoError: "",
+          emailError: "",
+          addressError: "",
+        });
+      }, 1000);
+      return false;
+    }
+
+    return true;
   };
+
   add = (e) => {
-    let newParent = {
+
+    e.preventDefault();
+    const valid = this.validate(e);
+    console.log(valid);
+    if(valid===true)
+    {
+      let newParent = {
         // parentId: this.parentId.current.value,
         firstName: this.firstName.current.value,
         lastName: this.lastName.current.value,
@@ -48,22 +117,24 @@ export class AddParent extends Component {
     // alert(this.firstName.current.value + this.lastName.current.value)
     this.props.onAddParent(newParent);
     e.preventDefault();
+    }
+    
 
     //alert(this.firstName.current.value + this.lastName.current.value + this.username.current.value + this.password.current.value + this.mobileNo.current.value +this.email.current.value + this.address.current.value)
 }
     render() {
         return (
-            <div class="container mt-5 px-3 py-3 border border-dark rounded">
+            <div class="container mt-5 px-3 py-3 text-dark border border-dark rounded main-login">
         <div class="row">
           <div class="col">
-            <h2>Registration</h2>
+            <h2><b><u>Registration</u></b></h2>
             <br></br>
             <form method="post">
               <div>
 
               <div class="mb-3 row">
                 <label for="firstName" class="col-sm-4 col-form-label">
-                First Name : 
+             <b>   First Name : </b>
                 </label>
                 <div class="col-sm-5">
                   <input
@@ -73,14 +144,15 @@ export class AddParent extends Component {
                     name="firstName"
                     ref={this.firstName}
                     placeholder = "Eg: John"
-                    required
                   />
+                  <br></br>
+                  <div className="font-size-small text-danger">{this.state.firstNameError}</div>
                 </div>
               </div>
 
               <div class="mb-3 row">
                 <label for="lastName" class="col-sm-4 col-form-label">
-                  Last Name :
+                  <b>Last Name :</b>
                 </label>
                 <div class="col-sm-5">
                   <input
@@ -90,14 +162,15 @@ export class AddParent extends Component {
                     name="lastName"
                     ref={this.lastName}
                     placeholder = "Eg: Doe"
-                    required
-                  />
+                    
+                  /><br></br>
+                  <div className="font-size-small text-danger">{this.state.lastNameError}</div>
                 </div>
               </div>
 
               <div class="mb-3 row">
                 <label for="username" class="col-sm-4 col-form-label">
-                  Username :
+                 <b> Username :</b>
                 </label>
                 <div class="col-sm-5">
                   <input
@@ -107,14 +180,14 @@ export class AddParent extends Component {
                     name="username"
                     ref={this.username}
                     placeholder = "Eg: John"
-                    required
-                  />
+                  /><br></br>
+                  <div className="font-size-small text-danger">{this.state.usernameError}</div>
                 </div>
               </div>
 
               <div class="mb-3 row">
                 <label for="password" class="col-sm-4 col-form-label">
-                  Password :
+                 <b> Password :</b>
                 </label>
                 <div class="col-sm-5">
                   <input
@@ -126,14 +199,14 @@ export class AddParent extends Component {
                     name="password"
                     ref={this.password}
                     placeholder="Eg: john@123"
-                    required
-                  />
+                  /><br></br>
+                  <div className="font-size-small text-danger">{this.state.passwordError}</div>
                 </div>
               </div>
 
               <div class="mb-3 row">
                 <label for="mobileNo" class="col-sm-4 col-form-label">
-                  Mobile No :
+                <b>  Mobile No :</b>
                 </label>
                 <div class="col-sm-5">
                   <input
@@ -144,14 +217,15 @@ export class AddParent extends Component {
                     name="mobileNo"
                     ref={this.mobileNo}
                     placeholder="Eg: 1234668909"
-                    required
-                  />
+                   
+                  /><br></br>
+                  <div className="font-size-small text-danger">{this.state.mobileNoError}</div>
                 </div>
               </div>
 
               <div class="mb-3 row">
                 <label for="email" class="col-sm-4 col-form-label">
-                  Email :
+                <b>  Email :</b>
                 </label>
                 <div class="col-sm-5">
                   <input
@@ -161,14 +235,15 @@ export class AddParent extends Component {
                     id="email"
                     ref={this.email}
                     placeholder = "Eg: john@gmail.com"
-                    required
-                  />
+                    
+                  /><br></br>
+                  <div className="font-size-small text-danger">{this.state.emailError}</div>
                 </div>
               </div>
 
               <div class="mb-3 row">
                 <label for="address" class="col-sm-4 col-form-label">
-                  Address :
+                 <b> Address :</b>
                 </label>
                 <div class="col-sm-5">
                   <input
@@ -178,8 +253,9 @@ export class AddParent extends Component {
                     id="address"
                     ref={this.address}
                     placeholder = "Eg: Andheri"
-                    required
-                  />
+                  
+                  /><br></br>
+                  <div className="font-size-small text-danger">{this.state.addressError}</div>
                 </div>
               </div>
 
@@ -205,8 +281,8 @@ export class AddParent extends Component {
        <br></br>
             <br></br>
     
-            <div className={(this.props.returnedMessage === '') ? '' : "alert"} role="alert">
-              {this.props.returnedMessage}
+            <div >
+              {this.props.returnedMessage4}
             </div>
             <hr></hr>
 
@@ -219,7 +295,7 @@ export class AddParent extends Component {
 }
 const mapStateToProps = (state) => {
   return {
-      returnedMessage: state.returnedMessage,
+      returnedMessage4: state.returnedMessage4,
       status: state.status
   }
 }

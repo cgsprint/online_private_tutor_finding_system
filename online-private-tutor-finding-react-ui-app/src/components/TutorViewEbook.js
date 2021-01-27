@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
-import axios from 'axios'
-import * as actionCreated from '../actions/TutorActions'
+
+
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import * as actionCreated from '../actions/TutorActions'
+
+import axios from 'axios'
 
 
 class TutorViewEbook extends Component {
@@ -58,6 +61,8 @@ class TutorViewEbook extends Component {
 
 
 const mapStateToProps = (state) => {
+
+    console.log("state.ebooklist ",state.ebooklist)
     return {
   ebooklist:state.ebooklist
 

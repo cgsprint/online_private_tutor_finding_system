@@ -11,6 +11,17 @@ import { connect } from 'react-redux';
   constructor(props){
     super(props)
 
+    const token = localStorage.getItem('token');
+    
+    console.log("token is",token);
+    let loggedIn = true
+
+    if(token === null)
+    {
+        loggedIn = false
+    }
+
+    
     this.state = {
       nameError: "",
       usernameError: "",
@@ -19,6 +30,7 @@ import { connect } from 'react-redux';
       phoneNoError: "",
       qualificationsError: "",
       addressError: "",
+      loggedIn
     };
 
     this.tutorId = React.createRef();
@@ -114,7 +126,8 @@ import { connect } from 'react-redux';
 
   componentDidMount() {
 
-    // console.log(this.props.tutorObject)
+    
+    console.log("tutorObject is "+this.props.tutorObject)
     // this.props.onGetTutorById(this.props.tutorId);
 
     // this.setState({
@@ -148,10 +161,14 @@ updateTutor = (e) =>{
         phoneNumber: this.phonenumber.current.value,
         qualifications:this.qualification.current.value
       }
-      // e.preventDefault();
+      e.preventDefault();
       // console.log(p)
       // alert(this.tutorId.current.value)
       this.props.onUpdateTutor(tutor)
+      // this.setState({
+
+      // })
+      // this.props.history.push('/admin/viewparents');
     }
     
 }
@@ -163,16 +180,22 @@ changeName = (e) => {
 }
 
   render(){
+
+    if(this.state.loggedIn === false)
+        {
+            // return <Redirect to="/" />
+            window.location.href = 'http://localhost:3000/admin/viewtutors';
+        }
       return(
         <div className="container mt-5 px-3 py-3 border border-dark rounded form-group required">
         <div className="row">
           <div className="col">
-            <h2>Update Tutor Profile</h2>
+            <h2><b><u>Update Tutor Profile</u></b></h2>
             <br></br>
             <form>
               <div className="mb-3 row">
                 <label for="tutorId" className="col-sm-4 col-form-label">
-                  Tutor Id
+                  <b>Tutor Id</b>
                 </label>
                 <div className="col-sm-5">
                   <input
@@ -189,7 +212,7 @@ changeName = (e) => {
 
               <div className="mb-3 row">
                 <label for="tutorName" className="col-sm-4 col-form-label  control-label">
-                  Tutor Name
+                  <b>Tutor Name</b>
                 </label>
                 <div className="col-sm-5">
                   <input
@@ -220,7 +243,7 @@ changeName = (e) => {
 
               <div className="mb-3 row">
                 <label for="tutorUsername" className="col-sm-4 col-form-label control-label">
-                  Tutor Username
+                  <b>Tutor Username</b>
                 </label>
                 <div className="col-sm-5">
                   <input
@@ -298,7 +321,7 @@ changeName = (e) => {
 
               <div className="mb-3 row">
                 <label for="tutorAddress" className="col-sm-4 col-form-label control-label">
-                  Tutor Address
+                  <b>Tutor Address</b>
                 </label>
                 <div className="col-sm-5">
                   <input
@@ -319,7 +342,7 @@ changeName = (e) => {
                   for="tutorQualification"
                   className="col-sm-4 col-form-label control-label"
                 >
-                  Tutor Qualification
+                  <b>Tutor Qualification</b>
                 </label>
                 <div className="col-sm-5">
                   <input

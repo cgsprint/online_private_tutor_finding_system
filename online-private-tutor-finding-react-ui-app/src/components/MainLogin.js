@@ -6,16 +6,51 @@ import AdminRouting from './AdminRouting'
 import TutorRouting from './TutorRouting'
 import ParentRouting from './ParentRouting'
 import * as actionCreators from '../actions/ValidateUser'
+import { Redirect } from "react-router-dom";
 
 
-var sectionStyle = {
-  // backgroundImage: `url(${LogoImage})`
-  backgroundcolor: `red`
-}
 
 export class MainLogin extends Component {
+
   constructor(props) {
     super(props)
+
+
+
+    const token = localStorage.getItem('token');
+    const role = localStorage.getItem('role');
+    
+        console.log("token is",token);
+        console.log("role is",role);
+        var loggedIn = true
+        var uRole = ''
+
+        if(token === null)
+        {
+            loggedIn = false
+        }
+        if(role !== null)
+        {
+          uRole = role
+        }
+
+        this.setState({
+          loggedIn: loggedIn,
+          role: uRole
+        })
+
+        // if(loggedIn === true)
+        // {
+        //   this.props.setState({
+        //     status: 200
+        //   })
+        // }
+
+
+    // var isLoggedIn = false
+
+   
+  
   
     this.state = {
        userRole: "",
@@ -24,9 +59,18 @@ export class MainLogin extends Component {
        renderPage: "MAIN_LOGIN",
        roleErr: '',
        usernameErr: '',
-       passwordErr: ''
+       passwordErr: '',
+       loggedIn,
+       role
+
+
     }
+    console.log(this.props.status)
+
   }
+
+  
+  
 
   eventHandler = (e) =>
     {
@@ -35,6 +79,10 @@ export class MainLogin extends Component {
             [e.target.name]: e.target.value
         })
      
+    }
+
+    componentDidMount(){
+      console.log("store"+this.props.store)
     }
   
 
@@ -134,9 +182,14 @@ export class MainLogin extends Component {
       }
   
       console.log("in userLogin")
-      this.props.onValidateUser(User)
+      this.props.onValidateUser(User);
+      // dis.then((response) = {
+      //   this.setState({})
+      // }
       // e.preventDefault();
     }
+
+    
     
 
   };
@@ -150,16 +203,76 @@ export class MainLogin extends Component {
     })
   }
 
-  // componentDidUpdate() {
-  //   if(this.state.userRole === 'admin' && this.props.status)
-  //   {
-  //     this.setState({
-  //       renderPage : "ADMIN_ROUTING"
-  //     })
-  //   } 
-  // }
+  componentDidUpdate() {
+    
+    // console.log("component did update ",this.props.admin)
+    // console.log("Status of log in",this.props.status);
+    // console.log("component did update 2 ",this.state.userRole)
+    // localStorage.setItem(this.state.userRole,JSON.stringify(this.props.admin))
+    // console.log("This is local storage")
+    // console.log(localStorage.getItem('admin'))
+
+    // if(this.props.status === 200)
+    // {
+    //   console.log("status is 200 " , this.props.status)
+      
+    // }
+    // console.log(isLoggedIn)
+  }
+
+
+
+
 
   render() {
+
+    // let { status } = this.props.status
+
+  // if(this.props.status === 200)
+  // {
+  //   console.log("status is 200 " , this.props.status)
+  //   var isLoggedIn = true
+  // }
+
+  // this.state({
+  //   isLoggedIn : isLoggedIn
+  // })
+    
+  console.log("this.props.status ",this.props.status)
+  console.log("this.state.loggedIn ",this.state.loggedIn)
+  console.log("this.state.userRole ",this.state.userRole)
+  console.log("this.state.role ",this.state.role)
+  console.log("this.props.admin ",this.props.admin)
+  console.log("this.props.tutor ",this.props.tutor)
+  console.log("this.props.parent ",this.props.parent)
+
+    if((this.props.status === 200 || this.state.loggedIn === true)&& (this.state.userRole === 'admin' || this.state.role === 'admin'))
+    {
+      // console.log("You are logged in");
+      localStorage.setItem("token","khfhdskhfkjsdhfkhdfsdjfhsd");
+      localStorage.setItem("role",'admin');
+      localStorage.setItem("adminObj",JSON.stringify(this.props.admin));
+      // sessionStorage.setItem("token","sdukfhksdhfkshdfksdhfk")
+      return <Redirect to="/admin/home" />
+    }
+    else if((this.props.status === 200 || this.state.loggedIn === true) && (this.state.userRole === 'tutor' || this.state.role === 'tutor'))
+    {
+      localStorage.setItem("token","khfhdskhfkjsdhfkhdfsdjfhsd");
+      localStorage.setItem("role",'tutor');
+      localStorage.setItem("tutorObj",JSON.stringify(this.props.tutor));
+
+      return <Redirect to="/tutor/home" />
+
+    }
+    else if((this.props.status === 200 || this.state.loggedIn === true) && (this.state.userRole === 'parent' || this.state.role === 'parent'))
+    {
+      localStorage.setItem("token","khfhdskhfkjsdhfkhdfsdjfhsd");
+      localStorage.setItem("role",'parent');
+      localStorage.setItem("tutorObj",JSON.stringify(this.props.parent));
+      return <Redirect to="/parent" />
+
+    }
+    
     const renderComponent = this.state.renderPage;
 
    
@@ -183,12 +296,12 @@ export class MainLogin extends Component {
         <div class="container mt-5 px-3 py-3 border border-dark rounded form-group required main-login text-dark main-login">
           <div class="row">
             <div class="col">
-              <h2>Login Page </h2>
+              <h2><b><u>Login Page</u></b> </h2>
               <br></br>
               <form>
                 <div class="mb-3 row">
                   <label for="username" class="col-sm-5 col-form-label mr-3   control-label">
-                    Select Role
+                    <b>Select Role</b>
                   </label>
                   <div class="col-sm-4 ">
                     <div
@@ -247,7 +360,7 @@ export class MainLogin extends Component {
 
                 <div class="mb-3 row">
                   <label for="username" class="col-sm-5 col-form-label control-label">
-                    Enter Username
+                  <b>  Enter Username</b>
                   </label>
                   <div class="col-sm-4 ">
                     <input
@@ -263,7 +376,7 @@ export class MainLogin extends Component {
 
                 <div class="mb-3 row">
                   <label for="password" class="col-sm-5 col-form-label control-label">
-                    Enter Password
+                   <b> Enter Password</b>
                   </label>
                   <div class="col-sm-4">
                     <input
@@ -301,12 +414,12 @@ export class MainLogin extends Component {
             </div>
           </div>
           <div className={"alert"} role="alert">
-              { 
+              {/* { 
                 this.props.status === 200 ? 
                 (this.state.userRole === 'admin' ? this.setState({renderPage: "ADMIN_ROUTING"}) :
                 (this.state.userRole === 'tutor' ? this.setState({renderPage: "TUTOR_ROUTING"}) : 
                 (this.state.userRole === 'parent' ? this.setState({renderPage: "PARENT_ROUTING"}) : <div></div>))) : <div></div>
-              }
+              } */}
               {
                 this.props.status === 404 && <div>Login failed</div> 
               }
@@ -326,27 +439,27 @@ export class MainLogin extends Component {
         <AddParent/>
       </div>);
     }
-    else if(this.state.renderPage === 'ADMIN_ROUTING')
-    {
-      return (
-      <div>
-        <AdminRouting/>
-      </div>);
-    }
-    else if(this.state.renderPage === 'TUTOR_ROUTING')
-    {
-      return (
-      <div>
-        <TutorRouting/>
-      </div>);
-    }
-    else if(this.state.renderPage === 'PARENT_ROUTING')
-    {
-      return (
-      <div>
-        <ParentRouting/>
-      </div>);
-    }
+    // else if(this.state.renderPage === 'ADMIN_ROUTING')
+    // {
+    //   return (
+    //   <div>
+    //     <AdminRouting/>
+    //   </div>);
+    // }
+    // else if(this.state.renderPage === 'TUTOR_ROUTING')
+    // {
+    //   return (
+    //   <div>
+    //     <TutorRouting/>
+    //   </div>);
+    // }
+    // else if(this.state.renderPage === 'PARENT_ROUTING')
+    // {
+    //   return (
+    //   <div>
+    //     <ParentRouting/>
+    //   </div>);
+    // }
     else
     {
       return <div>{this.state.renderPage}</div>;
@@ -392,9 +505,15 @@ export class MainLogin extends Component {
 
 
 const mapStateToProps = (state) => {
+  console.log("mapStateToProps",state);
+
   return {
       returnedMessage: state.returnedMessage,
-      status: state.status
+      status: state.status,
+      admin: state.adminOb,
+      tutor: state.tutorOb,
+      parent: state.parentOb
+      
   }
 }
 
@@ -408,9 +527,10 @@ const mapDispatchToProps = (dispatch) => {
 
   }
 
-  
+
 
 }
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(MainLogin))
 // export default MainLogin

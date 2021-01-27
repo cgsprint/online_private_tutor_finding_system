@@ -6,6 +6,11 @@ import * as actionCreators4 from '../actions/ParentBookedTutor'
 const initialState = {
     returnedMessage: 'data not Found',
     tutorsList: [],
+
+
+    ebookList: [],
+
+    status: 0,
     ebooksList: [],
     bookedtutorsList: []
 }

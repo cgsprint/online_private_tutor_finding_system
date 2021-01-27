@@ -7,13 +7,16 @@ import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import thunk from "redux-thunk";
 import { applyMiddleware, createStore } from 'redux';
-import reducer from './reducers/AdminReducer.js'
+import adminreducer from './reducers/AdminReducer.js'
+// import parentreducer from './stores/ParentReducer'
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import parentReducer from './stores/ParentReducer';
 import tutorReducer from './stores/TutorReducer';
 
 
+const adminstore = createStore(adminreducer, applyMiddleware(thunk))
+// const parentstore = createStore(parentreducer, applyMiddleware(thunk))
 
 const store = createStore(parentReducer, applyMiddleware(thunk))
 
@@ -22,10 +25,10 @@ ReactDOM.render(
 
     
 
-   <Provider store={store}>
+   <Provider store={adminstore}>
 
       <BrowserRouter>
-        <App  store={store} />
+        <App  />
       </BrowserRouter>
     </Provider>
   </React.StrictMode>,
