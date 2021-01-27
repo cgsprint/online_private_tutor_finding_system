@@ -8,6 +8,20 @@ export class Logout extends Component {
         super(props)
     
         localStorage.removeItem('token')
+        const role = localStorage.getItem('role');
+        if(role === 'admin')
+        {
+            localStorage.removeItem('adminObj')
+        }
+        else if(role === 'tutor')
+        {
+            localStorage.removeItem('tutorObj')
+        }
+        else if(role === 'parent')
+        {
+            localStorage.removeItem('parentObj')
+        }
+
         localStorage.removeItem('role')
 
        

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { Redirect, withRouter } from 'react-router-dom';
 import * as actionCreators from '../actions/AddEbookAction'
 
 class AddEbook extends Component {
@@ -29,14 +29,16 @@ class AddEbook extends Component {
     this.url = React.createRef()
   }
   
-  // componentDidUpdate() {
-  //   let check = this.props.returnedMessage.split(' ')
-  //   if (check[0] === 'Successfully') {
-  //     setTimeout(() => {
-  //       this.props.history.push('/addebook')
-  //     } ,2000)
-  //   }
-  // }
+  componentDidUpdate() {
+    // let check = this.props.returnedMessage.split(' ')
+    // if (check[0] === 'Successfully') {
+    //   setTimeout(() => {
+    //     this.props.history.push('/addebook')
+    //   } ,2000)
+    // }
+
+
+  }
 
   validate = () => {
     let {titleError,authornameError,urlError} = this.state;
@@ -49,6 +51,9 @@ class AddEbook extends Component {
     }
     if (!this.url.current.value) {
         urlError= "This field can not be blank"
+    }
+    if(!this.url.current.value.includes('https://')) {
+        urlError= "Invalid url"
     }
 
     if(titleError||authornameError||urlError){
@@ -83,6 +88,7 @@ class AddEbook extends Component {
       this.authorname.current.value = '';
       this.url.current.value = '';
     }
+
   }
 
 
@@ -95,9 +101,16 @@ class AddEbook extends Component {
     //     // return <Redirect to="/" />
     //     window.location.href = 'http://localhost:3000/';
     // } 
+
+    if(this.props.status === 200)
+    {
+      return <Redirect to="/admin/viewebooks"/>
+    }
     
     return (
-      <div className="container mt-5 px-3 py-3 border border-dark text-dark rounded form-group required">
+
+      
+      <div className="container mt-5 px-3 py-3 border border-dark text-dark rounded form-group required"  style={{background: '#f5f5f5'}}>
         <div className="row">
           <div className="col">
             <h2>Add Ebook</h2>
@@ -153,12 +166,21 @@ class AddEbook extends Component {
               </div>
 
               <div className="row mt-3">
-                <div className="col">
+                <div className="col-7">
                   <button
                     className="btn btn-primary btn-sm"
                     onClick={this.add.bind(this)}
                   >
                     Add
+                  </button>
+                </div>
+                <div class="col-1">
+                  <button
+                  type="reset"
+                    class="btn btn-primary btn-sm"
+                    // onClick={this.addTutor.bind(this)}
+                  >
+                    Reset
                   </button>
                 </div>
               </div>

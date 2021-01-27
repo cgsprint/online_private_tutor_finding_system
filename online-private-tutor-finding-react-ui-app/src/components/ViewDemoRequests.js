@@ -2,6 +2,7 @@
 import React, { Component } from 'react'
 import * as actionCreators from '../actions/TutorActions'
 import { connect } from 'react-redux'
+import {withRouter} from 'react-router-dom'
 
 
 export class ViewDemoRequest extends Component {
@@ -18,7 +19,10 @@ export class ViewDemoRequest extends Component {
 
 
     componentDidMount() {
-        this.props.onGetDemoRequests();
+        const tutor = localStorage.getItem("tutorObj")
+        console.log(JSON.parse(tutor).tutorId)
+        const tutorId = JSON.parse(tutor).tutorId
+        this.props.onGetDemoRequests(tutorId);
     }
 
     accept = (Id) => {
@@ -39,12 +43,12 @@ export class ViewDemoRequest extends Component {
         var requestsList= this.props.requestsList.map((request,index)=>{
             return(
                 <tr key={index}>
-                    <th>{request.Id}</th>
-                    <td>{request.tutorId}</td>
+                    <th>{request.requestId}</th>
+                    {/* <td>{request.tutorID}</td> */}
                     <td>{request.subject}</td>
-                    <td>{request.localtime}</td> 
-                    <td>{request.localdate}</td> 
-                    <td>{request.parentId}</td> 
+                    <td>{request.localTime}</td> 
+                    <td>{request.localDate}</td> 
+                    <td>{request.parentName}</td> 
                      <td colSpan="2">
                         <button onClick={this.accept.bind(this,request.Id)} className="btn btn-info btn-sm">ACCEPT</button>
                         <button onClick={this.decline.bind(this,request.Id)} className="btn btn-danger ml-5 btn-sm">DECLINE</button>
@@ -62,15 +66,15 @@ export class ViewDemoRequest extends Component {
             <div>
                 
                 <h2 className="text-center">Demo Request List</h2>
-                <table className="table table-stripped">
+                <table className="table table-striped">
                     <thead>
                         <tr>
                             <th scope="col">Id</th>
-                            <th scope="col">TutorId</th>
+                            {/* <th scope="col">TutorId</th> */}
                             <th scope="col">Subject</th>
                             <th scope="col">Time</th>
                             <th scope="col">Date</th>
-                            <th scope="col">ParentId</th>
+                            <th scope="col">Parent Name</th>
                             <th scope="col">Actions</th>
                         </tr>
                     </thead>
@@ -104,11 +108,11 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onGetDemoRequests: () => {
-          return  dispatch(actionCreators.getAllDemoRequests())
+        onGetDemoRequests: (tutorId) => {
+          return  dispatch(actionCreators.getAllDemoRequests(tutorId))
         }
     }
 
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ViewDemoRequest)
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(ViewDemoRequest))

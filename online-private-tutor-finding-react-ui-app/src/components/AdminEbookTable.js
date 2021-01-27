@@ -107,7 +107,7 @@ class AdminEbookTable extends Component {
       <div>
         <h2 className="text-center">Ebook List</h2>
 
-        <table className="table text-dark table-hover ">
+        <table className="table text-dark table-striped ">
           <thead>
             <tr class="d-flex">
               <th className="col-1">Id</th>

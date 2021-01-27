@@ -4,10 +4,12 @@ import Jumbotron from "react-bootstrap/Jumbotron";
 function TutorHome() {
   const tutorObject = localStorage.getItem("tutorObj");
 
-  console.log("tutorbject ", tutorObject);
+  // console.log("tutorbject ", JSON.parse(tutorObject).tutorName);
+
+  const tutorName = JSON.parse(tutorObject).tutorName
 
   return (
-    <div style={{ backgroundColor: "LightPink" }}>
+    <div>
       <Jumbotron
         style={{
           backgroundImage:
@@ -17,7 +19,7 @@ function TutorHome() {
       >
         <h1 style={{ color: "green" }}>
           <u>
-            <b>Welcome</b>
+            <b>Welcome {tutorName}</b>
           </u>
         </h1>
         <p style={{ color: "yellow" }}>
@@ -32,7 +34,7 @@ function TutorHome() {
         </p>
       </Jumbotron>
 
-      <div className="container" style={{ backgroundColor: "blueviolet" }}>
+      <div className="container" >
         <div className="row">
           <div className="col-sm">
             <div class="card">

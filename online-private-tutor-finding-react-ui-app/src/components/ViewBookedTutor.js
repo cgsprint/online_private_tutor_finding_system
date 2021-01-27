@@ -14,7 +14,11 @@ import { connect } from 'react-redux'
     }
     
     componentDidMount() {
-        this.props.onGetBookedTutor()
+
+        const parent = localStorage.getItem("parentObj")
+        console.log(JSON.parse(parent).parentId)
+        const parentId = JSON.parse(parent).parentId
+        this.props.onGetBookedTutor(parentId)
     }
 
 
@@ -22,39 +26,43 @@ import { connect } from 'react-redux'
 
         var render_form = this.state.renderForm;
         console.log(render_form)
-        if(this.props.bookedtutorsList!==null)
+        if(this.props.bookedTutorList != null)
         {
-        var bookedtutorsList = this.state.bookedtutorsList.map((b,index) =>{
+            var bookedTutorList = this.props.bookedTutorList.map((b,index) =>{
+                return (
+                    <tr key={index}>
+                        <th>{b.tutorId}</th>
+                        <th>{b.subject}</th>
+                        <th>{b.localDate}</th>
+                        <th>{b.localTime}</th>
+                    </tr>
+                )
+            });
+        }
+        else
+        {
             return (
-                <tr key={index}>
-                    <th>{b.tutorid}</th>
-                    <td>{b.name}</td>
-                    <td>{b.address}</td>
-                    <td>{b.subject}</td>
-                    <td>{b.qualification}</td>
-                    <td>{b.phoneno}</td>
-                </tr>
+                <div>Seems you have not booked any tutor</div>
             )
-        })
-    }
+        }
 
         if(render_form === 'VIEW_BOOKED_TUTOR')
-{
+    {
         return (
             <div>
-                <table className="table table-info demo-request-table">
+                <h2 className="text-center">My booked Tutors</h2>
+
+                <table className="table table-striped demo-request-table">
                     <thead>
                         <tr>
                             <th scope="col">TutorId</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Address</th>
                             <th scope="col">Subject</th>
-                            <th scope="col">Qualification</th>
-                            <th scope="col">Phone no</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Time</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {bookedtutorsList}
+                        {bookedTutorList}
                     </tbody>
                 </table>  
 
@@ -66,15 +74,15 @@ import { connect } from 'react-redux'
 
 const mapStateToProps = (state) => {
     return {
-        bookedtutorsList:state.bookedtutorsList,
+        bookedTutorList:state.bookedTutorsList,
         returnedMessage: state.returnedMessage
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onGetBookedTutor: () => {
-          return  dispatch(actionCreators.getBookedTutor())
+        onGetBookedTutor: (parentId) => {
+          return  dispatch(actionCreators.getBookedTutor(parentId))
         }
     }
 

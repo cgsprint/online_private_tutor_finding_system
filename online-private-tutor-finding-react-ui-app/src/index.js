@@ -14,7 +14,7 @@ import { BrowserRouter } from 'react-router-dom';
 import parentReducer from './stores/ParentReducer';
 import tutorReducer from './stores/TutorReducer';
 
-
+import './main.css'
 const adminstore = createStore(adminreducer, applyMiddleware(thunk))
 // const parentstore = createStore(parentreducer, applyMiddleware(thunk))
 

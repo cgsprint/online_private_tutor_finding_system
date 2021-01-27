@@ -6,7 +6,9 @@ import Jumbotron from "react-bootstrap/Jumbotron";
 function AdminHome() {
   const adminObject = localStorage.getItem("adminObj");
 
-  console.log("adminObject ", adminObject);
+  console.log("adminObject ", JSON.parse(adminObject).adminName);
+
+  const adminName = JSON.parse(adminObject).adminName
 
   return (
     <div style={{ backgroundColor: "LightPink" }}>
@@ -19,7 +21,7 @@ function AdminHome() {
       >
         <h1 style={{ color: "green" }}>
           <u>
-            {/* <b>Welcome {JSON.parse(adminObject.adminName)}</b> */}
+            <b>Welcome { adminName }</b>
           </u>
         </h1>
         <p style={{ color: "yellow" }}>
@@ -34,7 +36,7 @@ function AdminHome() {
         </p>
       </Jumbotron>
 
-      <div className="container" style={{ backgroundColor: "blueviolet" }}>
+      <div className="container">
         <div className="row">
           <div className="col-sm">
             <div class="card">

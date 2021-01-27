@@ -20,7 +20,12 @@ class TutorViewEbook extends Component {
 
     render() {
 
-        let ebooklist= this.props.ebooklist.map((ebook , index) => {
+        if(this.props.ebooklist != null)
+        {
+
+        
+
+        var ebooklist= this.props.ebooklist.map((ebook , index) => {
             return(
                 <tr key={index}>
                 <th>{ebook.ebookId}</th>
@@ -31,9 +36,17 @@ class TutorViewEbook extends Component {
                 </tr>
                 )
             })
+        }
+        else
+        {
+            return (
+                <div>Empty list</div>
+            )
+        }
         return (
             <div>
-                <table className="table table-info demo-request-table">
+                <table className="table  demo-request-table table-striped"> 
+                {/* demo-request-table table-info */}
                     <thead>
                         <tr>
                             <th scope="col">EbookId</th>
@@ -64,7 +77,7 @@ const mapStateToProps = (state) => {
 
     console.log("state.ebooklist ",state.ebooklist)
     return {
-  ebooklist:state.ebooklist
+        ebooklist:state.ebooksList
 
 
     }

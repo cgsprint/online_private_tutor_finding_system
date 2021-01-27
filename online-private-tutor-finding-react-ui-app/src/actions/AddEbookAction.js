@@ -21,10 +21,10 @@ export const addEbook = (newEbook) => {
             // alert("Ebook successfully added")
             console.log(response)
             dispatch(addEbookAction(response.data.message,response.status))
-            setTimeout(() => {
-                dispatch(addEbookAction("",0))
+            // setTimeout(() => {
+            //     dispatch(addEbookAction("",0))
                 
-            }, 1500);
+            // }, 1500);
             
         })
         .catch((err) => {

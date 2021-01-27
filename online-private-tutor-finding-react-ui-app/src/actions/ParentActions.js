@@ -15,8 +15,13 @@ export const addParent = (newParent) => {
     return (dispatch) => {
         axios.post(PARENT_BASE_URL + '/register', newParent)
             .then((response) => {
-                console.log(response.data)
-                dispatch(addParentAction(response.data,response.status))
+                
+                console.log("response.data.message",response.data.message)
+                dispatch(addParentAction(response.data.message,response.data.status))
+                setTimeout(() => {
+                    dispatch(addParentAction("",0))
+                        
+                }, 6000);
             })
     }
 }

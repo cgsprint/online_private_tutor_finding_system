@@ -203,21 +203,12 @@ export class MainLogin extends Component {
     })
   }
 
-  componentDidUpdate() {
-    
-    // console.log("component did update ",this.props.admin)
-    // console.log("Status of log in",this.props.status);
-    // console.log("component did update 2 ",this.state.userRole)
-    // localStorage.setItem(this.state.userRole,JSON.stringify(this.props.admin))
-    // console.log("This is local storage")
-    // console.log(localStorage.getItem('admin'))
+  renderMainLogin(page)
+  {
 
-    // if(this.props.status === 200)
-    // {
-    //   console.log("status is 200 " , this.props.status)
-      
-    // }
-    // console.log(isLoggedIn)
+    this.setState({
+      renderPage: page
+    });
   }
 
 
@@ -269,7 +260,7 @@ export class MainLogin extends Component {
       localStorage.setItem("token","khfhdskhfkjsdhfkhdfsdjfhsd");
       localStorage.setItem("role",'parent');
       localStorage.setItem("parentObj",JSON.stringify(this.props.parent));
-      return <Redirect to="/parent" />
+      return <Redirect to="/parent/home" />
 
     }
     
@@ -436,7 +427,7 @@ export class MainLogin extends Component {
     {
       return (
       <div>
-        <AddParent/>
+        <AddParent backToLogin={this.renderMainLogin.bind(this)}/>
       </div>);
     }
     // else if(this.state.renderPage === 'ADMIN_ROUTING')

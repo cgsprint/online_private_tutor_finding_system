@@ -59,9 +59,12 @@
 //     }
 
 
+import { connect } from 'react-redux';
 import React, { Component } from 'react'
+import { Redirect, withRouter } from 'react-router-dom';
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
+import * as actionCreators from '../actions/SendDemoRequest'
 
 export class RequestDemo extends Component {
 
@@ -78,7 +81,8 @@ export class RequestDemo extends Component {
             parentId : 0,
             parentName : '',
             tutorId : 0,
-            subject : ''
+            subject : '',
+            Request: {}
         }
 
         this.parentId = React.createRef();
@@ -112,11 +116,28 @@ export class RequestDemo extends Component {
     requestdemo = (e) =>
     {
         e.preventDefault();
+        // console.log(this.state.startDate.getHours()+":"+this.state.startDate.getMinutes());
+        const Time = this.state.startDate.getHours()+":"+this.state.startDate.getMinutes()
         // date = moment(this.state.startDate).format("YYYY-MM-DD")
-        alert(this.state.startDate.getDate()+ " " +(this.state.startDate.getMonth() + 1)+ " " +this.state.startDate.getFullYear());
+        const Date = this.state.startDate.getDate()+ "-" +(this.state.startDate.getMonth() + 1)+ "-" +this.state.startDate.getFullYear()
+        // const Date = this.state.startDate.getFullYear()+"-"+(this.state.startDate.getMonth() + 1)+"-"+this.state.startDate.getDate()
+        console.log("Date is :",Date.toString())
+        console.log("Time is : ",Time.toString())
+        // alert(this.state.startDate.getDate()+ " " +(this.state.startDate.getMonth() + 1)+ " " +this.state.startDate.getFullYear());
         // alert(this.state.startDate.getHours()+ " " +(this.state.startDate.getMonth() + 1)+ " " +this.state.startDate.getFullYear());
         // ,this.tutorIdRef.current.value,this.subjectRef.current.value,this.demoDateRef.current.value
         console.log(this.parentId.current.value+" "+this.parentName.current.value+" "+this.tutorId.current.value+" "+this.subjectRef.current.value)
+
+        let Request = {
+            tutorId: this.tutorId.current.value,
+            parentId: this.parentId.current.value,
+            parentName: this.parentName.current.value,
+            subject: this.subjectRef.current.value,
+            localTime: Time,
+            localDate: Date
+        };
+        console.log("Request is : ",Request)
+        this.props.onSendDemoRequest(Request)
     }
 
     setValues = (e) =>{
@@ -159,7 +180,7 @@ export class RequestDemo extends Component {
  
                 <div className="form-group"> 
                     <label for="subject" class="col-sm-3 col-form-label">Enter Subject:</label>
-                    <input type="text"  className="form-control form-control-sm" name="subject"  id="subject" placeholder="Enter Subject"  ref={this.subjectRef} required title="Enter a subject" />
+                    <input type="text"  className="form-control form-control-sm" name="subject"  id="subject" placeholder="Enter Subject" defaultValue={this.props.tutorSub} ref={this.subjectRef} required title="Enter a subject" />
                 </div>
                  
                 <div className="form-group">
@@ -168,6 +189,7 @@ export class RequestDemo extends Component {
                         onChange={ this.handleChange }
                         showTimeSelect
                         timeFormat="HH:mm"
+                        // timeFormat="dd/MM/yyyy hh:mm:ss"
                         timeIntervals={20}
                         timeCaption="time"
                         dateFormat="MMMM d, yyyy h:mm aa"
@@ -182,12 +204,36 @@ export class RequestDemo extends Component {
             </form>
             </div></div>
           
+          <div>
+              {
+                  this.props.status === 200 && <div>Suceessfully sent demo request</div>
+              }
+          </div>
             </div>
         )
     }
 }
 
-export default RequestDemo
 
+const mapStateToProps = (state) => {
+    return {
+        returnedMessage: state.returnedMessage3,
+        status : state.status
+        
+    }
+  }
+  
+  const mapDispatchToProps = (dispatch) => {
+    return {
+        onSendDemoRequest: (request) => {
+          console.log("REqust is ",request)
+            dispatch(actionCreators.sendDemoRequest(request))
+        }
+  
+    }
+  
+  }
+// export default RequestDemo
 
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(RequestDemo))
 // export default RequestDemo

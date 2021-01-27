@@ -40,7 +40,7 @@ const tutorReducer = (state = initialState, action) => {
                     
                     requestsList: listofrequests
                 }
-                case actionCreators.GET_ALL_BOOKINGS:
+                case actionCreators.GET_ALL_BOOKINGS_LIST:
                     let listofbookings = action.data
                     
                     console.log(action.data)

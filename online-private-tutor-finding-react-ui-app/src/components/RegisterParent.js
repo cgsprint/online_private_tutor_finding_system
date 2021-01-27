@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import * as actionCreators from '../actions/ParentActions'
 
-export class AddParent extends Component {
+export class RegisterParent extends Component {
   constructor(props) {
     super(props)
 
@@ -96,6 +96,16 @@ export class AddParent extends Component {
 
     return true;
   };
+
+  // renderLoginPage = () => {
+  //   this.props.backToLogin();
+  // } 
+
+  renderLoginPage = () => {
+
+    const page ='MAIN_LOGIN'
+    this.props.backToLogin(page);
+  }
 
   add = (e) => {
 
@@ -270,19 +280,28 @@ export class AddParent extends Component {
                 </div>                
               </div>
               </div>
+              
             </form>
           </div>
-          {/* <div className="alert alert-successs" role="alert">
-              {
-                this.props.status === 200 ? <div>{this.props.returnedMessage}</div> : <div></div>
-              }
-            </div>*/}
+          
         </div> 
        <br></br>
             <br></br>
-    
-            <div >
+            <div>
               {this.props.returnedMessage4}
+              
+              {
+                this.props.status === 200 && <div>
+                  <button
+                class="btn btn-primary btn-sm "
+                onClick={this.renderLoginPage}
+                >
+                  Back to login
+              </button></div>
+              }
+            </div>
+            <div >
+              {/* {this.props.returnedMessage4} */}
             </div>
             <hr></hr>
 
@@ -295,8 +314,8 @@ export class AddParent extends Component {
 }
 const mapStateToProps = (state) => {
   return {
-      returnedMessage4: state.returnedMessage4,
-      status: state.status
+      returnedMessage4: state.register_parent_msg,
+      status: state.register_parent_status
   }
 }
 const mapDispatchToProps = (dispatch) => {
@@ -308,4 +327,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(withRouter(AddParent))
+export default connect(mapStateToProps,mapDispatchToProps)(withRouter(RegisterParent))

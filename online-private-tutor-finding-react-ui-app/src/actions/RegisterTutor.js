@@ -23,10 +23,10 @@ export const registerTutor = (Tutor) => {
             // alert("Ebook successfully added")
             // console.log(response)
             dispatch(registerTutorAction(response.data.message,response.status))
-            setTimeout(() => {
-                dispatch(registerTutorAction("",0))
+            // setTimeout(() => {
+            //     dispatch(registerTutorAction("",0))
                 
-            }, 1500);
+            // }, 1500);
             
         }).catch(err => {
             console.log(err)

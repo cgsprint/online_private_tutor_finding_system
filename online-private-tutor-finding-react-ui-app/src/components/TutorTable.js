@@ -154,7 +154,7 @@ export class TutorTable extends Component {
             <div>
                 
                 <h2 className="text-center text-dark">Tutor List</h2>
-                <table className="table table-stripped text-dark">
+                <table className="table table-striped text-dark">
                     <thead>
                         <tr>
                             <th scope="col">Id</th>

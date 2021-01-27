@@ -18,6 +18,7 @@ export class ViewTutorTable extends Component {
         this.state = {
              renderForm: 'VIEW_TUTOR_TABLE',
              tId: 0,
+             tutorSubject: '',
              parentId: 0,
              parentFullName: ''
         }
@@ -49,11 +50,12 @@ export class ViewTutorTable extends Component {
 
     }
 
-    sendDemoRequest = (tutorId) => {
+    sendDemoRequest = (tutorId,tutorSubject) => {
         console.log(tutorId)
         this.setState({
             renderForm: 'SEND_DEMO_REQUEST',
-            tId: tutorId
+            tId: tutorId,
+            tutorSubject: tutorSubject
         })
 
         // const parentObject = localStorage.getItem("parentObj");
@@ -65,11 +67,12 @@ export class ViewTutorTable extends Component {
         // this.props.onDeleteTutor(tutorId);
     }
 
-    bookTutor = (tutorId) => {
+    bookTutor = (tutorId,tutorSubject) => {
         console.log(tutorId)
         this.setState({
             renderForm: 'BOOK_TUTOR',
-            tId: tutorId
+            tId: tutorId,
+            tutorSubject: tutorSubject
         })
     }
 
@@ -94,8 +97,8 @@ export class ViewTutorTable extends Component {
                             <td>{tutor.address}</td> 
                             <td>{tutor.qualifications}</td> 
                             <td colSpan="2">
-                                <button onClick={this.sendDemoRequest.bind(this,tutor.tutorId)} className="btn btn-info btn-sm">SEND DEMO REQUEST</button>
-                                <button onClick={this.bookTutor.bind(this,tutor.tutorId)} className="btn btn-danger ml-5 btn-sm">BOOK TUTOR</button>
+                                <button onClick={this.sendDemoRequest.bind(this,tutor.tutorId,tutor.subject)} className="btn btn-info btn-sm">SEND DEMO REQUEST</button>
+                                <button onClick={this.bookTutor.bind(this,tutor.tutorId,tutor.subject)} className="btn btn-danger ml-5 btn-sm">BOOK TUTOR</button>
                             </td>
                         </tr>
                     )
@@ -115,7 +118,7 @@ export class ViewTutorTable extends Component {
             <div>
                 
                 <h2 className="text-center">Tutor List</h2>
-                <table className="table table-stripped">
+                <table className="table table-striped">
                     <thead>
                         <tr>
                             <th scope="col">Id</th>
@@ -145,7 +148,7 @@ export class ViewTutorTable extends Component {
             return (
                 <div>
                     {/* <UpdateTutor tutorId={this.state.tId}/> */}
-                    <RequestDemo parentId={this.state.parentId} parentName={this.state.parentFullName} tutorId={this.state.tId}/>
+                    <RequestDemo parentId={this.state.parentId} parentName={this.state.parentFullName} tutorId={this.state.tId} tutorSub={this.state.tutorSubject}/>
                 </div>
             )
         }
@@ -154,7 +157,7 @@ export class ViewTutorTable extends Component {
             return (
                 <div>
                     {/* <UpdateTutor tutorId={this.state.tId}/> */}
-                    <BookTutor parentId={this.state.parentId} parentName={this.state.parentFullName}  tutorId={this.state.tId}/>
+                    <BookTutor parentId={this.state.parentId} parentName={this.state.parentFullName}  tutorId={this.state.tId}  tutorSub={this.state.tutorSubject}/>
                 </div>
             )
         }

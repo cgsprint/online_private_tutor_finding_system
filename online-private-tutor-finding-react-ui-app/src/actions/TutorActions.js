@@ -6,7 +6,7 @@ import { TUTOR_BASE_URL } from '../utils/constants'
 export const UPDATE_TUTOR_PROFILE = 'UPDATE_TUTOR_PROFILE'
 export const TUTOR_VIEW_EBOOK = 'TUTOR_VIEW_EBOOK'
 export const GET_DEMO_REQUESTS = 'GET_DEMO_REQUESTS'
-export const GET_ALL_BOOKINGS = 'GET_ALL_BOOKINGS'
+export const GET_ALL_BOOKINGS_LIST = 'GET_ALL_BOOKINGS_LIST'
 export const ACCEPT_REQUEST = 'ACCEPT_REQUEST'
 export const DECLINE_REQUEST = 'DECLINE_REQUEST'
 export const CLEAR_STATE = 'CLEAR_STATE'
@@ -25,7 +25,7 @@ export const updateTutor = (newTutorDetails) => {
     return (dispatch) => {
         axios.put(BASE_URL+'updateTutor', newTutorDetails)
             .then((response) => {
-                alert("Tutor Updated added")
+                // alert("Tutor Updated added")
                 dispatch(updateTutorAction(response.data))
             })
     }
@@ -40,7 +40,7 @@ const TutorViewEbookAction = (data) => {
 }
 export const getAllEbooks = () => {
     return (dispatch) => {
-        axios.get(BASE_URL+'viewEbook')
+        axios.get(BASE_URL+'viewEbooks')
             .then((response) => {
                 dispatch(TutorViewEbookAction(response.data))
                 
@@ -54,9 +54,9 @@ const getDemoRequestsAction = (data) => {
         data
     }
 }
-export const getAllDemoRequests = () => {
+export const getAllDemoRequests = (tutorId) => {
     return (dispatch) => {
-        axios.get(TUTOR_BASE_URL + '/request')
+        axios.get(TUTOR_BASE_URL + '/getDemoRequest?tutorId='+tutorId)
             .then((response) => {
                 dispatch(getDemoRequestsAction(response.data))
                 
@@ -66,14 +66,15 @@ export const getAllDemoRequests = () => {
 
 const getAllBookingsAction = (data) => {
     return {
-        type: GET_ALL_BOOKINGS,
+        type: GET_ALL_BOOKINGS_LIST,
         data
     }
 }
-export const getAllBookings = () => {
+export const getAllBookings = (tutorId) => {
     return (dispatch) => {
-        axios.get(TUTOR_BASE_URL + '/bookings')
+        axios.get(TUTOR_BASE_URL + '/getBookedTutor?tutorId='+tutorId)
             .then((response) => {
+                console.log("REspnse is ",response.data)
                 dispatch(getAllBookingsAction(response.data))
                 
             })

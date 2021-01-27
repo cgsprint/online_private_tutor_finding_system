@@ -150,7 +150,7 @@ export class AddTutor extends Component {
       this.address.current.value = "";
       this.qualifications.current.value = "";
     }
-    window.location.href = 'http://localhost:3000/admin/viewtutors'
+    // window.location.href = 'http://localhost:3000/admin/viewtutors'
   };
 
   render() {
@@ -161,8 +161,13 @@ export class AddTutor extends Component {
     //     window.location.href = 'http://localhost:3000/';
     // }
 
+    if(this.props.status === 200)
+    {
+      return <Redirect to="/admin/viewtutors"/>
+    }
+
     return (
-      <div class="container mt-5 px-3 py-3 border border-dark rounded text-dark form-group required">
+      <div class="container mt-5 px-3 py-3 border border-dark rounded text-dark form-group required" style={{background: '#f5f5f5'}}>
         <div class="row">
           <div class="col">
             <h2>Add Tutor</h2>
@@ -322,13 +327,23 @@ export class AddTutor extends Component {
                 
               </div>
 
-              <div class="row mt-3">
-                <div class="col">
+              <div class="row mt-4">
+                <div class="col-7">
                   <button
                     class="btn btn-primary btn-sm"
                     onClick={this.addTutor.bind(this)}
                   >
                     Add
+                  </button>
+                </div>
+
+                <div class="col-1">
+                  <button
+                  type="reset"
+                    class="btn btn-primary btn-sm"
+                    // onClick={this.addTutor.bind(this)}
+                  >
+                    Reset
                   </button>
                 </div>
               </div>

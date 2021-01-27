@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom';
 import * as actionCreators from '../actions/UpdateEbookAction'
 import { connect } from 'react-redux';
+import { Redirect } from "react-router-dom";
 
 class UpdateEbook extends Component {
   constructor(props) {
@@ -107,7 +108,12 @@ class UpdateEbook extends Component {
       {
           // return <Redirect to="/" />
           window.location.href = 'http://localhost:3000/';
-      } 
+      }
+      
+      // if(this.props.status === 200)
+      // {
+      //   return <Redirect to="/admin/viewebooks"/>
+      // }
         return (
             <div className="container mt-5 px-3 py-3 border border-dark text-dark rounded">
         <div className="row">
@@ -197,7 +203,7 @@ class UpdateEbook extends Component {
           </div>
         </div>
 
-        <div className={(this.props.returnedMessage === '') ? '' : "alert"} role="alert">
+        <div >
               {this.props.returnedMessage3}
             </div>
 
@@ -209,7 +215,8 @@ class UpdateEbook extends Component {
 
 const mapStateToProps = (state) => {
   return {
-      returnedMessage3: state.returnedMessage3
+      returnedMessage3: state.returnedMessage3,
+      status: state.status
   }
 }
 

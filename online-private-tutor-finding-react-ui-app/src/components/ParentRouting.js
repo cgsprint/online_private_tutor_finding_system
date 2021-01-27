@@ -138,42 +138,33 @@ export class ParentRouting extends Component {
         return (
             <Router>
             <div>
-                <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
                     <div className="container-fluid">
                         <div className="collapse navbar-collapse" id="navbarNav">
                             <ul className="navbar-nav">
                                 <li className="nav-item">
-                                    <Link className="nav-link" to="/">
+                                    <Link className="nav-link" to="/parent/home">
                                         
                                     </Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link className="nav-link" to="/viewTutor">
+                                    <Link className="nav-link" to="/parent/viewTutor">
                                         View Tutor
                                     </Link>
                                 </li>
+                                
                                 <li className="nav-item">
-                                    <Link className="nav-link" to="/requestDemo">
-                                        Request Demo
-                                    </Link>
-                                </li>
-                                <li className="nav-item">
-                                    <Link className="nav-link" to="/bookTutor">
-                                        Book Tutor
-                                    </Link>
-                                </li>
-                                <li className="nav-item">
-                                    <Link className="nav-link" to="/viewEbook">
-                                        View Ebook
-                                    </Link>
-                                </li>
-                                <li className="nav-item">
-                                    <Link className="nav-link" to="/viewBookedTutor">
+                                    <Link className="nav-link" to="/parent/viewBookedTutor">
                                         View BookedTutor
                                     </Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link className="nav-link" to="/rateTutor">
+                                    <Link className="nav-link" to="/parent/viewEbook">
+                                        View Ebook
+                                    </Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link className="nav-link" to="/parent/rateTutor">
                                         Rate Tutor
                                     </Link>
                                 </li>
@@ -188,33 +179,30 @@ export class ParentRouting extends Component {
                 </nav>
     
                 <Switch>
-                    <Route  exact path="/">
+                    <Route  exact path="/parent/home">
                         <ParentHome/>
                     </Route>
-                    <Route  exact path="/viewTutor">
+                    <Route  exact path="/parent/viewTutor">
                         <ViewTutorTable />
                     </Route>
     
-                    <Route path="/requestDemo">
+                    {/* <Route path="/requestDemo">
                         <RequestDemo />
                     </Route>
     
                     <Route path="/bookTutor">
                         <BookTutor />
-                    </Route>
+                    </Route> */}
     
-                    <Route path="/viewBookedTutor">
+                    <Route path="/parent/viewBookedTutor">
                         <ViewBookedTutor />
                     </Route>
     
-                    <Route path="/rateTutor">
+                    <Route path="/parent/rateTutor">
                         <RateTutor/>
                     </Route>
-                    <Route path="/viewEbook">
-    
-                    <ViewEbook></ViewEbook>
-    
-    
+                    <Route path="/parent/viewEbook">
+                        <ViewEbook />
                     </Route>
 
                     <Route path="/logout">

@@ -10,6 +10,14 @@ import * as actionCreators9 from '../actions/GetEbookListAdmin'
 import * as actionCreators10 from '../actions/UpdateEbookAction'
 import * as actionCreators11 from '../actions/DeleteEbook'
 import * as update_tutor_profile from '../actions/TutorActions'
+import * as add_parent from '../actions/ParentActions'
+import * as get_ebook_for_tutor from '../actions/TutorActions'
+import * as get_demo_requests from '../actions/TutorActions'
+import * as send_demo_requests from '../actions/SendDemoRequest'
+import * as book_tutor from '../actions/BookTutorAction'
+import * as get_bookings from '../actions/TutorActions'
+import * as parent_view_ebook_action from '../actions/ParentViewEbookAction'
+import * as get_booked_tutors from '../actions/ParentBookedTutor'
 
 
 const initialState = {
@@ -108,19 +116,6 @@ const AdminReducer = (state= initialState,action) => {
                 parentOb : parentObject
             }
         case actionCreators2.REGISTER_TUTOR:
-            // let resMessage2 = action.data.message
-            // // let resMessage2;
-            // let Reqstatus2 = action.status
-            // console.log(resMessage2)
-            // // if(Reqstatus2 === 200)
-            // // {
-            // //     resMessage2 = 'success'
-            // // }
-            // return {
-            //     returnedMessage : resMessage2,
-            //     status : Reqstatus2
-            // }
-
             let rMessage
             let rStatus
             if(action.status === 200)
@@ -141,6 +136,17 @@ const AdminReducer = (state= initialState,action) => {
             return {
                 returnedMessage4: rMessage,
                 status : rStatus
+            }
+        case add_parent.ADD_Parent:
+            let messageAfterAddition = action.data
+            // let listAfterAddition = action.data
+            let Reqstatus = action.status
+            console.log('Addition of parent')
+            console.log(action)
+            console.log(messageAfterAddition)
+            return {
+                register_parent_msg: messageAfterAddition,
+                register_parent_status : Reqstatus
             }
         case actionCreators3.GET_ALL_TUTORS:
             console.log("in get tutors")
@@ -265,10 +271,11 @@ const AdminReducer = (state= initialState,action) => {
             let listAfterUpdation = action.data.ebookList
             console.log('Updating ebook')
             console.log(listAfterUpdation)
-            console.log(messageAfterUpdation)
+            console.log("action staus for update ebook",action.data.status)
             return {
                 returnedMessage3: messageAfterUpdation,
-                ebookList: listAfterUpdation
+                ebookList: listAfterUpdation,
+                status: action.data.status
             }
         case actionCreators11.DELETE_EBOOK:
         // console.log(action.data)
@@ -288,6 +295,82 @@ const AdminReducer = (state= initialState,action) => {
                 tutorUpdationMsg: messageAfterUpdation2,
                 tutorsList: listAfterUpdation2
             }
+
+        case get_ebook_for_tutor.TUTOR_VIEW_EBOOK:
+
+            console.log(action.data)
+            let ebookList= action.data
+            
+            console.log("eList"+ebookList);
+            return {
+                ebooksList: ebookList
+            } 
+        case get_demo_requests.GET_DEMO_REQUESTS:
+
+            console.log(action.data)
+            let requestList= action.data
+            
+            console.log("requestList"+requestList);
+            return {
+                requestsList: requestList
+            }
+        case send_demo_requests.SEND_DEMO_REQUEST:
+
+            console.log(action.status)
+
+            let rMessage4
+            let rStatus4
+            // if(action.status === 200)
+            // {
+            //     rMessage4 = action.data
+            //     rStatus4 = action.status
+            // }
+            // else if(action.status === 0)
+            // {
+            //     rMessage4 = ""
+            //     rStatus4 = 0
+            // }
+            // else{
+            //     rMessage4 = "Failed to send demo request."
+            //     rStatus4 = 404
+            // }
+            
+            return {
+                returnedMessage3: rMessage4,
+                status : action.status
+            } 
+        case book_tutor.BOOK_TUTOR:
+            console.log(action);
+            return {
+                status: action.status
+            } 
+        case parent_view_ebook_action.GET_ALL_EBOOKS:
+
+            // console.log(action)
+            // let requestList= action.data
+            
+            console.log("Booking list",action.data);
+            return {
+                ebooksList: action.data
+                } 
+        case get_booked_tutors.GET_BOOKED_TUTOR:
+
+            // console.log(action)
+            // let requestList= action.data
+            
+            console.log("Booked Tutors list",action.data);
+            return {
+                bookedTutorsList: action.data
+                } 
+        case get_bookings.GET_ALL_BOOKINGS_LIST:
+
+            // console.log(action)
+            // let requestList= action.data
+            
+            console.log("Booking list",action.data);
+            return {
+                bookingList: action.data
+                }     
         default:
             return state    
     }

@@ -8,14 +8,11 @@ const getBookedTutorAction = (data) => {
         data
     }
 }
-export const getBookedTutor = () => {
+export const getBookedTutor = (parentId) => {
     return (dispatch) => {
-        axios.get(PARENT_BASE_URL + '/bookedTutor'
-        // , { 
-            // 'Access-Control-Allow-Origin': '*'
-        // }
-)
+        axios.post(PARENT_BASE_URL + '/getBookedTutors?parentId='+parentId)
             .then((response) => {
+                console.log(response)
                 dispatch(getBookedTutorAction(response.data))  
             })
     }
