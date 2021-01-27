@@ -59,7 +59,7 @@ function App() {
     {/* <AddParent /> */}
 
 
-      <ParentRouting></ParentRouting>
+      {/* <ParentRouting></ParentRouting> */}
     {/* <ParentLogin />*/}
      
       {/* <AddUpdateTutor/> */}

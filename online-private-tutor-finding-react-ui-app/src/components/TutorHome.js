@@ -49,9 +49,9 @@ function TutorHome() {
                   Education is the passport to the future, for tomorrow belongs
                   to those who prepare for it today..
                 </p>
-                <a href="#" class="btn btn-primary">
+                {/* <a href="#" class="btn btn-primary">
                   Go somewhere
-                </a>
+                </a> */}
               </div>
             </div>
           </div>
@@ -71,9 +71,9 @@ function TutorHome() {
                   Education is what remains after one has forgotten what one has
                   learned in school.
                 </p>
-                <a href="#" class="btn btn-primary">
+                {/* <a href="#" class="btn btn-primary">
                   Go somewhere
-                </a>
+                </a> */}
               </div>
             </div>
           </div>
@@ -92,9 +92,9 @@ function TutorHome() {
                   The more that you read, the more things you will know, the
                   more that you learn, the more places you’ll go.
                 </p>
-                <a href="#" class="btn btn-primary">
+                {/* <a href="#" class="btn btn-primary">
                   Go somewhere
-                </a>
+                </a> */}
               </div>
             </div>
           </div>

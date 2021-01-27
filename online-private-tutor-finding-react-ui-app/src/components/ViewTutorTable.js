@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 // import * as actionCreators from '../actions/GetTutorList'
 // import * as actionCreators2 from '../actions/DeleteTutor'
 import * as actionCreators from '../actions/ParentViewTutorActions'
+import BookTutor from './BookTutor';
+import RequestDemo from './RequestDemo';
 import UpdateTutor from './UpdateTutor';
 
 
@@ -15,28 +17,61 @@ export class ViewTutorTable extends Component {
     
         this.state = {
              renderForm: 'VIEW_TUTOR_TABLE',
-             tId: 0
+             tId: 0,
+             parentId: 0,
+             parentFullName: ''
         }
     }
     
 
 
     componentDidMount() {
+
+        
+        // this.props.onGetTutorById(tutorId);
+
+
         this.props.onGetTutors();
+        // console.log("this.props.tutorsList ",this.props.tutorsList);
+
+        const parentObject = localStorage.getItem("parentObj");
+        const parentID =JSON.parse(parentObject).parentId;
+        const parentName = JSON.parse(parentObject).parentFirstName+" "+JSON.parse(parentObject).parentLastName;
+
+
+        console.log(parentID+" "+parentName);
+
+        this.setState({
+            parentId: parentID,
+            parentFullName : parentName
+        })
+        
+
     }
 
-    // delete = (tutorId) => {
-    //     // console.log(tutorId)
-    //     this.props.onDeleteTutor(tutorId);
-    // }
+    sendDemoRequest = (tutorId) => {
+        console.log(tutorId)
+        this.setState({
+            renderForm: 'SEND_DEMO_REQUEST',
+            tId: tutorId
+        })
 
-    // update = (tutorId) => {
-    //     // console.log(tutorId)
-    //     this.setState({
-    //         renderForm: 'VIEW_UPDATE_TUTOR',
-    //         tId: tutorId
-    //     })
-    // }
+        // const parentObject = localStorage.getItem("parentObj");
+        // const parentId =JSON.parse(parentObject).parentId;
+        // const parentName = JSON.parse(parentObject).parentName;
+
+        // console.log(parentId+" "+parentName);
+
+        // this.props.onDeleteTutor(tutorId);
+    }
+
+    bookTutor = (tutorId) => {
+        console.log(tutorId)
+        this.setState({
+            renderForm: 'BOOK_TUTOR',
+            tId: tutorId
+        })
+    }
 
     render() {
         // let madeArr = Object.values(this.props.tutorsList)
@@ -44,33 +79,37 @@ export class ViewTutorTable extends Component {
         
         var render_form = this.state.renderForm;
 
-        
-        if(this.props.tutorsList !== null)
-        {
-
-        if(this.props.tutorList!== null){
-        var tutorList=this.props.tutorsList.map((tutor,index)=>{
-            return(
-                <tr key={index}>
-                    <th>{tutor.tutorId}</th>
-                    <td>{tutor.name}</td>
-                    <td>{tutor.subject}</td>
-                    <td>{tutor.phoneNumber}</td> 
-                    <td>{tutor.address}</td> 
-                    <td>{tutor.qualifications}</td> 
-                    {/* <td colSpan="2">
-                        <button onClick={this.update.bind(this,tutor.tutorId)} className="btn btn-info btn-sm">UPDATE</button>
-                        <button onClick={this.delete.bind(this,tutor.tutorId)} className="btn btn-danger ml-5 btn-sm">DELETE</button>
-                    </td> */}
-                </tr>
-            )
-        })
-
-
-    }
         if(render_form === 'VIEW_TUTOR_TABLE')
         {
-            return (
+          
+            if(this.props.tutorsList != null)
+            {
+                var tutorList=this.props.tutorsList.map((tutor,index)=>{
+                    return(
+                        <tr key={index}>
+                            <th>{tutor.tutorId}</th>
+                            <td>{tutor.name}</td>
+                            <td>{tutor.subject}</td>
+                            <td>{tutor.phoneNumber}</td> 
+                            <td>{tutor.address}</td> 
+                            <td>{tutor.qualifications}</td> 
+                            <td colSpan="2">
+                                <button onClick={this.sendDemoRequest.bind(this,tutor.tutorId)} className="btn btn-info btn-sm">SEND DEMO REQUEST</button>
+                                <button onClick={this.bookTutor.bind(this,tutor.tutorId)} className="btn btn-danger ml-5 btn-sm">BOOK TUTOR</button>
+                            </td>
+                        </tr>
+                    )
+                });
+
+            }
+            else
+            {
+                return (
+                    <div>Empty tutors list</div>
+                )
+            }
+
+          return (
 
            
             <div>
@@ -96,41 +135,55 @@ export class ViewTutorTable extends Component {
                     
                     
                 </table>
-
+               
             </div>
-        )
+            );
+       
         }
-        // else if(render_form === 'VIEW_UPDATE_TUTOR')
-        // {
-        //     return (
-        //         <div>
-        //             <UpdateTutor tutorId={this.state.tId}/>
-        //         </div>
-        //     )
-        // }
+        else if(render_form === 'SEND_DEMO_REQUEST')
+        {
+            return (
+                <div>
+                    {/* <UpdateTutor tutorId={this.state.tId}/> */}
+                    <RequestDemo parentId={this.state.parentId} parentName={this.state.parentFullName} tutorId={this.state.tId}/>
+                </div>
+            )
+        }
+        else if(render_form === 'BOOK_TUTOR')
+        {
+            return (
+                <div>
+                    {/* <UpdateTutor tutorId={this.state.tId}/> */}
+                    <BookTutor parentId={this.state.parentId} parentName={this.state.parentFullName}  tutorId={this.state.tId}/>
+                </div>
+            )
+        }
         else
         {
             return null
         }
-    }
+  
 
 }
 
-    const mapStateToProps = (state) => {
-        return {
-            tutorsList:state.tutorsList,
-            returnedMessage: state.returnedMessage
+}
+
+const mapStateToProps = (state) => {
+    return {
+        tutorsList: state.tutorsList,
+        returnedMessage: state.returnedMessage
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onGetTutors: () => {
+            // console.log("mapDispathToProps")
+            return  dispatch(actionCreators.getAllTutors())
         }
     }
-    
-    const mapDispatchToProps = (dispatch) => {
-        return {
-            onGetTutors: () => {
-              return  dispatch(actionCreators.getAllTutors())
-            }
-        }
-    
-    }
+
+}
 
 
 

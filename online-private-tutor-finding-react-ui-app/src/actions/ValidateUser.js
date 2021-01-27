@@ -78,7 +78,7 @@ export const validateUser = (User) => {
             axios.post(PARENT_BASE_URL+`/login?username=${User.userUsername}&password=${User.userPassword}`)
             .then((response) => {
                 dispatch(validateParentAction(response.data,response.status))
-                console.log(response.status)
+                console.log(response)
                 
             }).catch((err) => {
                 dispatch(validateParentAction(err,404))
