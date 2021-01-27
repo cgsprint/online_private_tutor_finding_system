@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
+
 import { Redirect, withRouter } from 'react-router-dom';
+
+
 import * as actionCreators from '../actions/AddEbookAction'
 
 class AddEbook extends Component {
@@ -109,18 +112,21 @@ class AddEbook extends Component {
     
     return (
 
-      
       <div className="container mt-5 px-3 py-3 border border-dark text-dark rounded form-group required"  style={{background: '#f5f5f5'}}>
+
+      
+      <div className="container mt-5 px-3 py-3 border border-dark text-dark rounded form-group required" >
+
         <div className="row">
           <div className="col">
-            <h2>Add Ebook</h2>
+            <h2><b><u>Add Ebook</u></b></h2>
             <br></br>
             <form>
               
 
               <div className="mb-3 row">
                 <label htmlFor="title" className="col-sm-4 col-form-label control-label">
-                  Ebook Title
+                  <b>Ebook Title</b>
                 </label>
                 <div className="col-sm-5">
                   <input
@@ -137,7 +143,7 @@ class AddEbook extends Component {
 
               <div className="mb-3 row">
                 <label htmlFor="authorname" className="col-sm-4 col-form-label control-label">
-                  Ebook Authorname
+                  <b>Ebook Authorname</b>
                 </label>
                 <div className="col-sm-5">
                   <input
@@ -152,7 +158,7 @@ class AddEbook extends Component {
 
               <div className="mb-3 row">
                 <label htmlFor="url" className="col-sm-4 col-form-label control-label">
-                  Ebook Url
+                  <b>Ebook Url</b>
                 </label>
                 <div className="col-sm-5">
                   <input
@@ -196,10 +202,13 @@ class AddEbook extends Component {
             
 
       </div>
+      </div>
 
     );
-  }
+    }
+    
 }
+
 
 const mapStateToProps = (state) => {
   return {
@@ -215,6 +224,7 @@ const mapDispatchToProps = (dispatch) => {
         // console.log(actionCreators.addEbook)
           dispatch(actionCreators.addEbook(ebook))
       }
+
 
   }
 

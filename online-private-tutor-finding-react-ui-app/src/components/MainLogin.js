@@ -287,12 +287,12 @@ export class MainLogin extends Component {
         <div class="container mt-5 px-3 py-3 border border-dark rounded form-group required main-login text-dark main-login">
           <div class="row">
             <div class="col">
-              <h2>Login Page </h2>
+              <h2><b><u>Login Page</u></b> </h2>
               <br></br>
               <form>
                 <div class="mb-3 row">
                   <label for="username" class="col-sm-5 col-form-label mr-3   control-label">
-                    Select Role
+                    <b>Select Role</b>
                   </label>
                   <div class="col-sm-4 ">
                     <div
@@ -351,7 +351,7 @@ export class MainLogin extends Component {
 
                 <div class="mb-3 row">
                   <label for="username" class="col-sm-5 col-form-label control-label">
-                    Enter Username
+                  <b>  Enter Username</b>
                   </label>
                   <div class="col-sm-4 ">
                     <input
@@ -367,7 +367,7 @@ export class MainLogin extends Component {
 
                 <div class="mb-3 row">
                   <label for="password" class="col-sm-5 col-form-label control-label">
-                    Enter Password
+                   <b> Enter Password</b>
                   </label>
                   <div class="col-sm-4">
                     <input

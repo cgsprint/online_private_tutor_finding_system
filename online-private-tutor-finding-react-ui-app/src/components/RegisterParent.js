@@ -137,14 +137,14 @@ export class RegisterParent extends Component {
             <div class="container mt-5 px-3 py-3 text-dark border border-dark rounded main-login">
         <div class="row">
           <div class="col">
-            <h2>Registration</h2>
+            <h2><b><u>Registration</u></b></h2>
             <br></br>
             <form method="post">
               <div>
 
               <div class="mb-3 row">
                 <label for="firstName" class="col-sm-4 col-form-label">
-                First Name : 
+             <b>   First Name : </b>
                 </label>
                 <div class="col-sm-5">
                   <input
@@ -162,7 +162,7 @@ export class RegisterParent extends Component {
 
               <div class="mb-3 row">
                 <label for="lastName" class="col-sm-4 col-form-label">
-                  Last Name :
+                  <b>Last Name :</b>
                 </label>
                 <div class="col-sm-5">
                   <input
@@ -180,7 +180,7 @@ export class RegisterParent extends Component {
 
               <div class="mb-3 row">
                 <label for="username" class="col-sm-4 col-form-label">
-                  Username :
+                 <b> Username :</b>
                 </label>
                 <div class="col-sm-5">
                   <input
@@ -197,7 +197,7 @@ export class RegisterParent extends Component {
 
               <div class="mb-3 row">
                 <label for="password" class="col-sm-4 col-form-label">
-                  Password :
+                 <b> Password :</b>
                 </label>
                 <div class="col-sm-5">
                   <input
@@ -216,7 +216,7 @@ export class RegisterParent extends Component {
 
               <div class="mb-3 row">
                 <label for="mobileNo" class="col-sm-4 col-form-label">
-                  Mobile No :
+                <b>  Mobile No :</b>
                 </label>
                 <div class="col-sm-5">
                   <input
@@ -235,7 +235,7 @@ export class RegisterParent extends Component {
 
               <div class="mb-3 row">
                 <label for="email" class="col-sm-4 col-form-label">
-                  Email :
+                <b>  Email :</b>
                 </label>
                 <div class="col-sm-5">
                   <input
@@ -253,7 +253,7 @@ export class RegisterParent extends Component {
 
               <div class="mb-3 row">
                 <label for="address" class="col-sm-4 col-form-label">
-                  Address :
+                 <b> Address :</b>
                 </label>
                 <div class="col-sm-5">
                   <input

@@ -168,8 +168,8 @@ export class ViewTutorTable extends Component {
   
 
 }
-
 }
+
 
 const mapStateToProps = (state) => {
     return {

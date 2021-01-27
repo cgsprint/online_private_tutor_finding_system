@@ -190,12 +190,12 @@ changeName = (e) => {
         <div className="container mt-5 px-3 py-3 border border-dark rounded form-group required">
         <div className="row">
           <div className="col">
-            <h2>Update Tutor Profile</h2>
+            <h2><b><u>Update Tutor Profile</u></b></h2>
             <br></br>
             <form>
               <div className="mb-3 row">
                 <label for="tutorId" className="col-sm-4 col-form-label">
-                  Tutor Id
+                  <b>Tutor Id</b>
                 </label>
                 <div className="col-sm-5">
                   <input
@@ -212,7 +212,7 @@ changeName = (e) => {
 
               <div className="mb-3 row">
                 <label for="tutorName" className="col-sm-4 col-form-label  control-label">
-                  Tutor Name
+                  <b>Tutor Name</b>
                 </label>
                 <div className="col-sm-5">
                   <input
@@ -243,7 +243,7 @@ changeName = (e) => {
 
               <div className="mb-3 row">
                 <label for="tutorUsername" className="col-sm-4 col-form-label control-label">
-                  Tutor Username
+                  <b>Tutor Username</b>
                 </label>
                 <div className="col-sm-5">
                   <input
@@ -321,7 +321,7 @@ changeName = (e) => {
 
               <div className="mb-3 row">
                 <label for="tutorAddress" className="col-sm-4 col-form-label control-label">
-                  Tutor Address
+                  <b>Tutor Address</b>
                 </label>
                 <div className="col-sm-5">
                   <input
@@ -342,7 +342,7 @@ changeName = (e) => {
                   for="tutorQualification"
                   className="col-sm-4 col-form-label control-label"
                 >
-                  Tutor Qualification
+                  <b>Tutor Qualification</b>
                 </label>
                 <div className="col-sm-5">
                   <input

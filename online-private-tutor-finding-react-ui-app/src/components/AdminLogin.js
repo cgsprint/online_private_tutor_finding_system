@@ -20,12 +20,12 @@ class AdminLogin extends Component {
       <div class="container mt-5 px-3 py-3 border border-dark rounded bg-light text-dark">
         <div class="row">
           <div class="col">
-            <h2>Admin Login</h2>
+            <h2><b><u>Admin Login</u></b></h2>
             <br></br>
             <form>
               <div class="mb-3 row">
                 <label for="username" class="col-sm-5 col-form-label">
-                  Enter Username
+                  <b>Enter Username</b>
                 </label>
                 <div class="col-sm-4 ">
                   <input
@@ -41,7 +41,7 @@ class AdminLogin extends Component {
 
               <div class="mb-3 row">
                 <label for="password" class="col-sm-5 col-form-label">
-                  Enter Password
+                  <b>Enter Password</b>
                 </label>
                 <div class="col-sm-4">
                   <input

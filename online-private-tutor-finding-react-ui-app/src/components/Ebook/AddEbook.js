@@ -36,6 +36,7 @@ class AddEbook extends Component {
  
   render() {
     return (
+      <div >
       <div className="container mt-5 px-3 py-3 border border-dark rounded">
         <div className="row">
           <div className="col">
@@ -112,6 +113,7 @@ class AddEbook extends Component {
 
          
 
+      </div>
       </div>
 
     );

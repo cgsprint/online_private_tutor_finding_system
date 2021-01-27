@@ -44,15 +44,15 @@ class TutorLogin extends Component {
        
     render() {
         return (
-            <div className="container mt-5 px-3 py-3 border border-dark rounded">
+            <div className="container mt-5 px-3 py-3 border border-dark rounded" style={{backgroundImage:'url(https://wallpaperaccess.com/full/1772240.jpg)'}}>
             <div className="row">
               <div className="col">
-                <h2>Tutor Login</h2>
+                <h2><b><u>Tutor Login</u></b></h2>
                 <br></br>
             <form method="post" onSubmit={this.handleSubmit}>
             <div className="mb-3 row">
             <label for="tutorUsername" className="col-sm-4 col-form-label">
-              Tutor Username
+              <b>Tutor Username</b>
             </label>
             <div className="col-sm-5">
               <input
@@ -71,7 +71,7 @@ class TutorLogin extends Component {
 
           <div className="mb-3 row">
             <label for="tutorPassword" className="col-sm-4 col-form-label">
-              Tutor Password
+             <b> Tutor Password</b>
             </label>
             <div className="col-sm-5">
               <input

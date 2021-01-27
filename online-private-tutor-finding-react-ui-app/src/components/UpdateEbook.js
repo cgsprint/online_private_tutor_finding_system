@@ -118,12 +118,12 @@ class UpdateEbook extends Component {
             <div className="container mt-5 px-3 py-3 border border-dark text-dark rounded">
         <div className="row">
           <div className="col">
-            <h2>Update Ebook</h2>
+            <h2><b><u>Update Ebook</u></b></h2>
             <br></br>
             <form>
               <div className="mb-3 row">
                 <label htmlFor="ebookId" className="col-sm-4 col-form-label">
-                  Ebook Id
+                 <b> Ebook Id</b>
                 </label>
                 <div className="col-sm-5 ">
                   <input
@@ -140,7 +140,7 @@ class UpdateEbook extends Component {
 
               <div className="mb-3 row">
                 <label htmlFor="title" className="col-sm-4 col-form-label">
-                  Ebook Title
+                 <b> Ebook Title</b>
                 </label>
                 <div className="col-sm-5">
                   <input
@@ -157,7 +157,7 @@ class UpdateEbook extends Component {
 
               <div className="mb-3 row">
                 <label for="auth" className="col-sm-4 col-form-label">
-                  Ebook Authorname
+                  <b>Ebook Authorname</b>
                 </label>
                 <div className="col-sm-5">
                   <input
@@ -174,7 +174,7 @@ class UpdateEbook extends Component {
 
               <div className="mb-3 row">
                 <label for="url" className="col-sm-4 col-form-label">
-                  Ebook Url
+                  <b>Ebook Url</b>
                 </label>
                 <div className="col-sm-5">
                   <input

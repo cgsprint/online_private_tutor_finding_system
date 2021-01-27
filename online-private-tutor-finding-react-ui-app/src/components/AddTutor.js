@@ -170,7 +170,7 @@ export class AddTutor extends Component {
       <div class="container mt-5 px-3 py-3 border border-dark rounded text-dark form-group required" style={{background: '#f5f5f5'}}>
         <div class="row">
           <div class="col">
-            <h2>Add Tutor</h2>
+            <h2><b><u>Add Tutor</u></b></h2>
             <br></br>
             <form method="post">
               <div class="mb-3 row ">
@@ -178,7 +178,7 @@ export class AddTutor extends Component {
                   for="tutorName"
                   class="col-sm-4 col-form-label control-label"
                 >
-                  Tutor Name
+                  <b>Tutor Name</b>
                 </label>
                 <div class="col-sm-5">
                   <input
@@ -198,7 +198,7 @@ export class AddTutor extends Component {
                   for="tutorUsername"
                   class="col-sm-4 col-form-label control-label"
                 >
-                  Tutor Username
+                  <b>Tutor Username</b>
                 </label>
                 <div class="col-sm-5">
                   <input
@@ -220,7 +220,7 @@ export class AddTutor extends Component {
                   for="tutorPassword"
                   class="col-sm-4 col-form-label control-label"
                 >
-                  Tutor Password
+                <b>Tutor Password</b>
                 </label>
                 <div class="col-sm-5">
                   <input
@@ -243,7 +243,7 @@ export class AddTutor extends Component {
                   for="tutorSubject"
                   class="col-sm-4 col-form-label control-label"
                 >
-                  Tutor Subject
+                  <b>Tutor Subject</b>
                 </label>
                 <div class="col-sm-5">
                   <input
@@ -265,7 +265,7 @@ export class AddTutor extends Component {
                   for="tutorPhoneNo"
                   class="col-sm-4 col-form-label control-label"
                 >
-                  Tutor Phone No.
+                  <b>Tutor Phone No.</b>
                 </label>
                 <div class="col-sm-5">
                   <input
@@ -288,7 +288,7 @@ export class AddTutor extends Component {
                   for="tutorAddress"
                   class="col-sm-4 col-form-label control-label"
                 >
-                  Tutor Address
+                  <b>Tutor Address</b>
                 </label>
                 <div class="col-sm-5">
                   <input
@@ -310,7 +310,7 @@ export class AddTutor extends Component {
                   for="tutorQualification"
                   class="col-sm-4 col-form-label control-label"
                 >
-                  Tutor Qualification
+                  <b>Tutor Qualification</b>
                 </label>
                 <div class="col-sm-5">
                   <input

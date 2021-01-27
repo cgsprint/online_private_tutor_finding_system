@@ -24,14 +24,22 @@ function RateTutor() {
                     <div class="container mt-5 px-3 py-3 text-dark border border-dark rounded main-login">
             <div class="row">
               <div class="col">
+<<<<<<< HEAD
                 <h2>Rate Tutor</h2>
+=======
+                <h2><b><u>Rate Tutor</u></b></h2>
+>>>>>>> 1d411e84c31b0a80ce60e368a9b4305f262efa54
                 <br></br>
                 <form>
                   <div>
     
                   <div class="mb-3 row">
                     <label for="firstName" class="col-sm-4 col-form-label">
+<<<<<<< HEAD
                     Tutor Id : 
+=======
+                   <b>Rate Tutor</b>
+>>>>>>> 1d411e84c31b0a80ce60e368a9b4305f262efa54
                     </label>
                     <div class="col-sm-5">
                       <input
