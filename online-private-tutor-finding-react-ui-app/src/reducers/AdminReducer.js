@@ -9,6 +9,8 @@ import * as actionCreators8 from '../actions/AddEbookAction'
 import * as actionCreators9 from '../actions/GetEbookListAdmin'
 import * as actionCreators10 from '../actions/UpdateEbookAction'
 import * as actionCreators11 from '../actions/DeleteEbook'
+import * as update_tutor_profile from '../actions/TutorActions'
+
 
 const initialState = {
     returnedMessage: '',
@@ -80,10 +82,11 @@ const AdminReducer = (state= initialState,action) => {
         case actionCreators.VALIDATE_PARENT:
             let resMessage13 = action.data.message
             let Reqstatus13 = action.status;
-            if(action.data.tutorLst != null)
+            // console.log("Parent List is ",action.data.parentLst[0].username)
+            if(action.data.parentLst != null)
             {
                 var parentObject = {
-                    parentId: action.data.parentLst[0].tutorId,
+                    parentId: action.data.parentLst[0].parentId,
                     parentFirstName: action.data.parentLst[0].firstName,
                     parentLastName: action.data.parentLst[0].lastName,
                     parentUsername: action.data.parentLst[0].username,
@@ -143,7 +146,7 @@ const AdminReducer = (state= initialState,action) => {
             console.log("in get tutors")
             console.log(action.data)
             let tList = action.data
-           
+            
             return {
                 tutorsList: tList
             }
@@ -166,10 +169,31 @@ const AdminReducer = (state= initialState,action) => {
             console.log("in get tutor by id")
             // console.log(action.data)
             let tutorObj = action.data
-            // console.log(tutorObj)
-            
+            console.log("tutorObject is ",tutorObj.name)
+            if(tutorObj != null)
+            {
+                var tutorObject2 = {
+                    tutorId: tutorObj.tutorId,
+                    tutorName: tutorObj.name,
+                    tutorUsername: tutorObj.username,
+                    tutorPassword: tutorObj.password,
+                    tutorSubject: tutorObj.subject,
+                    tutorPhoneNo: tutorObj.phoneNumber,
+                    tutorAddress: tutorObj.address,
+                    tutorQualifications: tutorObj.qualifications
+                }
+                // var tutorUpdationMsg = "Your profile has been updated"
+
+            }
+            else
+            {
+                var tutorUpdationMsg = "Values are not present "
+            }
+
+
             return {
-                tutor: tutorObj
+                tutor: tutorObject2,
+                tutorUpdationMsg : tutorUpdationMsg
             }  
         case actionCreators7.UPDATE_TUTOR:
             // console.log("in update tutor")
@@ -253,6 +277,17 @@ const AdminReducer = (state= initialState,action) => {
             return {
                 ebooksList: eListAfterDeletion
             } 
+
+        case update_tutor_profile.UPDATE_TUTOR_PROFILE:
+            let messageAfterUpdation2 = action.data.message
+            let listAfterUpdation2 = action.data.tutor
+            console.log('Updating tutor')
+            console.log(listAfterUpdation2)
+            console.log(messageAfterUpdation2)
+            return {
+                tutorUpdationMsg: messageAfterUpdation2,
+                tutorsList: listAfterUpdation2
+            }
         default:
             return state    
     }

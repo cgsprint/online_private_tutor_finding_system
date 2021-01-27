@@ -19,7 +19,7 @@ const tutorReducer = (state = initialState, action) => {
               ebooklist: listOfEbooks
           }
 
-          case actionCreators.UPDATE_TUTOR:
+          case actionCreators.UPDATE_TUTOR_PROFILE:
             let messageAfterUpdation = action.data.message
             let listAfterUpdation = action.data.tutor
             console.log('Updating trainee')

@@ -3,7 +3,7 @@
 import axios from 'axios'
 
 import { TUTOR_BASE_URL } from '../utils/constants'
-export const UPDATE_TUTOR = 'UPDATE_TUTOR'
+export const UPDATE_TUTOR_PROFILE = 'UPDATE_TUTOR_PROFILE'
 export const TUTOR_VIEW_EBOOK = 'TUTOR_VIEW_EBOOK'
 export const GET_DEMO_REQUESTS = 'GET_DEMO_REQUESTS'
 export const GET_ALL_BOOKINGS = 'GET_ALL_BOOKINGS'
@@ -17,7 +17,7 @@ const BASE_URL = 'http://localhost:8080/'
 
 const updateTutorAction = (data) => {
     return {
-        type: UPDATE_TUTOR,
+        type: UPDATE_TUTOR_PROFILE,
         data
     }
 }
@@ -30,6 +30,7 @@ export const updateTutor = (newTutorDetails) => {
             })
     }
 }
+
 
 const TutorViewEbookAction = (data) => {
     return {

@@ -7,6 +7,10 @@ import TutorViewEbook from './TutorViewEbook'
 import UpdateTutor from './UpdateTutor'
 import ViewDemoRequests from './ViewDemoRequests';
 import Logout from './Logout';
+import * as actionCreators3 from '../actions/GetTutorById'
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
+
 
 
 
@@ -100,6 +104,8 @@ export class TutorRouting extends Component {
         
     }
 
+    
+
     render() {
 
         if(this.state.loggedIn === false)
@@ -161,7 +167,7 @@ export class TutorRouting extends Component {
                         <ViewBookings/>
                     </Route>
                     <Route path="/tutor/updatetutor">
-                        <UpdateTutor></UpdateTutor>
+                        <UpdateTutor />
                     </Route>
                     <Route path="/tutor/viewparents">
                         <ViewBookings></ViewBookings>
@@ -183,4 +189,16 @@ export class TutorRouting extends Component {
     }
 }
 
-export default TutorRouting
+const mapStateToProps = (state) => {
+    console.log("state is jkjn ",state);
+  
+    return {
+          tutor: state.tutor,
+          returnedMessage: state.tutorUpdationMsg,
+  
+    };
+  };
+  
+
+  
+  export default TutorRouting;

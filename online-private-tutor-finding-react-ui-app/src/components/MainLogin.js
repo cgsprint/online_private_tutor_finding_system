@@ -268,7 +268,7 @@ export class MainLogin extends Component {
     {
       localStorage.setItem("token","khfhdskhfkjsdhfkhdfsdjfhsd");
       localStorage.setItem("role",'parent');
-      localStorage.setItem("tutorObj",JSON.stringify(this.props.parent));
+      localStorage.setItem("parentObj",JSON.stringify(this.props.parent));
       return <Redirect to="/parent" />
 
     }

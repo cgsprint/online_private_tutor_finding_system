@@ -1,5 +1,6 @@
 import { withRouter } from "react-router-dom";
 import React from "react";
+import * as actionCreators3 from '../actions/GetTutorById'
 
 import { connect } from "react-redux";
 
@@ -10,8 +11,9 @@ const initialState = {
   password: "",
   username: "",
   subject: "",
+  phoneNumber:"",
   address: "",
-  qualification: "",
+  qualifications: "",
   nameError: "",
   usernameError: "",
   passwordError: "",
@@ -31,11 +33,12 @@ class UpdateTutor extends React.Component {
     this.password = React.createRef();
     this.subject = React.createRef();
     this.address = React.createRef();
-    this.phonenumber = React.createRef();
-    this.qualification = React.createRef();
+    this.phoneNumber = React.createRef();
+    this.qualifications = React.createRef();
 
     this.state = {
       initialState,
+      tutor: {}
     };
   }
 
@@ -63,24 +66,18 @@ class UpdateTutor extends React.Component {
     if (!this.subject.current.value) {
       subjectError = "This field can not be blank";
     }
-    if (!this.phonenumber.current.value) {
+    if (!this.phoneNumber.current.value) {
       phoneNoError = "This field can not be blank";
     }
 
     if (!this.address.current.value) {
       addressError = "This field can not be blank";
     }
-    if (!this.qualification.current.value) {
+    if (!this.qualifications.current.value) {
       qualificationError = "This field can not be blank";
     }
     if (
-      nameError ||
-      usernameError ||
-      passwordError ||
-      subjectError ||
-      phoneNoError ||
-      addressError ||
-      qualificationError
+      nameError ||usernameError ||passwordError ||subjectError ||phoneNoError ||addressError ||qualificationError
     ) {
       this.setState({
         nameError,
@@ -120,8 +117,19 @@ class UpdateTutor extends React.Component {
   };
 
   componentDidMount() {
-    // console.log(this.props.tutorUname)
-    // this.props.onGetTutor(this.props.tutorUname);
+    //  console.log(this.props.tutorUname)
+    //  this.props.onGetTutor(this.props.tutorUname);
+
+    const tutorObject = localStorage.getItem("tutorObj");
+    const tutorId =JSON.parse(tutorObject).tutorId;
+    // console.log("Tutor id is ",JSON.parse(tutorObject).tutorId);
+    // console.log("object")
+
+    this.props.onGetTutorById(tutorId);
+
+    // console.log("this.props.tutor",this.props.tutor)
+    // this.props.history.push('/tutor/updatetutor')
+
   }
 
   updateTutor(e) {
@@ -130,25 +138,33 @@ class UpdateTutor extends React.Component {
     const valid = this.validate(e);
   console.log(valid)
   if (valid === true) {
-    // let tutor = {
-    //   tutorId: this.tutorId.current.value,
-    //   name: this.name.current.value,
-    //   username: this.username.current.value,
-    //   password: this.password.current.value,
-    //   subject: this.subject.current.value,
-    //   address: this.address.current.value,
-    //   phonenumber: this.phonenumber.current.value,
-    //   qualification: this.qualification.current.value,
-    // };
-    console.log(this.tutorId.current.value,this.name.current.value,this.username.current.value,this.password.current.value,this.subject.current.value,this.address.current.value,this.phonenumber.current.value,this.qualification.current.value);
-  }
-    // this.props.onUpdateTutor(tutor)
+     let tutor = {
+     tutorId: this.tutorId.current.value,
+    name: this.name.current.value,
+     username: this.username.current.value,
+     password: this.password.current.value,
+     subject: this.subject.current.value,
+     address: this.address.current.value,
+     phoneNumber: this.phoneNumber.current.value,
+     qualifications: this.qualifications.current.value,
+     };
+    console.log(this.tutorId.current.value,this.name.current.value,this.username.current.value,this.password.current.value,this.subject.current.value,this.address.current.value,this.phoneNumber.current.value,this.qualifications.current.value);
+    this.props.onUpdateTutor(tutor)  
+}
+
+   
     e.preventDefault();
 
   }
 
   render() {
+    if(this.props.tutor != null)
+      {
+        
+      
     return (
+
+      
       <div className="container mt-5 px-3 py-3 border border-dark rounded form-group required">
         <div className="row">
           <div className="col">
@@ -166,8 +182,8 @@ class UpdateTutor extends React.Component {
                     name="tutorId"
                     id="tutorId"
                     ref={this.tutorId}
-                    // defaultValue={this.props.tutorObject.tutorId}
-                   
+                    defaultValue={this.props.tutor.tutorId}
+                    readOnly
                   />
                 </div>
               </div>
@@ -186,7 +202,7 @@ class UpdateTutor extends React.Component {
                     // name="name"
                     id="tutorName"
                     ref={this.name}
-                    // defaultValue={this.props.tutorObject.tutorName}
+                    defaultValue={this.props.tutor.tutorName}
                     // onChange={this.changeName.bind(this)}
                   />
                   <br></br>
@@ -219,7 +235,7 @@ class UpdateTutor extends React.Component {
                     name="username"
                     id="tutorUsername"
                     ref={this.username}
-                    // defaultValue={this.props.tutorObject.tutorUsername}
+                    defaultValue={this.props.tutor.tutorUsername}
                   />
                   <br></br>
                   <div className="font-size-small text-danger">
@@ -242,7 +258,7 @@ class UpdateTutor extends React.Component {
                     name="password"
                     id="tutorPassword"
                     ref={this.password}
-                    // defaultValue={this.props.tutorObject.tutorPassword}
+                    defaultValue={this.props.tutor.tutorPassword}
                   />
                   <br></br>
                   <div className="font-size-small text-danger">
@@ -264,7 +280,7 @@ class UpdateTutor extends React.Component {
                     className="form-control form-control-sm"
                     name="subject"
                     id="tutorSubject"
-                    // defaultValue={this.props.tutorObject.tutorSubject}
+                    defaultValue={this.props.tutor.tutorSubject}
                     ref={this.subject}
                   />
                   <br></br>
@@ -288,8 +304,8 @@ class UpdateTutor extends React.Component {
                     className="form-control form-control-sm"
                     name="phoneNumber"
                     id="tutorPhoneNo"
-                    // defaultValue={this.props.tutorObject.tutorPhoneNo}
-                    ref={this.phonenumber}
+                    defaultValue={this.props.tutor.tutorPhoneNo}
+                    ref={this.phoneNumber}
                   />
                   <br></br>
                   <div className="font-size-small text-danger">
@@ -315,7 +331,7 @@ class UpdateTutor extends React.Component {
                     className="form-control form-control-sm"
                     name="address"
                     id="tutorAddress"
-                    // defaultValue={this.props.tutorObject.tutorAddress}
+                    defaultValue={this.props.tutor.tutorAddress}
                     ref={this.address}
                   />
                   <br></br>
@@ -338,8 +354,8 @@ class UpdateTutor extends React.Component {
                     className="form-control form-control-sm"
                     name="qualification"
                     id="tutorQualification"
-                    // defaultValue={this.props.tutorObject.tutorQualification}
-                    ref={this.qualification}
+                    defaultValue={this.props.tutor.tutorQualifications}
+                    ref={this.qualifications}
                   />
                   <br></br>
                   <div className="font-size-small text-danger">
@@ -360,20 +376,27 @@ class UpdateTutor extends React.Component {
               </div>
             </form>
           </div>
-
-        
         </div>
         <div>{this.props.returnedMessage}</div>
       </div>
     );
+      }
+      else
+      {
+        return (
+          <div>Your profile has been updated</div>
+        )
+      }
   }
 }
 
 const mapStateToProps = (state) => {
-  console.log("response");
+  console.log("state is jkjn ",state);
 
   return {
-    returnedMessage: state.returnedMessage,
+        tutor: state.tutor,
+        returnedMessage: state.tutorUpdationMsg,
+
   };
 };
 
@@ -386,10 +409,11 @@ const mapDispatchToProps = (dispatch) => {
     clearState: () => {
       dispatch(actionCreators.clearState());
     },
+    onGetTutorById: (tutorId) => {
+      console.log("tutorId is ",tutorId)
+      dispatch(actionCreators3.getTutor(tutorId));
+    }
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(withRouter(UpdateTutor));
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(UpdateTutor));
