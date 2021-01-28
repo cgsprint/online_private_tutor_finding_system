@@ -23,7 +23,7 @@ function AdminHome() {
           fontFamily: "Arial",
         }}
       >
-        <h1 style={{ color: "green" }}>
+        <h1 style={{ color: "white" }}>
           <u>
             <b>Welcome {adminName}</b>
           </u>
@@ -57,9 +57,7 @@ function AdminHome() {
                   Education is the passport to the future, for tomorrow belongs
                   to those who prepare for it today..
                 </p>
-                {/* <a href="#" class="btn btn-primary">
-                  Go somewhere
-                </a> */}
+                
               </div>
             </div>
           </div>
@@ -79,9 +77,7 @@ function AdminHome() {
                   Education is what remains after one has forgotten what one has
                   learned in school.
                 </p>
-                {/* <a href="#" class="btn btn-primary">
-                  Go somewhere
-                </a> */}
+                
               </div>
             </div>
           </div>
@@ -100,9 +96,7 @@ function AdminHome() {
                   The more that you read, the more things you will know, the
                   more that you learn, the more places you’ll go.
                 </p>
-                {/* <a href="#" class="btn btn-primary">
-                  Go somewhere
-                </a> */}
+                
               </div>
             </div>
           </div>

@@ -50,15 +50,15 @@ import { connect } from 'react-redux'
     {
         return (
             <div>
-                <h2 className="text-center">My booked Tutors</h2>
+                <h2 className="text-center text-light">My booked Tutors</h2>
 
-                <table className="table table-striped demo-request-table">
+                <table className="table table-striped demo-request-table text-light">
                     <thead>
                         <tr>
                             <th scope="col">TutorId</th>
                             <th scope="col">Subject</th>
                             <th scope="col">Date</th>
-                            <th scope="col">Time</th>
+                            <th scope="col">Time(24 Hrs Format)</th>
                         </tr>
                     </thead>
                     <tbody>

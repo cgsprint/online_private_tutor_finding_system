@@ -49,10 +49,10 @@ export class ViewDemoRequest extends Component {
                     <td>{request.localTime}</td> 
                     <td>{request.localDate}</td> 
                     <td>{request.parentName}</td> 
-                     <td colSpan="2">
+                     {/* <td colSpan="2">
                         <button onClick={this.accept.bind(this,request.Id)} className="btn btn-info btn-sm">ACCEPT</button>
                         <button onClick={this.decline.bind(this,request.Id)} className="btn btn-danger ml-5 btn-sm">DECLINE</button>
-                    </td> 
+                    </td>  */}
                 </tr>
             )
         })
@@ -65,8 +65,8 @@ export class ViewDemoRequest extends Component {
            
             <div>
                 
-                <h2 className="text-center">Demo Request List</h2>
-                <table className="table table-striped">
+                <h2 className="text-center text-light">Demo Request List</h2>
+                <table className="table table-striped text-light">
                     <thead>
                         <tr>
                             <th scope="col">Id</th>
@@ -75,7 +75,7 @@ export class ViewDemoRequest extends Component {
                             <th scope="col">Time</th>
                             <th scope="col">Date</th>
                             <th scope="col">Parent Name</th>
-                            <th scope="col">Actions</th>
+                            {/* <th scope="col">Actions</th> */}
                         </tr>
                     </thead>
 

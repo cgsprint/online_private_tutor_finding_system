@@ -18,6 +18,7 @@ import * as book_tutor from '../actions/BookTutorAction'
 import * as get_bookings from '../actions/TutorActions'
 import * as parent_view_ebook_action from '../actions/ParentViewEbookAction'
 import * as get_booked_tutors from '../actions/ParentBookedTutor'
+import * as get_tutors_for_parent from '../actions/ParentViewTutorActions'
 
 
 const initialState = {
@@ -370,7 +371,18 @@ const AdminReducer = (state= initialState,action) => {
             console.log("Booking list",action.data);
             return {
                 bookingList: action.data
-                }     
+                } 
+        case get_tutors_for_parent.GET_ALL_TUTORS:
+            let listOfTutors = action.data;
+            let resMessage=action.data.resMessage
+            console.log(action.data)
+            console.log('List of Tutors')
+            console.log(listOfTutors)
+            
+            return {
+                returnedMessage: resMessage,
+                tutorsList: listOfTutors
+            }    
         default:
             return state    
     }

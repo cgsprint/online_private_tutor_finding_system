@@ -17,10 +17,7 @@ export const bookTutor = (request) =>{
             .then((response)=>{
                 console.log(response.data)
                 dispatch(bookTutorAction(response.data,response.status))
-                setTimeout(() => {
-                    dispatch(bookTutorAction("",0))
-                    
-                    }, 1000);
+                
         }
             )}}
 

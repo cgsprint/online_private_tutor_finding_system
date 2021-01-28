@@ -45,7 +45,8 @@ class TutorViewEbook extends Component {
         }
         return (
             <div>
-                <table className="table  demo-request-table table-striped"> 
+                <h2 class="text-center text-light">Ebooks List</h2>
+                <table className="table  demo-request-table table-striped text-light"> 
                 {/* demo-request-table table-info */}
                     <thead>
                         <tr>

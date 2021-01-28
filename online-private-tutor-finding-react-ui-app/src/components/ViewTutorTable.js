@@ -117,8 +117,8 @@ export class ViewTutorTable extends Component {
            
             <div>
                 
-                <h2 className="text-center">Tutor List</h2>
-                <table className="table table-striped">
+                <h2 className="text-center text-light">Tutor List</h2>
+                <table className="table table-striped text-light">
                     <thead>
                         <tr>
                             <th scope="col">Id</th>

@@ -147,7 +147,7 @@ import { connect } from 'react-redux';
 
 updateTutor = (e) =>{
 
-  // e.preventDefault();
+  e.preventDefault();
   const valid = this.validate(e);
   console.log(valid)
   if (valid === true) {
@@ -179,6 +179,12 @@ changeName = (e) => {
 })
 }
 
+renderAdminTutorListPage = () => {
+
+  const page ='VIEW_TUTOR_TABLE'
+  this.props.backToTutorList(page);
+}
+
   render(){
 
     if(this.state.loggedIn === false)
@@ -187,7 +193,7 @@ changeName = (e) => {
             window.location.href = 'http://localhost:3000/admin/viewtutors';
         }
       return(
-        <div className="container mt-5 px-3 py-3 border border-dark rounded form-group required">
+        <div className="container mt-5 px-3 py-3 border border-light text-light rounded form-group required">
         <div className="row">
           <div className="col">
             <h2><b><u>Update Tutor Profile</u></b></h2>
@@ -364,6 +370,7 @@ changeName = (e) => {
                     Update Profile
                   </button>
                 </div>
+
               </div>
               </form>
             </div>

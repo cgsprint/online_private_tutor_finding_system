@@ -48,7 +48,7 @@ function App() {
 
     {/* <MainLogin/> */}
 
-    {/* <Router>
+    <Router>
     <Switch>
       <Route exact path="/" component={MainLogin}></Route>
       <Route path="/admin/home" component={AdminRouting}></Route>
@@ -56,7 +56,7 @@ function App() {
       <Route path="/parent" component={ParentRouting}></Route>
       <Route path="/updatetutor" component={AdminUpdateTutor}></Route>
     </Switch>
-    </Router> */}
+    </Router>
   {/* <UpdateTutor/> */}
     {/* <AddParent /> */}
     {/* <AddEbook></AddEbook> */}
@@ -89,7 +89,7 @@ function App() {
    
      
      {/* <RateTutor></RateTutor> */}
-     <AddEbook></AddEbook>
+     {/* <AddEbook></AddEbook> */}
  
  {/* <AdminHome></AdminHome> */}
  {/* <ParentHome></ParentHome> */}

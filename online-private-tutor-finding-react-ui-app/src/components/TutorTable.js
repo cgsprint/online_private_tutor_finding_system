@@ -53,22 +53,7 @@ export class TutorTable extends Component {
     }
 
     update = (tutor) => {
-        // console.log("Tutor obj is 1 "+tutor.tutorId)
-        // this.props.onGetTutorById(tutorId);
-
-        // const TutorObjCopy = {
-        //     tutorId: tutor.tutorId,
-        //     tutorName: tutor.name,
-        //     tutorUsername: tutor.username,
-        //     tutorPassword: tutor.password,
-        //     tutorSubject: tutor.subject,
-        //     tutorPhoneNo: tutor.phoneNumber,
-        //     tutorAddress: tutor.address,
-        //     tutorQualification: tutor.qualifications
-
-        // }
-
-
+        
         this.state.TutorObj.tutorID = tutor.tutorId
         this.state.TutorObj.tutorName = tutor.name
         this.state.TutorObj.tutorUsername = tutor.username
@@ -86,19 +71,7 @@ export class TutorTable extends Component {
         })
 
 
-        // let TutorObj = {
-        //     tutorId: tutor.tutorId,
-        //     tutorName: tutor.name,
-        //     tutorUsername: tutor.username,
-        //     tutorPassword: tutor.password,
-        //     tutorSubject: tutor.subject,
-        //     tutorPhoneNo: tutor.phoneNumber,
-        //     tutorAddress: tutor.address,
-        //     tutorQualification: tutor.qualifications,
-
-        // }
-
-        // <Redirect to="/updatetutor" />
+        
 
         console.log("Tutor obj is "+this.state.TutorObj.tutorUsername)
 
@@ -106,6 +79,13 @@ export class TutorTable extends Component {
 
     }
 
+    renderTutorTable(page)
+  {
+
+    this.setState({
+      renderPage: page
+    });
+  }
     
 
     
@@ -153,8 +133,8 @@ export class TutorTable extends Component {
            
             <div>
                 
-                <h2 className="text-center text-dark">Tutor List</h2>
-                <table className="table table-striped text-dark">
+                <h2 className="text-center text-light">Tutor List</h2>
+                <table className="table table-striped text-light">
                     <thead>
                         <tr>
                             <th scope="col">Id</th>

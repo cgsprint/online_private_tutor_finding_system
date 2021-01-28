@@ -41,9 +41,9 @@ class ViewEbook extends Component {
       }
       return (
         <div>
-                <h2 className="text-center">Ebook List</h2>
+                <h2 className="text-center text-light">Ebook List</h2>
 
-          <table className="table table-striped">
+          <table className="table table-striped text-light">
             <thead>
               <tr>
                 <th scope="col">EBookId</th>

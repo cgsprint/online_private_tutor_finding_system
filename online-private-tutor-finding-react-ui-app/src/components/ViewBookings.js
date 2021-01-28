@@ -50,7 +50,8 @@ import * as actionCreated from '../actions/TutorActions'
         {
         return (
             <div>
-                <table className="table table-striped">
+                <h2 className="text-center text-light">View Bookings</h2>
+                <table className="table table-striped text-light">
                     <thead>
                         <tr>
                             {/* <th scope="col">Booking Id</th> */}

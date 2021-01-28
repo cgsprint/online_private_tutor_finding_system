@@ -16,17 +16,17 @@ const initialState = {
 }
 const parentReducer = (state = initialState, action) => {
     switch (action.type) {
-        case actionCreators2.GET_ALL_TUTORS:
-            let listOfTutors = action.data;
-            let resMessage=action.data.resMessage
-            console.log(action.data)
-            console.log('List of Tutors')
-            console.log(listOfTutors)
+        // case actionCreators2.GET_ALL_TUTORS:
+        //     let listOfTutors = action.data;
+        //     let resMessage=action.data.resMessage
+        //     console.log(action.data)
+        //     console.log('List of Tutors')
+        //     console.log(listOfTutors)
             
-            return {
-                returnedMessage: resMessage,
-                tutorsList: listOfTutors
-            }
+        //     return {
+        //         returnedMessage: resMessage,
+        //         tutorsList: listOfTutors
+        //     }
         case actionCreators.ADD_Parent:
             let messageAfterAddition = action.data.message
             let listAfterAddition = action.data

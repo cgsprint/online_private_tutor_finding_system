@@ -301,7 +301,6 @@ export class RegisterParent extends Component {
               }
             </div>
             <div >
-              {/* {this.props.returnedMessage4} */}
             </div>
             <hr></hr>
 

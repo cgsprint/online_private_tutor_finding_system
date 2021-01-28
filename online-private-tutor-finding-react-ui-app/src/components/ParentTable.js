@@ -68,8 +68,8 @@ export class ParentTable extends Component {
             
             <div>
                 
-                <h2 className="text-center text-dark">Parent List</h2>
-                <table className="table table-striped text-dark">
+                <h2 className="text-center text-light">Parent List</h2>
+                <table className="table table-striped text-light">
                     <thead>
                        <tr>
                             <th scope="col">Id</th>

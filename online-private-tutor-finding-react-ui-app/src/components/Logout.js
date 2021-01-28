@@ -32,20 +32,13 @@ export class Logout extends Component {
         window.location.href = 'http://localhost:3000/';
 
     }
-    // logout = () => {
-
-    //     // setTimeout("location.reload(true);", time);
-    //     window.location.href = 'http://localhost:3000/';
-    //     // window.location.reload(false);
-
-    // }
+    
     
     render() {
         return (
             <div>
-                <h1>You have been logged out</h1>
-                {/* <input type="button" value = "Refresh" onclick="history.go(0)" /> */}
-                {/* <button onClick={this.logout.bind(this)}>Log In Again</button> */}
+                <h1 class="text-light">Redirecting to login page</h1>
+                
             </div>
         )
     }

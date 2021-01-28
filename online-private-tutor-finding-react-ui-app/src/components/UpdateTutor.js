@@ -239,7 +239,7 @@ class UpdateTutor extends React.Component {
                   />
                   <br></br>
                   <div className="font-size-small text-danger">
-                    {this.state.nameError}
+                    {this.state.usernameError}
                   </div>
                 </div>
               </div>
@@ -262,7 +262,7 @@ class UpdateTutor extends React.Component {
                   />
                   <br></br>
                   <div className="font-size-small text-danger">
-                    {this.state.nameError}
+                    {this.state.passwordError}
                   </div>
                 </div>
               </div>
@@ -272,7 +272,7 @@ class UpdateTutor extends React.Component {
                   for="tutorSubject"
                   className="col-sm-4 col-form-label control-label"
                 >
-                  Tutor Subject
+                  <b>Tutor Subject</b>
                 </label>
                 <div className="col-sm-5">
                   <input
@@ -285,7 +285,7 @@ class UpdateTutor extends React.Component {
                   />
                   <br></br>
                   <div className="font-size-small text-danger">
-                    {this.state.nameError}
+                    {this.state.subjectError}
                   </div>
                 </div>
               </div>
@@ -309,7 +309,7 @@ class UpdateTutor extends React.Component {
                   />
                   <br></br>
                   <div className="font-size-small text-danger">
-                    {this.state.nameError}
+                    {this.state.phoneNoError}
                   </div>
                 </div>
 
@@ -336,7 +336,7 @@ class UpdateTutor extends React.Component {
                   />
                   <br></br>
                   <div className="font-size-small text-danger">
-                    {this.state.nameError}
+                    {this.state.addressError}
                   </div>
                 </div>
               </div>
@@ -359,7 +359,7 @@ class UpdateTutor extends React.Component {
                   />
                   <br></br>
                   <div className="font-size-small text-danger">
-                    {this.state.nameError}
+                    {this.state.qualificationError}
                   </div>
                 </div>
               </div>

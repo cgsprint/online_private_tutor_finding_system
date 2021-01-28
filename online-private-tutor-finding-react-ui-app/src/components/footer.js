@@ -19,9 +19,9 @@ const Footer=()=>{
                 <div className="col">
                     <h2>Contact us</h2>
                     <ul className="list-unstyled">
-                        <li>7894563251</li>
-                        <li>abc@gmail.com</li>
-                        <li>Mnc@gmail.com</li>
+                    <li>Phone Number:7894563251</li>
+                        <li>Email Id:abc@gmail.com</li>
+                        <li>Email Id:Mnc@gmail.com</li>
                     </ul>
                 </div>
                 </div>
